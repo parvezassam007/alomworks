@@ -1,1040 +1,1667 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
 
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<title>Create Bill | Parbez Smart Works</title>
 
-  <meta name="theme-color"
-    content="#2563eb">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <title>Work Bill | Parbez Smart Works</title>
+<link rel="stylesheet" href="style.css">
 
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
 
-  <link rel="stylesheet"
-    href="style.css">
+.page-container{
+  max-width:850px;
+  margin:auto;
+  padding:18px;
+}
 
-  <style>
+.page-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
 
-    .page-container {
-      max-width: 850px;
-      margin: auto;
-      padding: 18px;
-    }
+.back-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:white;
+  color:#2563eb;
+  font-size:17px;
+  cursor:pointer;
+}
 
-    .page-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
+.form-card{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:18px;
+}
 
-    .back-btn {
-      width: 42px;
-      height: 42px;
-      border: 0;
-      border-radius: 13px;
-      background: white;
-      color: #2563eb;
-      font-size: 17px;
-    }
+.form-card h3{
+  font-size:16px;
+  margin-bottom:15px;
+}
 
-    .page-title h2 {
-      font-size: 21px;
-    }
+.bill-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:18px;
+}
 
-    .bill-info {
-      background: linear-gradient(
-        135deg,
-        #2563eb,
-        #1d4ed8
-      );
+.info-box{
+  background:#eff6ff;
+  border-radius:12px;
+  padding:12px;
+}
 
-      color: white;
+.info-box span{
+  display:block;
+  color:#64748b;
+  font-size:10px;
+}
 
-      padding: 20px;
+.info-box strong{
+  display:block;
+  color:#2563eb;
+  margin-top:4px;
+  font-size:14px;
+}
 
-      border-radius: 20px;
+.field{
+  margin-bottom:14px;
+}
 
-      display: flex;
-      justify-content: space-between;
+.field label{
+  display:block;
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:6px;
+}
 
-      margin-bottom: 18px;
-    }
+.field input,
+.field textarea,
+.item input{
+  width:100%;
+  border:1px solid #dbe2ea;
+  border-radius:11px;
+  padding:12px;
+  outline:none;
+  font-size:14px;
+  background:#f8fafc;
+}
 
-    .bill-info span {
-      display: block;
-      font-size: 11px;
-      opacity: .8;
-      margin-bottom: 5px;
-    }
+.field textarea{
+  min-height:75px;
+  resize:vertical;
+}
 
-    .bill-info strong {
-      font-size: 16px;
-    }
+.field input:focus,
+.field textarea:focus,
+.item input:focus{
+  border-color:#2563eb;
+  background:white;
+}
 
-    .form-card {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 18px;
-    }
+.item{
+  border:1px solid #e2e8f0;
+  border-radius:15px;
+  padding:13px;
+  margin-bottom:12px;
+  background:#f8fafc;
+}
 
-    .form-card h3 {
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
+.item-grid{
+  display:grid;
+  grid-template-columns:1fr 75px 95px;
+  gap:8px;
+}
 
-    .field {
-      margin-bottom: 14px;
-    }
+.item-total{
+  margin-top:10px;
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  font-weight:bold;
+}
 
-    .field label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
+.delete-item{
+  margin-top:9px;
+  border:0;
+  background:#fee2e2;
+  color:#dc2626;
+  padding:8px 12px;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:12px;
+}
 
-    .field input,
-    .field textarea,
-    .field select,
-    .item input {
-      width: 100%;
-      border: 1px solid #dbe2ea;
-      border-radius: 11px;
-      padding: 12px;
-      outline: none;
-      font-size: 14px;
-      background: #f8fafc;
-    }
+.add-btn{
+  width:100%;
+  border:1px dashed #2563eb;
+  color:#2563eb;
+  background:#eff6ff;
+  padding:12px;
+  border-radius:11px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .field textarea {
-      min-height: 75px;
-      resize: vertical;
-    }
+.summary{
+  margin-top:18px;
+  background:#f8fafc;
+  border-radius:15px;
+  padding:15px;
+}
 
-    .item {
-      border: 1px solid #e2e8f0;
-      border-radius: 15px;
-      padding: 13px;
-      margin-bottom: 12px;
-      background: #f8fafc;
-    }
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  font-size:14px;
+}
 
-    .item-grid {
-      display: grid;
-      grid-template-columns: 1fr 75px 95px;
-      gap: 8px;
-    }
+.summary-row.total{
+  border-top:1px solid #e2e8f0;
+  padding-top:13px;
+  font-size:19px;
+  font-weight:bold;
+}
 
-    .item-total {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      font-weight: bold;
-    }
+.due-box{
+  margin-top:12px;
+  padding:14px;
+  background:#fff7ed;
+  border-radius:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .delete-item {
-      margin-top: 9px;
-      border: 0;
-      background: #fee2e2;
-      color: #dc2626;
-      padding: 8px 12px;
-      border-radius: 9px;
-      cursor: pointer;
-      font-size: 12px;
-    }
+.due-box span{
+  color:#9a3412;
+  font-size:13px;
+}
 
-    .add-btn {
-      width: 100%;
-      border: 1px dashed #2563eb;
-      color: #2563eb;
-      background: #eff6ff;
-      padding: 12px;
-      border-radius: 11px;
-      font-weight: bold;
-    }
+.due-box strong{
+  color:#ea580c;
+  font-size:19px;
+}
 
-    .summary {
-      background: #f8fafc;
-      border-radius: 15px;
-      padding: 15px;
-    }
+.status-box{
+  padding:12px;
+  border-radius:11px;
+  background:#f8fafc;
+  margin-top:12px;
+  text-align:center;
+  font-weight:bold;
+}
 
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
+.status-paid{
+  color:#15803d;
+  background:#dcfce7;
+}
 
-    .summary-row.total {
-      border-top: 1px solid #e2e8f0;
-      padding-top: 13px;
-      font-size: 19px;
-      font-weight: bold;
-    }
+.status-partial{
+  color:#b45309;
+  background:#fef3c7;
+}
 
-    .primary,
-    .whatsapp,
-    .print {
-      width: 100%;
-      border: 0;
-      padding: 14px;
-      border-radius: 12px;
-      margin-top: 11px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.status-unpaid{
+  color:#dc2626;
+  background:#fee2e2;
+}
 
-    .primary {
-      background: #2563eb;
-      color: white;
-    }
+.primary{
+  width:100%;
+  border:0;
+  background:#2563eb;
+  color:white;
+  padding:14px;
+  border-radius:12px;
+  margin-top:16px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .whatsapp {
-      background: #22c55e;
-      color: white;
-    }
+.secondary{
+  width:100%;
+  border:0;
+  background:#dcfce7;
+  color:#15803d;
+  padding:13px;
+  border-radius:12px;
+  margin-top:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .print {
-      background: #e2e8f0;
-      color: #1e293b;
-    }
+.whatsapp{
+  width:100%;
+  border:0;
+  background:#25d366;
+  color:white;
+  padding:13px;
+  border-radius:12px;
+  margin-top:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-  </style>
+@media(max-width:500px){
+
+  .item-grid{
+    grid-template-columns:1fr 65px 85px;
+  }
+
+  .bill-info{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media print{
+
+  .topbar,
+  .back-btn,
+  .add-btn,
+  .delete-item,
+  .primary,
+  .secondary,
+  .whatsapp{
+    display:none !important;
+  }
+
+  body{
+    background:white;
+    padding:0;
+  }
+
+  .page-container{
+    max-width:none;
+    padding:10px;
+  }
+
+  .form-card{
+    border:1px solid #ccc;
+    box-shadow:none;
+  }
+
+}
+
+</style>
 
 </head>
+
 
 <body>
 
 
 <header class="topbar">
 
-  <div class="brand">
+<div class="brand">
 
-    <div class="brand-logo">
-      <i class="fa-solid fa-bolt"></i>
-    </div>
+<div class="brand-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
 
-    <div>
+<div>
 
-      <h1>Parbez Smart Works</h1>
+<h1>Parbez Smart Works</h1>
 
-      <p>
-        Electrical • Ceiling • Plumbing
-      </p>
+<p>
+Electrical • Ceiling • Plumbing
+</p>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </header>
+
 
 
 <main class="page-container">
 
 
-  <div class="page-title">
+<div class="page-title">
 
-    <button class="back-btn"
-      onclick="location.href='index.html'">
+<button
+class="back-btn"
+onclick="location.href='index.html'">
 
-      <i class="fa-solid fa-arrow-left"></i>
+<i class="fa-solid fa-arrow-left"></i>
 
-    </button>
+</button>
 
-    <h2>Create Work Bill</h2>
+<h2>Create Work Bill</h2>
 
-  </div>
+</div>
 
 
-  <!-- BILL INFO -->
 
-  <div class="bill-info">
+<!-- BILL INFORMATION -->
 
-    <div>
+<div class="form-card">
 
-      <span>Bill Number</span>
+<h3>Bill Information</h3>
 
-      <strong id="billNumber">
-        PSW-0001
-      </strong>
+<div class="bill-info">
 
-    </div>
+<div class="info-box">
 
+<span>Bill Number</span>
 
-    <div>
+<strong id="billNumber">
+PSW-0001
+</strong>
 
-      <span>Date</span>
+</div>
 
-      <strong id="billDate"></strong>
 
-    </div>
+<div class="info-box">
 
-  </div>
+<span>Date</span>
 
+<strong id="billDate">
+-
+</strong>
 
-  <!-- CUSTOMER -->
+</div>
 
-  <div class="form-card">
+</div>
 
-    <h3>Customer Details</h3>
 
+<!-- CUSTOMER -->
 
-    <div class="field">
+<div class="field">
 
-      <label>Customer Name</label>
+<label>
+Customer Name
+</label>
 
-      <input
-        id="customerName"
-        type="text"
-        placeholder="Enter customer name">
+<input
+id="customerName"
+type="text"
+placeholder="Enter customer name">
 
-    </div>
+</div>
 
 
-    <div class="field">
+<div class="field">
 
-      <label>Mobile Number</label>
+<label>
+Mobile Number
+</label>
 
-      <input
-        id="customerMobile"
-        type="tel"
-        maxlength="10"
-        inputmode="numeric"
-        placeholder="10 digit mobile number">
+<input
+id="customerMobile"
+type="tel"
+maxlength="10"
+inputmode="numeric"
+placeholder="10 digit mobile number">
 
-    </div>
+</div>
 
 
-    <div class="field">
+<div class="field">
 
-      <label>Site Address</label>
+<label>
+Site Address
+</label>
 
-      <textarea
-        id="siteAddress"
-        placeholder="Enter site address"></textarea>
+<textarea
+id="siteAddress"
+placeholder="Enter site address"></textarea>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 
-  <!-- ITEMS -->
 
-  <div class="form-card">
+<!-- ITEMS -->
 
-    <h3>Work / Items</h3>
+<div class="form-card">
 
-    <div id="items"></div>
+<h3>
+Work / Items
+</h3>
 
 
-    <button class="add-btn"
-      onclick="addItem()">
+<div id="items"></div>
 
-      <i class="fa-solid fa-plus"></i>
-      Add Item
 
-    </button>
+<button
+class="add-btn"
+onclick="addItem()">
 
-  </div>
+<i class="fa-solid fa-plus"></i>
 
+Add Item
 
-  <!-- PAYMENT -->
+</button>
 
-  <div class="form-card">
+</div>
 
-    <h3>Payment</h3>
 
 
-    <div class="field">
+<!-- PAYMENT -->
 
-      <label>Discount</label>
+<div class="form-card">
 
-      <input
-        id="discount"
-        type="number"
-        min="0"
-        value="0"
-        oninput="calculateBill()">
+<h3>
+Payment Details
+</h3>
 
-    </div>
 
+<div class="field">
 
-    <div class="field">
+<label>
+Labour Charge
+</label>
 
-      <label>Paid Amount</label>
+<input
+id="labour"
+type="number"
+min="0"
+value="0"
+oninput="calculateTotal()">
 
-      <input
-        id="paid"
-        type="number"
-        min="0"
-        value="0"
-        oninput="calculateBill()">
+</div>
 
-    </div>
 
+<div class="field">
 
-    <div class="field">
+<label>
+Discount
+</label>
 
-      <label>Payment Status</label>
+<input
+id="discount"
+type="number"
+min="0"
+value="0"
+oninput="calculateTotal()">
 
-      <select id="paymentStatus">
+</div>
 
-        <option value="Unpaid">
-          Unpaid
-        </option>
 
-        <option value="Partial">
-          Partial
-        </option>
+<div class="field">
 
-        <option value="Paid">
-          Paid
-        </option>
+<label>
+Paid Amount
+</label>
 
-      </select>
+<input
+id="paid"
+type="number"
+min="0"
+value="0"
+oninput="calculateTotal()">
 
-    </div>
+</div>
 
 
-    <div class="field">
+<div class="summary">
 
-      <label>Notes</label>
+<div class="summary-row">
 
-      <textarea
-        id="notes"
-        placeholder="Enter notes"></textarea>
+<span>
+Items Total
+</span>
 
-    </div>
+<strong id="itemsTotal">
+₹0
+</strong>
 
+</div>
 
-    <div class="summary">
 
-      <div class="summary-row">
+<div class="summary-row">
 
-        <span>Items Total</span>
+<span>
+Labour
+</span>
 
-        <strong id="itemsTotal">
-          ₹0
-        </strong>
+<strong id="labourTotal">
+₹0
+</strong>
 
-      </div>
+</div>
 
 
-      <div class="summary-row">
+<div class="summary-row">
 
-        <span>Discount</span>
+<span>
+Discount
+</span>
 
-        <strong id="discountTotal">
-          ₹0
-        </strong>
+<strong id="discountTotal">
+₹0
+</strong>
 
-      </div>
+</div>
 
 
-      <div class="summary-row total">
+<div class="summary-row total">
 
-        <span>Total</span>
+<span>
+Grand Total
+</span>
 
-        <strong id="grandTotal">
-          ₹0
-        </strong>
+<strong id="grandTotal">
+₹0
+</strong>
 
-      </div>
+</div>
 
+</div>
 
-      <div class="summary-row">
 
-        <span>Paid</span>
 
-        <strong id="paidTotal">
-          ₹0
-        </strong>
+<div class="due-box">
 
-      </div>
+<span>
+Amount Due
+</span>
 
+<strong id="dueTotal">
+₹0
+</strong>
 
-      <div class="summary-row">
+</div>
 
-        <span>Due</span>
 
-        <strong id="dueTotal">
-          ₹0
-        </strong>
+<div
+id="statusBox"
+class="status-box status-unpaid">
 
-      </div>
+Unpaid
 
-    </div>
+</div>
 
 
-    <button class="primary"
-      onclick="saveBill()">
 
-      <i class="fa-solid fa-floppy-disk"></i>
-      Save Work Bill
+<div class="field" style="margin-top:14px;">
 
-    </button>
+<label>
+Notes
+</label>
 
+<textarea
+id="notes"
+placeholder="Payment note, work note, warranty note etc."></textarea>
 
-    <button class="whatsapp"
-      onclick="shareWhatsApp()">
+</div>
 
-      <i class="fa-brands fa-whatsapp"></i>
-      Share on WhatsApp
 
-    </button>
 
+<button
+class="primary"
+onclick="saveBill()">
 
-    <button class="print"
-      onclick="window.print()">
+<i class="fa-solid fa-floppy-disk"></i>
 
-      <i class="fa-solid fa-print"></i>
-      Print / PDF
+Save Bill
 
-    </button>
+</button>
 
-  </div>
+
+<button
+class="secondary"
+onclick="printBill()">
+
+<i class="fa-solid fa-print"></i>
+
+Print / PDF
+
+</button>
+
+
+<button
+class="whatsapp"
+onclick="sendWhatsApp()">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+Send Bill on WhatsApp
+
+</button>
+
+
+</div>
+
 
 </main>
 
 
+
 <script>
 
-let itemNumber = 0;
+
+let itemNumber=0;
+
+let billSaved=false;
 
 
-/* BILL NUMBER */
 
-function getBillNumber() {
+/* =========================
+   BILL NUMBER
+========================= */
 
-  let number =
-    Number(
-      localStorage.getItem(
-        "psw_bill_number"
-      )
-    ) || 1;
+function getNextBillNumber(){
 
-  return "PSW-" +
-    String(number).padStart(4, "0");
-
-}
+let number=
+Number(
+localStorage.getItem(
+"psw_bill_number"
+)
+)||1;
 
 
-/* DATE */
-
-document.getElementById("billNumber")
-  .textContent =
-  getBillNumber();
-
-
-document.getElementById("billDate")
-  .textContent =
-  new Date().toLocaleDateString("en-IN");
-
-
-/* ADD ITEM */
-
-function addItem() {
-
-  itemNumber++;
-
-
-  const div =
-    document.createElement("div");
-
-  div.className = "item";
-
-
-  div.innerHTML = `
-
-    <div class="item-grid">
-
-      <input
-        class="item-name"
-        type="text"
-        placeholder="Item / Work">
-
-      <input
-        class="item-qty"
-        type="number"
-        min="1"
-        value="1"
-        oninput="calculateBill()">
-
-      <input
-        class="item-rate"
-        type="number"
-        min="0"
-        value="0"
-        oninput="calculateBill()">
-
-    </div>
-
-
-    <div class="item-total">
-
-      <span>Item Total</span>
-
-      <span class="row-total">
-        ₹0
-      </span>
-
-    </div>
-
-
-    <button class="delete-item"
-      onclick="removeItem(this)">
-
-      <i class="fa-solid fa-trash"></i>
-      Remove
-
-    </button>
-
-  `;
-
-
-  document
-    .getElementById("items")
-    .appendChild(div);
-
-
-  calculateBill();
+return "PSW-"+
+String(number)
+.padStart(4,"0");
 
 }
 
 
-/* REMOVE */
 
-function removeItem(button) {
+function increaseBillNumber(){
 
-  button.closest(".item").remove();
-
-  calculateBill();
-
-}
-
-
-/* CALCULATE */
-
-function calculateBill() {
-
-  let itemsTotal = 0;
+let number=
+Number(
+localStorage.getItem(
+"psw_bill_number"
+)
+)||1;
 
 
-  document
-    .querySelectorAll(".item")
-    .forEach(item => {
-
-      const qty =
-        Number(
-          item.querySelector(".item-qty").value
-        ) || 0;
-
-
-      const rate =
-        Number(
-          item.querySelector(".item-rate").value
-        ) || 0;
-
-
-      const amount =
-        qty * rate;
-
-
-      itemsTotal += amount;
-
-
-      item.querySelector(".row-total")
-        .textContent =
-        "₹" +
-        amount.toLocaleString("en-IN");
-
-    });
-
-
-  const discount =
-    Number(
-      document.getElementById("discount").value
-    ) || 0;
-
-
-  const paid =
-    Number(
-      document.getElementById("paid").value
-    ) || 0;
-
-
-  const total =
-    Math.max(
-      0,
-      itemsTotal - discount
-    );
-
-
-  const due =
-    Math.max(
-      0,
-      total - paid
-    );
-
-
-  document.getElementById("itemsTotal")
-    .textContent =
-    "₹" +
-    itemsTotal.toLocaleString("en-IN");
-
-
-  document.getElementById("discountTotal")
-    .textContent =
-    "₹" +
-    discount.toLocaleString("en-IN");
-
-
-  document.getElementById("grandTotal")
-    .textContent =
-    "₹" +
-    total.toLocaleString("en-IN");
-
-
-  document.getElementById("paidTotal")
-    .textContent =
-    "₹" +
-    paid.toLocaleString("en-IN");
-
-
-  document.getElementById("dueTotal")
-    .textContent =
-    "₹" +
-    due.toLocaleString("en-IN");
+localStorage.setItem(
+"psw_bill_number",
+number+1
+);
 
 }
 
 
-/* SAVE BILL */
 
-function saveBill() {
-
-  const customer =
-    document.getElementById(
-      "customerName"
-    ).value.trim();
-
-
-  if (!customer) {
-
-    alert(
-      "Please enter customer name."
-    );
-
-    return;
-
-  }
-
-
-  const items = [];
-
-
-  document
-    .querySelectorAll(".item")
-    .forEach(item => {
-
-      const name =
-        item.querySelector(
-          ".item-name"
-        ).value.trim();
-
-
-      const qty =
-        Number(
-          item.querySelector(
-            ".item-qty"
-          ).value
-        ) || 0;
-
-
-      const rate =
-        Number(
-          item.querySelector(
-            ".item-rate"
-          ).value
-        ) || 0;
-
-
-      if (name) {
-
-        items.push({
-
-          name,
-          qty,
-          rate,
-
-          amount:
-            qty * rate
-
-        });
-
-      }
-
-    });
-
-
-  const itemsTotal =
-    items.reduce(
-      (sum, item) =>
-        sum + item.amount,
-      0
-    );
-
-
-  const discount =
-    Number(
-      document.getElementById(
-        "discount"
-      ).value
-    ) || 0;
-
-
-  const paid =
-    Number(
-      document.getElementById(
-        "paid"
-      ).value
-    ) || 0;
-
-
-  const total =
-    Math.max(
-      0,
-      itemsTotal - discount
-    );
-
-
-  const due =
-    Math.max(
-      0,
-      total - paid
-    );
-
-
-  let status =
-    document.getElementById(
-      "paymentStatus"
-    ).value;
-
-
-  if (paid >= total && total > 0) {
-
-    status = "Paid";
-
-  }
-  else if (paid > 0) {
-
-    status = "Partial";
-
-  }
-  else {
-
-    status = "Unpaid";
-
-  }
-
-
-  const bill = {
-
-    id: Date.now(),
-
-    billNo:
-      document.getElementById(
-        "billNumber"
-      ).textContent,
-
-    date:
-      new Date().toLocaleDateString(
-        "en-IN"
-      ),
-
-    customer,
-
-    mobile:
-      document.getElementById(
-        "customerMobile"
-      ).value.trim(),
-
-    address:
-      document.getElementById(
-        "siteAddress"
-      ).value.trim(),
-
-    items,
-
-    discount,
-
-    total,
-
-    paid,
-
-    due,
-
-    status,
-
-    notes:
-      document.getElementById(
-        "notes"
-      ).value.trim()
-
-  };
-
-
-  const bills =
-    JSON.parse(
-      localStorage.getItem(
-        "psw_bills"
-      ) || "[]"
-    );
-
-
-  bills.push(bill);
-
-
-  localStorage.setItem(
-    "psw_bills",
-    JSON.stringify(bills)
-  );
-
-
-  const number =
-    Number(
-      localStorage.getItem(
-        "psw_bill_number"
-      )
-    ) || 1;
-
-
-  localStorage.setItem(
-    "psw_bill_number",
-    number + 1
-  );
-
-
-  alert(
-    "Work Bill saved successfully!\n\n" +
-    bill.billNo
-  );
-
-
-  location.href =
-    "history.html";
+/* =========================
+   TODAY
+========================= */
+
+function getToday(){
+
+return new Date()
+.toLocaleDateString(
+"en-IN",
+{
+day:"2-digit",
+month:"2-digit",
+year:"numeric"
+}
+);
 
 }
 
 
-/* WHATSAPP */
 
-function shareWhatsApp() {
+/* =========================
+   ADD ITEM
+========================= */
 
-  const name =
-    document.getElementById(
-      "customerName"
-    ).value.trim();
+function addItem(
+name="",
+qty=1,
+rate=0
+){
 
-
-  const mobile =
-    document.getElementById(
-      "customerMobile"
-    ).value.trim();
+itemNumber++;
 
 
-  const total =
-    document.getElementById(
-      "grandTotal"
-    ).textContent;
+const container=
+document.getElementById(
+"items"
+);
 
 
-  const paid =
-    document.getElementById(
-      "paidTotal"
-    ).textContent;
+const div=
+document.createElement("div");
 
 
-  const due =
-    document.getElementById(
-      "dueTotal"
-    ).textContent;
+div.className="item";
+
+div.dataset.id=itemNumber;
 
 
-  let text =
-`*PARBEZ SMART WORKS*
+div.innerHTML=`
 
-Work Bill: ${
-  document.getElementById(
-    "billNumber"
-  ).textContent
+<div class="item-grid">
+
+<input
+class="item-name"
+type="text"
+placeholder="Item / Work"
+value="${escapeHTML(name)}">
+
+<input
+class="item-qty"
+type="number"
+min="1"
+value="${qty}"
+oninput="calculateTotal()">
+
+<input
+class="item-rate"
+type="number"
+min="0"
+value="${rate}"
+oninput="calculateTotal()">
+
+</div>
+
+
+<div class="item-total">
+
+<span>
+Item Total
+</span>
+
+<span class="row-total">
+₹0
+</span>
+
+</div>
+
+
+<button
+class="delete-item"
+onclick="removeItem(this)">
+
+<i class="fa-solid fa-trash"></i>
+
+Remove
+
+</button>
+
+`;
+
+
+container.appendChild(div);
+
+
+calculateTotal();
+
 }
 
-Date: ${
-  document.getElementById(
-    "billDate"
-  ).textContent
-}
-
-Customer: ${name}
-
-Total: ${total}
-Paid: ${paid}
-Due: ${due}
-
-Thank you for choosing
-Parbez Smart Works.`;
 
 
-  let url =
-    "https://wa.me/91" +
-    mobile +
-    "?text=" +
-    encodeURIComponent(text);
+/* =========================
+   REMOVE ITEM
+========================= */
+
+function removeItem(button){
+
+button
+.closest(".item")
+.remove();
 
 
-  if (
-    mobile.length === 10 &&
-    /^[6-9]\d{9}$/.test(mobile)
-  ) {
-
-    window.open(
-      url,
-      "_blank"
-    );
-
-  }
-  else {
-
-    window.open(
-      "https://wa.me/?text=" +
-      encodeURIComponent(text),
-      "_blank"
-    );
-
-  }
+calculateTotal();
 
 }
 
 
-/* FIRST ITEM */
+
+/* =========================
+   CALCULATE
+========================= */
+
+function calculateTotal(){
+
+let total=0;
+
+
+document
+.querySelectorAll(".item")
+.forEach(item=>{
+
+const qty=
+Number(
+item.querySelector(
+".item-qty"
+).value
+)||0;
+
+
+const rate=
+Number(
+item.querySelector(
+".item-rate"
+).value
+)||0;
+
+
+const amount=
+qty*rate;
+
+
+total+=amount;
+
+
+item.querySelector(
+".row-total"
+).textContent=
+"₹"+
+amount.toLocaleString(
+"en-IN"
+);
+
+});
+
+
+
+const labour=
+Number(
+document.getElementById(
+"labour"
+).value
+)||0;
+
+
+const discount=
+Number(
+document.getElementById(
+"discount"
+).value
+)||0;
+
+
+let paid=
+Number(
+document.getElementById(
+"paid"
+).value
+)||0;
+
+
+const grand=
+Math.max(
+0,
+total+labour-discount
+);
+
+
+/* Paid cannot be greater than total */
+
+if(paid>grand){
+
+paid=grand;
+
+document.getElementById(
+"paid"
+).value=paid;
+
+}
+
+
+const due=
+Math.max(
+0,
+grand-paid
+);
+
+
+
+document.getElementById(
+"itemsTotal"
+).textContent=
+"₹"+
+total.toLocaleString(
+"en-IN"
+);
+
+
+document.getElementById(
+"labourTotal"
+).textContent=
+"₹"+
+labour.toLocaleString(
+"en-IN"
+);
+
+
+document.getElementById(
+"discountTotal"
+).textContent=
+"₹"+
+discount.toLocaleString(
+"en-IN"
+);
+
+
+document.getElementById(
+"grandTotal"
+).textContent=
+"₹"+
+grand.toLocaleString(
+"en-IN"
+);
+
+
+document.getElementById(
+"dueTotal"
+).textContent=
+"₹"+
+due.toLocaleString(
+"en-IN"
+);
+
+
+
+const statusBox=
+document.getElementById(
+"statusBox"
+);
+
+
+statusBox.className=
+"status-box";
+
+
+if(grand<=0){
+
+statusBox.classList.add(
+"status-unpaid"
+);
+
+statusBox.textContent=
+"Unpaid";
+
+}
+
+else if(due<=0){
+
+statusBox.classList.add(
+"status-paid"
+);
+
+statusBox.textContent=
+"Paid";
+
+}
+
+else if(paid>0){
+
+statusBox.classList.add(
+"status-partial"
+);
+
+statusBox.textContent=
+"Partial";
+
+}
+
+else{
+
+statusBox.classList.add(
+"status-unpaid"
+);
+
+statusBox.textContent=
+"Unpaid";
+
+}
+
+}
+
+
+
+/* =========================
+   SAVE BILL
+========================= */
+
+function saveBill(){
+
+if(billSaved){
+
+alert(
+"This bill is already saved."
+);
+
+return;
+
+}
+
+
+const customer=
+document
+.getElementById(
+"customerName"
+)
+.value
+.trim();
+
+
+if(!customer){
+
+alert(
+"Please enter customer name."
+);
+
+return;
+
+}
+
+
+
+const mobile=
+document
+.getElementById(
+"customerMobile"
+)
+.value
+.trim();
+
+
+if(
+mobile &&
+!/^[0-9]{10}$/.test(mobile)
+){
+
+alert(
+"Please enter a valid 10 digit mobile number."
+);
+
+return;
+
+}
+
+
+
+const items=[];
+
+
+document
+.querySelectorAll(".item")
+.forEach(item=>{
+
+const name=
+item
+.querySelector(
+".item-name"
+)
+.value
+.trim();
+
+
+const qty=
+Number(
+item
+.querySelector(
+".item-qty"
+).value
+)||0;
+
+
+const rate=
+Number(
+item
+.querySelector(
+".item-rate"
+).value
+)||0;
+
+
+if(name){
+
+items.push({
+
+name:name,
+
+qty:qty,
+
+rate:rate,
+
+amount:qty*rate
+
+});
+
+}
+
+});
+
+
+
+if(!items.length){
+
+alert(
+"Please add at least one work item."
+);
+
+return;
+
+}
+
+
+
+const itemsTotal=
+items.reduce(
+(sum,item)=>
+sum+item.amount,
+0
+);
+
+
+const labour=
+Number(
+document.getElementById(
+"labour"
+).value
+)||0;
+
+
+const discount=
+Number(
+document.getElementById(
+"discount"
+).value
+)||0;
+
+
+const total=
+Math.max(
+0,
+itemsTotal+labour-discount
+);
+
+
+const paid=
+Math.min(
+Number(
+document.getElementById(
+"paid"
+).value
+)||0,
+total
+);
+
+
+const due=
+Math.max(
+0,
+total-paid
+);
+
+
+let status=
+"Unpaid";
+
+
+if(total>0 && due<=0){
+
+status="Paid";
+
+}
+
+else if(paid>0){
+
+status="Partial";
+
+}
+
+
+
+const bill={
+
+id:Date.now(),
+
+billNo:
+document.getElementById(
+"billNumber"
+).textContent,
+
+date:
+document.getElementById(
+"billDate"
+).textContent,
+
+customer:customer,
+
+mobile:mobile,
+
+address:
+document.getElementById(
+"siteAddress"
+).value.trim(),
+
+items:items,
+
+labour:labour,
+
+discount:discount,
+
+total:total,
+
+paid:paid,
+
+due:due,
+
+status:status,
+
+notes:
+document.getElementById(
+"notes"
+).value.trim()
+
+};
+
+
+
+const bills=
+JSON.parse(
+localStorage.getItem(
+"psw_bills"
+)||"[]"
+);
+
+
+bills.push(bill);
+
+
+localStorage.setItem(
+"psw_bills",
+JSON.stringify(bills)
+);
+
+
+increaseBillNumber();
+
+
+billSaved=true;
+
+
+alert(
+"Bill saved successfully!\n\n"+
+bill.billNo
+);
+
+
+location.href=
+"history.html";
+
+}
+
+
+
+/* =========================
+   PRINT
+========================= */
+
+function printBill(){
+
+window.print();
+
+}
+
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+function sendWhatsApp(){
+
+const mobile=
+document
+.getElementById(
+"customerMobile"
+)
+.value
+.trim();
+
+
+if(
+!/^[0-9]{10}$/.test(mobile)
+){
+
+alert(
+"Enter customer's 10 digit mobile number first."
+);
+
+return;
+
+}
+
+
+
+const customer=
+document
+.getElementById(
+"customerName"
+)
+.value
+.trim() ||
+"Customer";
+
+
+const billNo=
+document
+.getElementById(
+"billNumber"
+)
+.textContent;
+
+
+const date=
+document
+.getElementById(
+"billDate"
+)
+.textContent;
+
+
+
+let message=
+`*Parbez Smart Works*
+
+Bill No: ${billNo}
+Date: ${date}
+
+Customer: ${customer}
+
+Work / Items:
+`;
+
+
+
+document
+.querySelectorAll(".item")
+.forEach(item=>{
+
+const name=
+item
+.querySelector(
+".item-name"
+)
+.value
+.trim();
+
+
+const qty=
+Number(
+item
+.querySelector(
+".item-qty"
+).value
+)||0;
+
+
+const rate=
+Number(
+item
+.querySelector(
+".item-rate"
+).value
+)||0;
+
+
+if(name){
+
+message+=
+`\n• ${name} × ${qty} = ₹${(
+qty*rate
+).toLocaleString("en-IN")}`;
+
+}
+
+});
+
+
+
+const itemsTotal=
+calculateItemsOnly();
+
+
+const labour=
+Number(
+document.getElementById(
+"labour"
+).value
+)||0;
+
+
+const discount=
+Number(
+document.getElementById(
+"discount"
+).value
+)||0;
+
+
+const total=
+Math.max(
+0,
+itemsTotal+labour-discount
+);
+
+
+const paid=
+Math.min(
+Number(
+document.getElementById(
+"paid"
+).value
+)||0,
+total
+);
+
+
+const due=
+Math.max(
+0,
+total-paid
+);
+
+
+message+=`
+
+Items Total: ₹${itemsTotal.toLocaleString("en-IN")}
+Labour: ₹${labour.toLocaleString("en-IN")}
+Discount: ₹${discount.toLocaleString("en-IN")}
+
+*Grand Total: ₹${total.toLocaleString("en-IN")}*
+
+Paid: ₹${paid.toLocaleString("en-IN")}
+Due: ₹${due.toLocaleString("en-IN")}
+
+Status: ${getStatus(total,paid)}
+`;
+
+
+
+const notes=
+document
+.getElementById(
+"notes"
+)
+.value
+.trim();
+
+
+if(notes){
+
+message+=
+`\n\nNotes: ${notes}`;
+
+}
+
+
+
+message+=
+`\n\nThank you for choosing Parbez Smart Works.`;
+
+
+
+const url=
+"https://wa.me/91"+
+mobile+
+"?text="+
+encodeURIComponent(message);
+
+
+window.open(
+url,
+"_blank"
+);
+
+}
+
+
+
+/* =========================
+   ITEMS TOTAL
+========================= */
+
+function calculateItemsOnly(){
+
+let total=0;
+
+
+document
+.querySelectorAll(".item")
+.forEach(item=>{
+
+const qty=
+Number(
+item.querySelector(
+".item-qty"
+).value
+)||0;
+
+
+const rate=
+Number(
+item.querySelector(
+".item-rate"
+).value
+)||0;
+
+
+total+=qty*rate;
+
+});
+
+
+return total;
+
+}
+
+
+
+/* =========================
+   STATUS
+========================= */
+
+function getStatus(
+total,
+paid
+){
+
+const due=
+Math.max(
+0,
+total-paid
+);
+
+
+if(total<=0){
+
+return "Unpaid";
+
+}
+
+
+if(due<=0){
+
+return "Paid";
+
+}
+
+
+if(paid>0){
+
+return "Partial";
+
+}
+
+
+return "Unpaid";
+
+}
+
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(value){
+
+return String(value)
+
+.replace(/&/g,"&amp;")
+
+.replace(/</g,"&lt;")
+
+.replace(/>/g,"&gt;")
+
+.replace(/"/g,"&quot;")
+
+.replace(/'/g,"&#039;");
+
+}
+
+
+
+/* =========================
+   START
+========================= */
+
+document.getElementById(
+"billNumber"
+).textContent=
+getNextBillNumber();
+
+
+document.getElementById(
+"billDate"
+).textContent=
+getToday();
+
 
 addItem();
 
-calculateBill();
+
+calculateTotal();
+
 
 </script>
 
+
 </body>
+
 </html>
