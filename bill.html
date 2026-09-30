@@ -10,12 +10,9 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 <link rel="stylesheet" href="style.css">
 
 <style>
-
 .page-container{
   max-width:850px;
   margin:auto;
@@ -80,18 +77,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   resize:vertical;
 }
 
-.field input:focus,
-.field textarea:focus{
-  border-color:#2563eb;
-  background:white;
-}
-
 .item{
-  background:#f8fafc;
   border:1px solid #e2e8f0;
   border-radius:15px;
   padding:13px;
   margin-bottom:12px;
+  background:#f8fafc;
 }
 
 .item-grid{
@@ -105,7 +96,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   padding:11px;
   border:1px solid #dbe2ea;
   border-radius:10px;
-  background:white;
   outline:none;
 }
 
@@ -124,26 +114,49 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   color:#dc2626;
   padding:8px 11px;
   border-radius:9px;
-  font-size:12px;
-  cursor:pointer;
 }
 
-.add-btn{
+.add-btn,
+.primary,
+.whatsapp,
+.png-btn{
   width:100%;
-  padding:12px;
-  border:1px dashed #2563eb;
-  background:#eff6ff;
-  color:#2563eb;
+  border:0;
+  padding:13px;
   border-radius:11px;
   font-weight:bold;
   cursor:pointer;
 }
 
-.summary{
-  background:#f8fafc;
-  padding:15px;
-  border-radius:15px;
+.add-btn{
+  border:1px dashed #2563eb;
+  background:#eff6ff;
+  color:#2563eb;
+}
+
+.primary{
+  background:#2563eb;
+  color:white;
   margin-top:15px;
+}
+
+.whatsapp{
+  background:#22c55e;
+  color:white;
+  margin-top:10px;
+}
+
+.png-btn{
+  background:#f3e8ff;
+  color:#7e22ce;
+  margin-top:10px;
+}
+
+.summary{
+  margin-top:18px;
+  padding:15px;
+  background:#f8fafc;
+  border-radius:15px;
 }
 
 .summary-row{
@@ -155,243 +168,114 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 .summary-row.total{
   border-top:1px solid #e2e8f0;
-  padding-top:13px;
+  padding-top:12px;
   font-size:19px;
   font-weight:bold;
-}
-
-.primary,
-.secondary,
-.whatsapp-btn,
-.png-btn{
-  width:100%;
-  border:0;
-  padding:14px;
-  border-radius:12px;
-  margin-top:10px;
-  font-weight:bold;
-  font-size:14px;
-  cursor:pointer;
-}
-
-.primary{
-  background:#2563eb;
-  color:white;
-}
-
-.secondary{
-  background:#e2e8f0;
-  color:#334155;
-}
-
-.whatsapp-btn{
-  background:#25D366;
-  color:white;
-}
-
-.png-btn{
-  background:#7c3aed;
-  color:white;
 }
 
 .bill-preview{
   background:white;
   border:1px solid #dbe2ea;
-  border-radius:16px;
-  padding:20px;
-  margin-top:15px;
+  padding:22px;
+  border-radius:15px;
+  margin-top:18px;
 }
 
-.preview-head{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
+.bill-head{
+  text-align:center;
   border-bottom:2px solid #2563eb;
   padding-bottom:15px;
+  margin-bottom:15px;
 }
 
-.preview-business h2{
+.bill-head h2{
   color:#2563eb;
-  font-size:20px;
 }
 
-.preview-business p{
+.bill-head p{
+  font-size:12px;
   color:#64748b;
-  font-size:11px;
   margin-top:4px;
 }
 
-.preview-number{
-  text-align:right;
+.company-about{
+  font-size:11px;
+  color:#64748b;
+  line-height:1.5;
+  margin-top:8px;
+}
+
+.bill-info{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
   font-size:12px;
+  margin-bottom:15px;
 }
 
-.preview-number strong{
-  color:#2563eb;
-  display:block;
-  font-size:15px;
-}
-
-.preview-customer{
-  padding:14px 0;
-  font-size:12px;
-  line-height:1.7;
-}
-
-.preview-table{
+.bill-table{
   width:100%;
   border-collapse:collapse;
-  font-size:11px;
+  font-size:12px;
 }
 
-.preview-table th,
-.preview-table td{
-  padding:8px 5px;
+.bill-table th,
+.bill-table td{
   border-bottom:1px solid #e2e8f0;
+  padding:9px 5px;
   text-align:left;
 }
 
-.preview-table th:last-child,
-.preview-table td:last-child{
+.bill-table th:last-child,
+.bill-table td:last-child{
   text-align:right;
 }
 
-.preview-total{
-  margin-top:15px;
-  margin-left:auto;
-  max-width:230px;
-  font-size:12px;
-}
-
-.preview-total div{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:7px;
-}
-
-.preview-total .grand{
-  border-top:2px solid #2563eb;
-  padding-top:8px;
-  font-size:16px;
+.bill-total{
+  text-align:right;
+  font-size:20px;
   font-weight:bold;
   color:#2563eb;
+  margin-top:15px;
 }
 
-.preview-about{
+.contact-box{
   margin-top:18px;
-  padding-top:12px;
+  padding-top:13px;
   border-top:1px solid #e2e8f0;
-  font-size:10px;
-  color:#64748b;
-  line-height:1.5;
-}
-
-.preview-notes{
-  margin-top:12px;
-  padding:10px;
-  background:#f8fafc;
-  border-radius:9px;
   font-size:11px;
-}
-
-.status-box{
-  margin-top:12px;
-  padding:12px;
-  border-radius:11px;
-  text-align:center;
-  font-weight:bold;
-  font-size:13px;
-}
-
-.paid{
-  background:#dcfce7;
-  color:#15803d;
-}
-
-.partial{
-  background:#fef3c7;
-  color:#b45309;
-}
-
-.unpaid{
-  background:#fee2e2;
-  color:#dc2626;
-}
-
-.edit-banner{
-  display:none;
-  background:#fef3c7;
-  color:#92400e;
-  padding:12px;
-  border-radius:11px;
-  margin-bottom:15px;
-  font-size:12px;
-  font-weight:bold;
+  color:#475569;
+  line-height:1.7;
 }
 
 @media(max-width:500px){
-
   .item-grid{
-    grid-template-columns:1fr 58px 80px;
+    grid-template-columns:1fr 55px 80px;
   }
 
-  .preview-head{
+  .bill-info{
     flex-direction:column;
+    gap:5px;
   }
-
-  .preview-number{
-    text-align:left;
-  }
-
 }
-
-@media print{
-
-  body{
-    background:white;
-    padding:0;
-  }
-
-  .topbar,
-  .page-title,
-  .form-card,
-  .edit-banner{
-    display:none !important;
-  }
-
-  .page-container{
-    max-width:none;
-    padding:0;
-  }
-
-  .bill-preview{
-    border:0;
-    box-shadow:none;
-    margin:0;
-  }
-
-}
-
 </style>
 </head>
 
 <body>
 
 <header class="topbar">
+  <div class="brand">
 
-<div class="brand">
+    <div class="brand-logo">
+      <i class="fa-solid fa-bolt"></i>
+    </div>
 
-<div class="brand-logo">
-<i class="fa-solid fa-bolt"></i>
-</div>
+    <div>
+      <h1>Parbez Smart Works</h1>
+      <p>Electrical • Ceiling • Plumbing</p>
+    </div>
 
-<div>
-<h1>Parbez Smart Works</h1>
-<p>Electrical • Ceiling • Plumbing</p>
-</div>
-
-</div>
-
+  </div>
 </header>
 
 
@@ -406,14 +290,8 @@ onclick="location.href='index.html'">
 
 </button>
 
-<h2 id="pageTitle">Create Work Bill</h2>
+<h2>Create Work Bill</h2>
 
-</div>
-
-
-<div id="editBanner" class="edit-banner">
-<i class="fa-solid fa-pen"></i>
-You are editing an existing bill.
 </div>
 
 
@@ -424,42 +302,25 @@ You are editing an existing bill.
 <h3>Customer Details</h3>
 
 <div class="field">
-
 <label>Customer Name</label>
-
-<input
-id="customerName"
+<input id="customerName"
 type="text"
-placeholder="Enter customer name"
-oninput="updatePreview()">
-
+placeholder="Enter customer name">
 </div>
 
-
 <div class="field">
-
-<label>Customer Mobile Number</label>
-
-<input
-id="customerMobile"
+<label>Mobile Number</label>
+<input id="customerMobile"
 type="tel"
 maxlength="10"
 inputmode="numeric"
-placeholder="10 digit mobile number"
-oninput="updatePreview()">
-
+placeholder="10 digit customer number">
 </div>
 
-
 <div class="field">
-
 <label>Site Address</label>
-
-<textarea
-id="siteAddress"
-placeholder="Enter site address"
-oninput="updatePreview()"></textarea>
-
+<textarea id="siteAddress"
+placeholder="Enter site address"></textarea>
 </div>
 
 </div>
@@ -473,12 +334,9 @@ oninput="updatePreview()"></textarea>
 
 <div id="items"></div>
 
-<button class="add-btn"
-onclick="addItem()">
-
+<button class="add-btn" onclick="addItem()">
 <i class="fa-solid fa-plus"></i>
 Add Item
-
 </button>
 
 </div>
@@ -491,39 +349,9 @@ Add Item
 <h3>Payment Details</h3>
 
 <div class="field">
-
-<label>Labour Charge</label>
-
-<input
-id="labour"
-type="number"
-min="0"
-value="0"
-oninput="calculateTotal()">
-
-</div>
-
-
-<div class="field">
-
-<label>Discount</label>
-
-<input
-id="discount"
-type="number"
-min="0"
-value="0"
-oninput="calculateTotal()">
-
-</div>
-
-
-<div class="field">
-
 <label>Paid Amount</label>
 
-<input
-id="paid"
+<input id="paid"
 type="number"
 min="0"
 value="0"
@@ -531,15 +359,14 @@ oninput="calculateTotal()">
 
 </div>
 
-
 <div class="field">
+<label>Discount</label>
 
-<label>Notes</label>
-
-<textarea
-id="notes"
-placeholder="Example: Thank you for choosing Parbez Smart Works."
-oninput="updatePreview()"></textarea>
+<input id="discount"
+type="number"
+min="0"
+value="0"
+oninput="calculateTotal()">
 
 </div>
 
@@ -549,11 +376,6 @@ oninput="updatePreview()"></textarea>
 <div class="summary-row">
 <span>Items Total</span>
 <strong id="itemsTotal">₹0</strong>
-</div>
-
-<div class="summary-row">
-<span>Labour</span>
-<strong id="labourTotal">₹0</strong>
 </div>
 
 <div class="summary-row">
@@ -576,17 +398,36 @@ oninput="updatePreview()"></textarea>
 <strong id="dueTotal">₹0</strong>
 </div>
 
-<div id="statusBox" class="status-box unpaid">
-Unpaid
+<div class="summary-row">
+<span>Status</span>
+<strong id="statusText">Unpaid</strong>
 </div>
 
 </div>
+
+
+<div class="field" style="margin-top:15px;">
+<label>Notes</label>
+
+<textarea id="notes"
+placeholder="Payment note, warranty, work details etc."></textarea>
+
+</div>
+
 
 <button class="primary"
 onclick="saveBill()">
 
 <i class="fa-solid fa-floppy-disk"></i>
-<span id="saveButtonText">Save Bill</span>
+Save Bill
+
+</button>
+
+<button class="whatsapp"
+onclick="sendWhatsApp()">
+
+<i class="fa-brands fa-whatsapp"></i>
+Send Bill on WhatsApp
 
 </button>
 
@@ -598,68 +439,45 @@ Download Bill PNG
 
 </button>
 
-<button class="secondary"
-onclick="printBill()">
-
-<i class="fa-solid fa-print"></i>
-Print / PDF
-
-</button>
-
-<button class="whatsapp-btn"
-onclick="sendWhatsApp()">
-
-<i class="fa-brands fa-whatsapp"></i>
-Send Bill on WhatsApp
-
-</button>
-
 </div>
 
 
 <!-- BILL PREVIEW -->
 
-<div class="form-card">
-
-<h3>Bill Preview</h3>
-
 <div id="billPreview" class="bill-preview">
 
-<div class="preview-head">
+<div class="bill-head">
 
-<div class="preview-business">
-
-<h2 id="previewBusiness">
-Parbez Smart Works
-</h2>
+<h2>Parbez Smart Works</h2>
 
 <p>
 Electrical • False Ceiling • Plumbing
 </p>
 
-<p id="previewBusinessMobile">
-Mobile: -
-</p>
-
-</div>
-
-
-<div class="preview-number">
-
-<strong id="previewBillNo">
-PSW-0001
-</strong>
-
-<span id="previewDate">
-Date: -
-</span>
-
+<div class="company-about">
+Professional electrical, false ceiling and plumbing
+work for homes, shops and other sites.
 </div>
 
 </div>
 
 
-<div class="preview-customer">
+<div class="bill-info">
+
+<div>
+<strong>Bill No:</strong>
+<span id="previewBillNo">PSW-0001</span>
+</div>
+
+<div>
+<strong>Date:</strong>
+<span id="previewDate"></span>
+</div>
+
+</div>
+
+
+<div style="font-size:12px;margin-bottom:15px;">
 
 <strong>Customer:</strong>
 <span id="previewCustomer">-</span>
@@ -667,7 +485,7 @@ Date: -
 <br>
 
 <strong>Mobile:</strong>
-<span id="previewCustomerMobile">-</span>
+<span id="previewMobile">-</span>
 
 <br>
 
@@ -677,7 +495,7 @@ Date: -
 </div>
 
 
-<table class="preview-table">
+<table class="bill-table">
 
 <thead>
 
@@ -685,83 +503,34 @@ Date: -
 <th>Work / Item</th>
 <th>Qty</th>
 <th>Rate</th>
-<th>Amount</th>
+<th>Total</th>
 </tr>
 
 </thead>
 
-<tbody id="previewItems">
-
-</tbody>
+<tbody id="previewItems"></tbody>
 
 </table>
 
 
-<div class="preview-total">
-
-<div>
-<span>Items</span>
-<strong id="previewItemsTotal">₹0</strong>
-</div>
-
-<div>
-<span>Labour</span>
-<strong id="previewLabour">₹0</strong>
-</div>
-
-<div>
-<span>Discount</span>
-<strong id="previewDiscount">₹0</strong>
-</div>
-
-<div class="grand">
-<span>Total</span>
-<strong id="previewGrand">₹0</strong>
-</div>
-
-<div>
-<span>Paid</span>
-<strong id="previewPaid">₹0</strong>
-</div>
-
-<div>
-<span>Due</span>
-<strong id="previewDue">₹0</strong>
-</div>
-
+<div class="bill-total">
+Total: <span id="previewTotal">₹0</span>
 </div>
 
 
-<div id="previewStatus"
-class="status-box unpaid">
+<div class="contact-box">
 
-Unpaid
+<strong>Parbez Smart Works</strong><br>
 
-</div>
+Owner: Parbez Alom Badrul Alom<br>
 
+Mobile: 9395305384 / 9833762577<br>
 
-<div class="preview-about">
+Location: Hojai, Assam<br>
 
-<strong>About Parbez Smart Works</strong>
+Instagram: @parbez_works<br>
 
-<p id="previewAbout">
-Professional Electrical, False Ceiling and Plumbing work.
-We provide reliable home and building services with
-careful workmanship and customer-focused service.
-</p>
-
-</div>
-
-
-<div class="preview-notes">
-
-<strong>Notes:</strong>
-
-<span id="previewNotes">
--
-</span>
-
-</div>
+YouTube: @parbezworks
 
 </div>
 
@@ -772,67 +541,15 @@ careful workmanship and customer-focused service.
 
 <script>
 
-let itemNumber=0;
-
-let editingBillId=null;
+let itemNumber = 0;
 
 
-/* =========================
-   PROFILE
-========================= */
-
-function getProfile(){
-
-return JSON.parse(
-localStorage.getItem("psw_profile") || "{}"
-);
-
-}
-
-
-function loadProfile(){
-
-const profile=getProfile();
-
-const businessName=
-profile.workName ||
-"Parbez Smart Works";
-
-const mobile=
-profile.mobile ||
-"";
-
-const about=
-profile.about ||
-"Professional Electrical, False Ceiling and Plumbing work. We provide reliable home and building services with careful workmanship and customer-focused service.";
-
-
-document.getElementById("previewBusiness")
-.textContent=businessName;
-
-document.getElementById("previewBusinessMobile")
-.textContent=
-"Mobile: " + (mobile || "-");
-
-document.getElementById("previewAbout")
-.textContent=about;
-
-}
-
-
-loadProfile();
-
-
-/* =========================
-   BILL NUMBER
-========================= */
+/* BILL NUMBER */
 
 function getNextBillNumber(){
 
-let number=
-Number(
-localStorage.getItem("psw_bill_number")
-) || 1;
+let number =
+Number(localStorage.getItem("psw_bill_number")) || 1;
 
 return "PSW-" +
 String(number).padStart(4,"0");
@@ -842,22 +559,18 @@ String(number).padStart(4,"0");
 
 function increaseBillNumber(){
 
-let number=
-Number(
-localStorage.getItem("psw_bill_number")
-) || 1;
+let number =
+Number(localStorage.getItem("psw_bill_number")) || 1;
 
 localStorage.setItem(
 "psw_bill_number",
-number+1
+number + 1
 );
 
 }
 
 
-/* =========================
-   DATE
-========================= */
+/* DATE */
 
 function getToday(){
 
@@ -873,19 +586,16 @@ year:"numeric"
 }
 
 
-/* =========================
-   ADD ITEM
-========================= */
+/* ADD ITEM */
 
-function addItem(data=null){
+function addItem(){
 
 itemNumber++;
 
-const div=document.createElement("div");
+const div =
+document.createElement("div");
 
 div.className="item";
-
-div.dataset.id=itemNumber;
 
 div.innerHTML=`
 
@@ -895,21 +605,20 @@ div.innerHTML=`
 class="item-name"
 type="text"
 placeholder="Item / Work"
-value="${escapeHTML(data?.name || "")}"
 oninput="calculateTotal()">
 
 <input
 class="item-qty"
 type="number"
 min="1"
-value="${data?.qty || 1}"
+value="1"
 oninput="calculateTotal()">
 
 <input
 class="item-rate"
 type="number"
 min="0"
-value="${data?.rate || 0}"
+value="0"
 oninput="calculateTotal()">
 
 </div>
@@ -922,8 +631,7 @@ oninput="calculateTotal()">
 
 </div>
 
-<button
-class="delete-item"
+<button class="delete-item"
 onclick="removeItem(this)">
 
 <i class="fa-solid fa-trash"></i>
@@ -933,7 +641,8 @@ Remove
 
 `;
 
-document.getElementById("items")
+document
+.getElementById("items")
 .appendChild(div);
 
 calculateTotal();
@@ -941,9 +650,7 @@ calculateTotal();
 }
 
 
-/* =========================
-   REMOVE ITEM
-========================= */
+/* REMOVE ITEM */
 
 function removeItem(button){
 
@@ -954,49 +661,48 @@ calculateTotal();
 }
 
 
-/* =========================
-   CALCULATE
-========================= */
+/* CALCULATE */
 
 function calculateTotal(){
 
-let itemsTotal=0;
+let total=0;
 
-const previewItems=
+const preview =
 document.getElementById("previewItems");
 
-previewItems.innerHTML="";
+preview.innerHTML="";
 
 
 document.querySelectorAll(".item")
 .forEach(item=>{
 
-const name=
+const name =
 item.querySelector(".item-name")
 .value.trim();
 
-const qty=
+const qty =
 Number(
 item.querySelector(".item-qty").value
-) || 0;
+)||0;
 
-const rate=
+const rate =
 Number(
 item.querySelector(".item-rate").value
-) || 0;
+)||0;
 
 const amount=qty*rate;
 
-itemsTotal+=amount;
+total+=amount;
+
 
 item.querySelector(".row-total")
-.textContent=
+.textContent =
 "₹"+amount.toLocaleString("en-IN");
 
 
 if(name){
 
-previewItems.innerHTML+=`
+preview.innerHTML+=`
 
 <tr>
 
@@ -1017,207 +723,107 @@ previewItems.innerHTML+=`
 });
 
 
-const labour=
-Number(
-document.getElementById("labour").value
-) || 0;
-
-const discount=
+const discount =
 Number(
 document.getElementById("discount").value
-) || 0;
+)||0;
 
-const paid=
+const paid =
 Number(
 document.getElementById("paid").value
-) || 0;
+)||0;
 
 
-const total=
-Math.max(
-0,
-itemsTotal+labour-discount
-);
+const grand =
+Math.max(0,total-discount);
 
-
-const actualPaid=
-Math.min(
-Math.max(0,paid),
-total
-);
-
-
-const due=
-Math.max(
-0,
-total-actualPaid
-);
+const due =
+Math.max(0,grand-paid);
 
 
 let status="Unpaid";
 
-if(total<=0){
-
-status="Unpaid";
-
-}else if(actualPaid>=total){
-
+if(grand>0 && paid>=grand){
 status="Paid";
-
-}else if(actualPaid>0){
-
+}
+else if(paid>0){
 status="Partial";
-
 }
 
 
 document.getElementById("itemsTotal")
-.textContent=
-"₹"+itemsTotal.toLocaleString("en-IN");
-
-document.getElementById("labourTotal")
-.textContent=
-"₹"+labour.toLocaleString("en-IN");
+.textContent="₹"+total.toLocaleString("en-IN");
 
 document.getElementById("discountTotal")
-.textContent=
-"₹"+discount.toLocaleString("en-IN");
+.textContent="₹"+discount.toLocaleString("en-IN");
 
 document.getElementById("grandTotal")
-.textContent=
-"₹"+total.toLocaleString("en-IN");
+.textContent="₹"+grand.toLocaleString("en-IN");
 
 document.getElementById("paidTotal")
-.textContent=
-"₹"+actualPaid.toLocaleString("en-IN");
+.textContent="₹"+paid.toLocaleString("en-IN");
 
 document.getElementById("dueTotal")
-.textContent=
-"₹"+due.toLocaleString("en-IN");
+.textContent="₹"+due.toLocaleString("en-IN");
+
+document.getElementById("statusText")
+.textContent=status;
 
 
-const statusBox=
-document.getElementById("statusBox");
-
-statusBox.textContent=status;
-
-statusBox.className=
-"status-box "+
-status.toLowerCase();
-
-
-updatePreviewValues(
-itemsTotal,
-labour,
-discount,
-total,
-actualPaid,
-due,
-status
-);
+updatePreview();
 
 }
 
 
-/* =========================
-   PREVIEW
-========================= */
+/* PREVIEW */
 
 function updatePreview(){
 
-const customer=
-document.getElementById("customerName")
-.value.trim();
-
-const mobile=
-document.getElementById("customerMobile")
-.value.trim();
-
-const address=
-document.getElementById("siteAddress")
-.value.trim();
-
-const notes=
-document.getElementById("notes")
-.value.trim();
-
-
 document.getElementById("previewCustomer")
-.textContent=
-customer || "-";
+.textContent =
+document.getElementById("customerName")
+.value.trim() || "-";
 
-document.getElementById("previewCustomerMobile")
-.textContent=
-mobile || "-";
+document.getElementById("previewMobile")
+.textContent =
+document.getElementById("customerMobile")
+.value.trim() || "-";
 
 document.getElementById("previewAddress")
-.textContent=
-address || "-";
+.textContent =
+document.getElementById("siteAddress")
+.value.trim() || "-";
 
-document.getElementById("previewNotes")
-.textContent=
-notes || "-";
-
-
-calculateTotal();
+document.getElementById("previewTotal")
+.textContent =
+document.getElementById("grandTotal")
+.textContent;
 
 }
 
 
-function updatePreviewValues(
-itemsTotal,
-labour,
-discount,
-total,
-paid,
-due,
-status
+document.addEventListener(
+"input",
+function(e){
+
+if(
+e.target.id==="customerName" ||
+e.target.id==="customerMobile" ||
+e.target.id==="siteAddress"
 ){
 
-document.getElementById("previewItemsTotal")
-.textContent=
-"₹"+itemsTotal.toLocaleString("en-IN");
-
-document.getElementById("previewLabour")
-.textContent=
-"₹"+labour.toLocaleString("en-IN");
-
-document.getElementById("previewDiscount")
-.textContent=
-"₹"+discount.toLocaleString("en-IN");
-
-document.getElementById("previewGrand")
-.textContent=
-"₹"+total.toLocaleString("en-IN");
-
-document.getElementById("previewPaid")
-.textContent=
-"₹"+paid.toLocaleString("en-IN");
-
-document.getElementById("previewDue")
-.textContent=
-"₹"+due.toLocaleString("en-IN");
-
-
-const box=
-document.getElementById("previewStatus");
-
-box.textContent=status;
-
-box.className=
-"status-box "+
-status.toLowerCase();
+updatePreview();
 
 }
 
+});
 
-/* =========================
-   SAVE / UPDATE BILL
-========================= */
+
+/* SAVE BILL */
 
 function saveBill(){
 
-const customer=
+const customer =
 document.getElementById("customerName")
 .value.trim();
 
@@ -1236,20 +842,19 @@ const items=[];
 document.querySelectorAll(".item")
 .forEach(item=>{
 
-const name=
+const name =
 item.querySelector(".item-name")
 .value.trim();
 
-const qty=
+const qty =
 Number(
 item.querySelector(".item-qty").value
-) || 0;
+)||0;
 
-const rate=
+const rate =
 Number(
 item.querySelector(".item-rate").value
-) || 0;
-
+)||0;
 
 if(name){
 
@@ -1267,41 +872,40 @@ amount:qty*rate
 });
 
 
-const itemsTotal=
+if(!items.length){
+
+alert("Please add at least one work item.");
+
+return;
+
+}
+
+
+const itemsTotal =
 items.reduce(
 (sum,item)=>sum+item.amount,
 0
 );
 
 
-const labour=
-Number(
-document.getElementById("labour").value
-) || 0;
-
-const discount=
+const discount =
 Number(
 document.getElementById("discount").value
-) || 0;
+)||0;
 
-const total=
-Math.max(
-0,
-itemsTotal+labour-discount
-);
-
-const paidInput=
+const paid =
 Number(
 document.getElementById("paid").value
-) || 0;
+)||0;
 
-const paid=
-Math.min(
-Math.max(0,paidInput),
-total
+
+const total =
+Math.max(
+0,
+itemsTotal-discount
 );
 
-const due=
+const due =
 Math.max(
 0,
 total-paid
@@ -1311,111 +915,60 @@ total-paid
 let status="Unpaid";
 
 if(total>0 && paid>=total){
-
 status="Paid";
-
-}else if(paid>0){
-
+}
+else if(paid>0){
 status="Partial";
-
 }
 
 
-const bills=
-JSON.parse(
-localStorage.getItem("psw_bills") || "[]"
-);
-
-
-if(editingBillId){
-
-const index=
-bills.findIndex(
-bill=>bill.id===editingBillId
-);
-
-if(index!==-1){
-
-bills[index]={
-
-...bills[index],
-
-customer,
-
-mobile:
-document.getElementById("customerMobile").value.trim(),
-
-address:
-document.getElementById("siteAddress").value.trim(),
-
-items,
-
-labour,
-
-discount,
-
-total,
-
-paid,
-
-due,
-
-status,
-
-notes:
-document.getElementById("notes").value.trim()
-
-};
-
-}
-
-}else{
-
-const billNo=
-getNextBillNumber();
+const billNo=getNextBillNumber();
 
 
 const bill={
 
 id:Date.now(),
 
-billNo,
+billNo:billNo,
 
 date:getToday(),
 
-customer,
+customer:customer,
 
 mobile:
-document.getElementById("customerMobile").value.trim(),
+document.getElementById("customerMobile")
+.value.trim(),
 
 address:
-document.getElementById("siteAddress").value.trim(),
+document.getElementById("siteAddress")
+.value.trim(),
 
-items,
+items:items,
 
-labour,
+discount:discount,
 
-discount,
+total:total,
 
-total,
+paid:Math.min(paid,total),
 
-paid,
+due:due,
 
-due,
-
-status,
+status:status,
 
 notes:
-document.getElementById("notes").value.trim()
+document.getElementById("notes")
+.value.trim()
 
 };
 
 
+const bills =
+JSON.parse(
+localStorage.getItem("psw_bills") || "[]"
+);
+
+
 bills.push(bill);
-
-increaseBillNumber();
-
-}
 
 
 localStorage.setItem(
@@ -1424,121 +977,223 @@ JSON.stringify(bills)
 );
 
 
-alert(
-editingBillId
-? "Bill updated successfully."
-: "Bill saved successfully."
-);
-
-
-location.href="history.html";
-
-}
-
-
-/* =========================
-   LOAD EDIT BILL
-========================= */
-
-function loadEditBill(){
-
-const params=
-new URLSearchParams(
-location.search
-);
-
-const id=
-Number(params.get("id"));
-
-if(!id)return;
-
-
-const bills=
-JSON.parse(
-localStorage.getItem("psw_bills") || "[]"
-);
-
-
-const bill=
-bills.find(
-item=>item.id===id
-);
-
-
-if(!bill)return;
-
-
-editingBillId=id;
-
-
-document.getElementById("pageTitle")
-.textContent="Edit Bill";
-
-document.getElementById("saveButtonText")
-.textContent="Update Bill";
-
-document.getElementById("editBanner")
-.style.display="block";
-
-
-document.getElementById("customerName")
-.value=bill.customer || "";
-
-document.getElementById("customerMobile")
-.value=bill.mobile || "";
-
-document.getElementById("siteAddress")
-.value=bill.address || "";
-
-document.getElementById("labour")
-.value=bill.labour || 0;
-
-document.getElementById("discount")
-.value=bill.discount || 0;
-
-document.getElementById("paid")
-.value=bill.paid || 0;
-
-document.getElementById("notes")
-.value=bill.notes || "";
-
-
-document.getElementById("items")
-.innerHTML="";
-
-itemNumber=0;
-
-
-if(bill.items && bill.items.length){
-
-bill.items.forEach(item=>{
-addItem(item);
-});
-
-}else{
-
-addItem();
-
-}
+increaseBillNumber();
 
 
 document.getElementById("previewBillNo")
-.textContent=
-bill.billNo || "-";
-
-document.getElementById("previewDate")
-.textContent=
-"Date: "+(bill.date || getToday());
+.textContent=billNo;
 
 
-updatePreview();
+alert(
+"Bill saved successfully!\n\n"+billNo
+);
 
 }
 
 
-/* =========================
-   WHATSAPP
-========================= */
+/* WHATSAPP */
 
 function sendWhatsApp(){
-  
+
+const customer =
+document.getElementById("customerName")
+.value.trim();
+
+const mobile =
+document.getElementById("customerMobile")
+.value.trim();
+
+
+if(!customer){
+
+alert("Please enter customer name.");
+
+return;
+
+}
+
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert(
+"Please enter a valid 10 digit customer mobile number."
+);
+
+return;
+
+}
+
+
+const items=[];
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+const name =
+item.querySelector(".item-name")
+.value.trim();
+
+const qty =
+Number(
+item.querySelector(".item-qty").value
+)||0;
+
+const rate =
+Number(
+item.querySelector(".item-rate").value
+)||0;
+
+if(name){
+
+items.push(
+`${name} × ${qty} = ₹${(qty*rate).toLocaleString("en-IN")}`
+);
+
+}
+
+});
+
+
+const total =
+document.getElementById("grandTotal")
+.textContent;
+
+const paid =
+document.getElementById("paidTotal")
+.textContent;
+
+const due =
+document.getElementById("dueTotal")
+.textContent;
+
+const notes =
+document.getElementById("notes")
+.value.trim();
+
+
+let message =
+`*Parbez Smart Works*
+
+Hello ${customer},
+
+Your work bill details:
+
+Bill No: ${getNextBillNumber()}
+Date: ${getToday()}
+
+*Work / Items:*
+${items.join("\n")}
+
+*Grand Total:* ${total}
+*Paid:* ${paid}
+*Due:* ${due}`;
+
+if(notes){
+
+message +=
+`\n\n*Notes:*\n${notes}`;
+
+}
+
+message +=
+`\n\nElectrical • False Ceiling • Plumbing
+Mobile: 9395305384 / 9833762577
+Hojai, Assam`;
+
+
+const url =
+"https://wa.me/91"+
+mobile+
+"?text="+
+encodeURIComponent(message);
+
+
+window.open(url,"_blank");
+
+}
+
+
+/* PNG DOWNLOAD */
+
+function downloadPNG(){
+
+const preview =
+document.getElementById("billPreview");
+
+
+if(typeof html2canvas==="undefined"){
+
+alert(
+"PNG feature load nahi hua. Internet on karke page reload karein."
+);
+
+return;
+
+}
+
+
+html2canvas(
+preview,
+{
+scale:2,
+backgroundColor:"#ffffff"
+}
+)
+.then(canvas=>{
+
+const link =
+document.createElement("a");
+
+link.download =
+"Parbez-Smart-Works-Bill.png";
+
+link.href =
+canvas.toDataURL("image/png");
+
+link.click();
+
+});
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* LOAD HTML2CANVAS */
+
+const script =
+document.createElement("script");
+
+script.src =
+"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+
+document.head.appendChild(script);
+
+
+/* INITIAL */
+
+document.getElementById("previewDate")
+.textContent=getToday();
+
+document.getElementById("previewBillNo")
+.textContent=getNextBillNumber();
+
+addItem();
+
+</script>
+
+</body>
+</html>
