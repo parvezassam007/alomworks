@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2563eb">
@@ -13,6 +15,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <link rel="stylesheet" href="style.css">
 
 <style>
+
 .page-container{
   max-width:850px;
   margin:auto;
@@ -34,10 +37,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   background:white;
   color:#2563eb;
   font-size:17px;
-}
-
-.page-title h2{
-  font-size:21px;
+  cursor:pointer;
 }
 
 .calc-menu{
@@ -53,6 +53,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   padding:18px 12px;
   cursor:pointer;
   text-align:left;
+}
+
+.calc-menu button:active{
+  transform:scale(.97);
 }
 
 .calc-menu i{
@@ -113,6 +117,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   outline:none;
 }
 
+.calc-field input:focus{
+  border-color:#2563eb;
+  background:white;
+}
+
 .calc-btn{
   width:100%;
   border:0;
@@ -122,6 +131,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   border-radius:11px;
   font-weight:bold;
   margin-top:5px;
+  cursor:pointer;
+}
+
+.calc-btn:active{
+  transform:scale(.98);
 }
 
 .result{
@@ -145,78 +159,154 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   margin-top:5px;
 }
 
+.formula{
+  margin-top:12px;
+  padding:11px;
+  background:#f8fafc;
+  border-radius:10px;
+  color:#64748b;
+  text-align:center;
+  font-size:11px;
+}
+
 @media(max-width:450px){
+
   .calc-menu{
     grid-template-columns:1fr 1fr;
   }
+
 }
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <header class="topbar">
 
 <div class="brand">
-  <div class="brand-logo">
-    <i class="fa-solid fa-bolt"></i>
-  </div>
 
-  <div>
-    <h1>Parbez Smart Works</h1>
-    <p>Electrical • Ceiling • Plumbing</p>
-  </div>
+<div class="brand-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<div>
+
+<h1>Parbez Smart Works</h1>
+
+<p>
+Electrical • Ceiling • Plumbing
+</p>
+
+</div>
+
 </div>
 
 </header>
 
 
+
 <main class="page-container">
+
 
 <div class="page-title">
 
-<button class="back-btn"
+<button
+class="back-btn"
 onclick="location.href='index.html'">
+
 <i class="fa-solid fa-arrow-left"></i>
+
 </button>
 
-<h2>Electrical Calculator</h2>
+<h2>
+Electrical Calculator
+</h2>
 
 </div>
+
 
 
 <div class="calc-menu">
 
+
 <button onclick="openCalc('ohm')">
+
 <i class="fa-solid fa-bolt"></i>
-<strong>Ohm's Law</strong>
-<span>V • I • R</span>
+
+<strong>
+Ohm's Law
+</strong>
+
+<span>
+V • I • R
+</span>
+
 </button>
+
+
 
 <button onclick="openCalc('power')">
+
 <i class="fa-solid fa-plug"></i>
-<strong>Power</strong>
-<span>W • V • A</span>
+
+<strong>
+Power
+</strong>
+
+<span>
+W • V • A
+</span>
+
 </button>
+
+
 
 <button onclick="openCalc('hp')">
+
 <i class="fa-solid fa-gauge-high"></i>
-<strong>kW → HP</strong>
-<span>Power conversion</span>
+
+<strong>
+kW → HP
+</strong>
+
+<span>
+Power conversion
+</span>
+
 </button>
 
+
+
 <button onclick="openCalc('unit')">
+
 <i class="fa-solid fa-house"></i>
-<strong>Electricity Unit</strong>
-<span>Unit calculation</span>
+
+<strong>
+Electricity Unit
+</strong>
+
+<span>
+Consumption calculation
+</span>
+
 </button>
+
 
 </div>
 
 
-<div id="calculatorBox" class="calc-box">
 
-<h3>Select a calculator</h3>
+<div
+id="calculatorBox"
+class="calc-box">
+
+<h3>
+Select a calculator
+</h3>
 
 <p style="color:#64748b;font-size:13px;">
 Choose any calculator above.
@@ -224,119 +314,272 @@ Choose any calculator above.
 
 </div>
 
+
 </main>
+
 
 
 <script>
 
+
+/* =========================
+   OPEN CALCULATOR
+========================= */
+
 function openCalc(type){
 
-const box=document.getElementById("calculatorBox");
+const box=
+document.getElementById(
+"calculatorBox"
+);
 
+
+
+/* OHM */
 
 if(type==="ohm"){
 
 box.innerHTML=`
 
-<h3>Ohm's Law</h3>
+<h3>
+Ohm's Law
+</h3>
 
 <div class="calc-field">
-<label>Voltage (V)</label>
-<input id="voltage" type="number" placeholder="Example: 230">
+
+<label>
+Voltage (V)
+</label>
+
+<input
+id="voltage"
+type="number"
+min="0"
+step="any"
+placeholder="Example: 230">
+
 </div>
+
 
 <div class="calc-field">
-<label>Resistance (Ω)</label>
-<input id="resistance" type="number" placeholder="Example: 10">
+
+<label>
+Resistance (Ω)
+</label>
+
+<input
+id="resistance"
+type="number"
+min="0"
+step="any"
+placeholder="Example: 10">
+
 </div>
 
-<button class="calc-btn"
+
+<button
+class="calc-btn"
 onclick="calculateOhm()">
+
 Calculate Current
+
 </button>
 
+
 <div id="calcResult"></div>
+
+<div class="formula">
+Formula: I = V ÷ R
+</div>
+
 `;
 
 }
 
+
+
+/* POWER */
 
 if(type==="power"){
 
 box.innerHTML=`
 
-<h3>Power Calculator</h3>
+<h3>
+Power Calculator
+</h3>
 
 <div class="calc-field">
-<label>Voltage (V)</label>
-<input id="powerVoltage" type="number" placeholder="Example: 230">
+
+<label>
+Voltage (V)
+</label>
+
+<input
+id="powerVoltage"
+type="number"
+min="0"
+step="any"
+placeholder="Example: 230">
+
 </div>
+
 
 <div class="calc-field">
-<label>Current (A)</label>
-<input id="powerCurrent" type="number" placeholder="Example: 5">
+
+<label>
+Current (A)
+</label>
+
+<input
+id="powerCurrent"
+type="number"
+min="0"
+step="any"
+placeholder="Example: 5">
+
 </div>
 
-<button class="calc-btn"
+
+<button
+class="calc-btn"
 onclick="calculatePower()">
+
 Calculate Power
+
 </button>
 
+
 <div id="calcResult"></div>
+
+<div class="formula">
+Formula: P = V × I
+</div>
+
 `;
 
 }
 
+
+
+/* HP */
 
 if(type==="hp"){
 
 box.innerHTML=`
 
-<h3>kW → HP</h3>
+<h3>
+kW → HP
+</h3>
 
 <div class="calc-field">
-<label>Power (kW)</label>
-<input id="kw" type="number" placeholder="Example: 1.5">
+
+<label>
+Power (kW)
+</label>
+
+<input
+id="kw"
+type="number"
+min="0"
+step="any"
+placeholder="Example: 1.5">
+
 </div>
 
-<button class="calc-btn"
+
+<button
+class="calc-btn"
 onclick="calculateHP()">
+
 Convert
+
 </button>
 
+
 <div id="calcResult"></div>
+
+<div class="formula">
+1 kW ≈ 1.341 HP
+</div>
+
 `;
 
 }
 
+
+
+/* UNIT */
 
 if(type==="unit"){
 
 box.innerHTML=`
 
-<h3>Electricity Unit Calculator</h3>
+<h3>
+Electricity Unit Calculator
+</h3>
 
 <div class="calc-field">
-<label>Power (Watt)</label>
-<input id="unitPower" type="number" placeholder="Example: 1000">
+
+<label>
+Power (Watt)
+</label>
+
+<input
+id="unitPower"
+type="number"
+min="0"
+step="any"
+placeholder="Example: 1000">
+
 </div>
+
 
 <div class="calc-field">
-<label>Usage Hours / Day</label>
-<input id="unitHours" type="number" placeholder="Example: 8">
+
+<label>
+Usage Hours / Day
+</label>
+
+<input
+id="unitHours"
+type="number"
+min="0"
+step="any"
+placeholder="Example: 8">
+
 </div>
+
 
 <div class="calc-field">
-<label>Number of Days</label>
-<input id="unitDays" type="number" value="30">
+
+<label>
+Number of Days
+</label>
+
+<input
+id="unitDays"
+type="number"
+min="1"
+value="30">
+
 </div>
 
-<button class="calc-btn"
+
+<button
+class="calc-btn"
 onclick="calculateUnits()">
+
 Calculate Units
+
 </button>
 
+
 <div id="calcResult"></div>
+
+<div class="formula">
+Units = Watt × Hours × Days ÷ 1000
+</div>
+
 `;
 
 }
@@ -344,28 +587,63 @@ Calculate Units
 }
 
 
-/* OHM */
+
+/* =========================
+   OHM'S LAW
+========================= */
 
 function calculateOhm(){
 
-const v=Number(document.getElementById("voltage").value);
-const r=Number(document.getElementById("resistance").value);
+const v=
+Number(
+document.getElementById(
+"voltage"
+).value
+);
 
-if(!v || !r || r<=0){
 
-alert("Enter valid voltage and resistance.");
+const r=
+Number(
+document.getElementById(
+"resistance"
+).value
+);
+
+
+if(
+!Number.isFinite(v) ||
+!Number.isFinite(r) ||
+v<0 ||
+r<=0
+){
+
+alert(
+"Enter valid voltage and resistance."
+);
 
 return;
 
 }
 
-const current=v/r;
 
-document.getElementById("calcResult").innerHTML=`
+const current=
+v/r;
+
+
+document.getElementById(
+"calcResult"
+).innerHTML=`
 
 <div class="result">
-<span>Current</span>
-<strong>${current.toFixed(2)} A</strong>
+
+<span>
+Current
+</span>
+
+<strong>
+${current.toFixed(2)} A
+</strong>
+
 </div>
 
 `;
@@ -373,28 +651,63 @@ document.getElementById("calcResult").innerHTML=`
 }
 
 
-/* POWER */
+
+/* =========================
+   POWER
+========================= */
 
 function calculatePower(){
 
-const v=Number(document.getElementById("powerVoltage").value);
-const a=Number(document.getElementById("powerCurrent").value);
+const v=
+Number(
+document.getElementById(
+"powerVoltage"
+).value
+);
 
-if(!v || !a){
 
-alert("Enter voltage and current.");
+const a=
+Number(
+document.getElementById(
+"powerCurrent"
+).value
+);
+
+
+if(
+!Number.isFinite(v) ||
+!Number.isFinite(a) ||
+v<0 ||
+a<0
+){
+
+alert(
+"Enter valid voltage and current."
+);
 
 return;
 
 }
 
-const watts=v*a;
 
-document.getElementById("calcResult").innerHTML=`
+const watts=
+v*a;
+
+
+document.getElementById(
+"calcResult"
+).innerHTML=`
 
 <div class="result">
-<span>Power</span>
-<strong>${watts.toFixed(2)} W</strong>
+
+<span>
+Power
+</span>
+
+<strong>
+${watts.toFixed(2)} W
+</strong>
+
 </div>
 
 `;
@@ -402,27 +715,53 @@ document.getElementById("calcResult").innerHTML=`
 }
 
 
-/* HP */
+
+/* =========================
+   KW TO HP
+========================= */
 
 function calculateHP(){
 
-const kw=Number(document.getElementById("kw").value);
+const kw=
+Number(
+document.getElementById(
+"kw"
+).value
+);
 
-if(!kw){
 
-alert("Enter kW value.");
+if(
+!Number.isFinite(kw) ||
+kw<0
+){
+
+alert(
+"Enter a valid kW value."
+);
 
 return;
 
 }
 
-const hp=kw*1.34102;
 
-document.getElementById("calcResult").innerHTML=`
+const hp=
+kw*1.34102;
+
+
+document.getElementById(
+"calcResult"
+).innerHTML=`
 
 <div class="result">
-<span>Horse Power</span>
-<strong>${hp.toFixed(2)} HP</strong>
+
+<span>
+Horse Power
+</span>
+
+<strong>
+${hp.toFixed(2)} HP
+</strong>
+
 </div>
 
 `;
@@ -430,36 +769,83 @@ document.getElementById("calcResult").innerHTML=`
 }
 
 
-/* UNITS */
+
+/* =========================
+   ELECTRICITY UNITS
+========================= */
 
 function calculateUnits(){
 
-const watt=Number(document.getElementById("unitPower").value);
-const hours=Number(document.getElementById("unitHours").value);
-const days=Number(document.getElementById("unitDays").value);
+const watt=
+Number(
+document.getElementById(
+"unitPower"
+).value
+);
 
-if(!watt || !hours || !days){
 
-alert("Enter all values.");
+const hours=
+Number(
+document.getElementById(
+"unitHours"
+).value
+);
+
+
+const days=
+Number(
+document.getElementById(
+"unitDays"
+).value
+);
+
+
+if(
+!Number.isFinite(watt) ||
+!Number.isFinite(hours) ||
+!Number.isFinite(days) ||
+watt<0 ||
+hours<0 ||
+days<=0
+){
+
+alert(
+"Enter valid values."
+);
 
 return;
 
 }
 
-const units=(watt*hours*days)/1000;
 
-document.getElementById("calcResult").innerHTML=`
+const units=
+(watt*hours*days)/1000;
+
+
+document.getElementById(
+"calcResult"
+).innerHTML=`
 
 <div class="result">
-<span>Estimated Electricity Consumption</span>
-<strong>${units.toFixed(2)} Units</strong>
+
+<span>
+Estimated Electricity Consumption
+</span>
+
+<strong>
+${units.toFixed(2)} Units
+</strong>
+
 </div>
 
 `;
 
 }
 
+
 </script>
 
+
 </body>
+
 </html>
