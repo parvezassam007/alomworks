@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -41,12 +40,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 }
 
 .profile-header{
-  background:linear-gradient(
-    135deg,
-    #2563eb,
-    #1d4ed8
-  );
-
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
   color:white;
   border-radius:22px;
   padding:25px;
@@ -60,11 +54,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   margin:auto;
   border-radius:23px;
   background:rgba(255,255,255,.18);
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-size:34px;
 }
 
@@ -86,13 +78,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   padding:18px;
 }
 
-.form-card h3{
-  font-size:16px;
-  margin-bottom:16px;
-}
-
 .field{
-  margin-bottom:14px;
+  margin-bottom:15px;
 }
 
 .field label{
@@ -106,13 +93,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 .field textarea{
   width:100%;
   padding:13px;
-
   border:1px solid #dbe2ea;
   border-radius:11px;
-
   background:#f8fafc;
   outline:none;
-
   font-size:14px;
 }
 
@@ -123,51 +107,56 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 }
 
 .field textarea{
-  min-height:90px;
+  min-height:120px;
   resize:vertical;
+  line-height:1.5;
 }
 
 .save-btn{
   width:100%;
   padding:14px;
-
   border:0;
   border-radius:12px;
-
   background:#2563eb;
   color:white;
-
   font-weight:bold;
   font-size:14px;
-
   cursor:pointer;
 }
 
-.save-btn:active{
-  transform:scale(.98);
+.number-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
-.success{
-  margin-top:12px;
-  padding:11px;
+.number-box .field{
+  margin-bottom:15px;
+}
 
-  background:#dcfce7;
-  color:#15803d;
+.info-box{
+  margin-top:15px;
+  padding:12px;
+  background:#eff6ff;
+  color:#2563eb;
+  border-radius:11px;
+  font-size:11px;
+  line-height:1.5;
+}
 
-  border-radius:10px;
+@media(max-width:500px){
 
-  text-align:center;
-  font-size:12px;
-  display:none;
+  .number-box{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <header class="topbar">
 
@@ -178,13 +167,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </div>
 
 <div>
-
 <h1>Parbez Smart Works</h1>
-
-<p>
-Electrical • Ceiling • Plumbing
-</p>
-
+<p>Electrical • Ceiling • Plumbing</p>
 </div>
 
 </div>
@@ -192,14 +176,12 @@ Electrical • Ceiling • Plumbing
 </header>
 
 
-
 <main class="page-container">
 
 
 <div class="page-title">
 
-<button
-class="back-btn"
+<button class="back-btn"
 onclick="location.href='index.html'">
 
 <i class="fa-solid fa-arrow-left"></i>
@@ -211,22 +193,17 @@ onclick="location.href='index.html'">
 </div>
 
 
-
 <!-- PROFILE HEADER -->
 
 <div class="profile-header">
 
 <div class="profile-logo">
-
 <i class="fa-solid fa-bolt"></i>
-
 </div>
-
 
 <h2 id="displayWorkName">
 Parbez Smart Works
 </h2>
-
 
 <p>
 Electrical • False Ceiling • Plumbing
@@ -235,20 +212,21 @@ Electrical • False Ceiling • Plumbing
 </div>
 
 
-
 <!-- FORM -->
 
 <div class="form-card">
 
-<h3>
+<h3 style="margin-bottom:18px;">
 Business Information
 </h3>
 
 
+<!-- BUSINESS NAME -->
 
 <div class="field">
 
 <label>
+<i class="fa-solid fa-building"></i>
 Work / Business Name
 </label>
 
@@ -261,10 +239,12 @@ placeholder="Enter business name">
 </div>
 
 
+<!-- OWNER NAME -->
 
 <div class="field">
 
 <label>
+<i class="fa-solid fa-user"></i>
 Owner Name
 </label>
 
@@ -277,27 +257,54 @@ placeholder="Enter owner name">
 </div>
 
 
+<!-- MOBILE NUMBERS -->
+
+<div class="number-box">
 
 <div class="field">
 
 <label>
-Mobile Number
+<i class="fa-solid fa-phone"></i>
+Mobile Number 1
 </label>
 
 <input
-id="mobile"
+id="mobile1"
 type="tel"
 maxlength="10"
 inputmode="numeric"
-placeholder="10 digit mobile number">
+value="9395305384"
+placeholder="10 digit number">
 
 </div>
 
 
+<div class="field">
+
+<label>
+<i class="fa-solid fa-phone"></i>
+Mobile Number 2
+</label>
+
+<input
+id="mobile2"
+type="tel"
+maxlength="10"
+inputmode="numeric"
+value="9833762577"
+placeholder="10 digit number">
+
+</div>
+
+</div>
+
+
+<!-- LOCATION -->
 
 <div class="field">
 
 <label>
+<i class="fa-solid fa-location-dot"></i>
 Location
 </label>
 
@@ -305,15 +312,17 @@ Location
 id="location"
 type="text"
 value="Hojai, Assam"
-placeholder="Enter business location">
+placeholder="Enter location">
 
 </div>
 
 
+<!-- INSTAGRAM -->
 
 <div class="field">
 
 <label>
+<i class="fa-brands fa-instagram"></i>
 Instagram
 </label>
 
@@ -326,10 +335,12 @@ placeholder="@username">
 </div>
 
 
+<!-- YOUTUBE -->
 
 <div class="field">
 
 <label>
+<i class="fa-brands fa-youtube"></i>
 YouTube
 </label>
 
@@ -342,37 +353,40 @@ placeholder="@channel">
 </div>
 
 
+<!-- ABOUT -->
 
 <div class="field">
 
 <label>
+<i class="fa-solid fa-circle-info"></i>
 About Your Work
 </label>
 
-<textarea
-id="about"
-placeholder="Write about your business"></textarea>
+<textarea id="about">Parbez Smart Works is a local service business providing professional Electrical, False Ceiling and Plumbing work. We handle house wiring, lighting, fan installation, MCB/DB work, gypsum and PVC ceiling, LED lighting, plumbing, bathroom and kitchen work, leakage repair and other home improvement services.
+
+Our goal is to provide reliable workmanship, clear estimates and quality service for residential and commercial projects in Hojai, Assam.</textarea>
 
 </div>
 
 
+<!-- SAVE -->
 
-<button
-class="save-btn"
+<button class="save-btn"
 onclick="saveProfile()">
 
 <i class="fa-solid fa-floppy-disk"></i>
-
-&nbsp; Save Profile
+Save Profile
 
 </button>
 
 
-<div
-id="successMessage"
-class="success">
+<div class="info-box">
 
-Profile saved successfully.
+<i class="fa-solid fa-circle-info"></i>
+
+Your business information will be saved on this device
+and can be used automatically in Estimates, Bills and other
+Parbez Smart Works documents.
 
 </div>
 
@@ -381,197 +395,128 @@ Profile saved successfully.
 </main>
 
 
-
 <script>
 
+/* LOAD SAVED PROFILE */
 
-/* LOAD PROFILE */
-
-function loadProfile(){
-
-let saved;
-
-try{
-
-saved=JSON.parse(
+const saved =
+JSON.parse(
 localStorage.getItem("psw_profile") || "null"
 );
 
-}catch(error){
 
-saved=null;
+if(saved){
 
-}
-
-
-if(!saved) return;
-
-
-document.getElementById("workName").value=
+document.getElementById("workName").value =
 saved.workName || "Parbez Smart Works";
 
-
-document.getElementById("ownerName").value=
+document.getElementById("ownerName").value =
 saved.ownerName || "Parbez Alom Badrul Alom";
 
+document.getElementById("mobile1").value =
+saved.mobile1 || "9395305384";
 
-document.getElementById("mobile").value=
-saved.mobile || "";
+document.getElementById("mobile2").value =
+saved.mobile2 || "9833762577";
 
-
-document.getElementById("location").value=
+document.getElementById("location").value =
 saved.location || "Hojai, Assam";
 
-
-document.getElementById("instagram").value=
+document.getElementById("instagram").value =
 saved.instagram || "@parbez_works";
 
-
-document.getElementById("youtube").value=
+document.getElementById("youtube").value =
 saved.youtube || "@parbezworks";
 
-
-document.getElementById("about").value=
+document.getElementById("about").value =
 saved.about || "";
 
-
-document.getElementById("displayWorkName")
-.textContent=
+document.getElementById("displayWorkName").textContent =
 saved.workName || "Parbez Smart Works";
 
 }
-
 
 
 /* SAVE PROFILE */
 
 function saveProfile(){
 
-const workName=
-document.getElementById("workName")
-.value.trim();
+const mobile1 =
+document.getElementById("mobile1")
+.value.replace(/\D/g,"")
+.slice(0,10);
 
+const mobile2 =
+document.getElementById("mobile2")
+.value.replace(/\D/g,"")
+.slice(0,10);
 
-const ownerName=
-document.getElementById("ownerName")
-.value.trim();
-
-
-const mobile=
-document.getElementById("mobile")
-.value.trim();
-
-
-const location=
-document.getElementById("location")
-.value.trim();
-
-
-const instagram=
-document.getElementById("instagram")
-.value.trim();
-
-
-const youtube=
-document.getElementById("youtube")
-.value.trim();
-
-
-const about=
-document.getElementById("about")
-.value.trim();
-
-
-
-if(!workName){
-
-alert("Please enter business name.");
-
-return;
-
-}
-
-
-
-/* MOBILE VALIDATION */
 
 if(
-mobile &&
-!/^[0-9]{10}$/.test(mobile)
+mobile1.length !== 10 ||
+mobile2.length !== 10
 ){
 
-alert(
-"Please enter a valid 10 digit mobile number."
-);
+alert("Please enter both 10 digit mobile numbers.");
 
 return;
 
 }
 
 
+const profile = {
 
-const profile={
+workName:
+document.getElementById("workName")
+.value.trim(),
 
-workName:workName,
+ownerName:
+document.getElementById("ownerName")
+.value.trim(),
 
-ownerName:ownerName,
+mobile1: mobile1,
 
-mobile:mobile,
+mobile2: mobile2,
 
-location:location,
+/* Compatibility with older bill/estimate code */
+mobile: mobile1,
 
-instagram:instagram,
+location:
+document.getElementById("location")
+.value.trim(),
 
-youtube:youtube,
+instagram:
+document.getElementById("instagram")
+.value.trim(),
 
-about:about
+youtube:
+document.getElementById("youtube")
+.value.trim(),
+
+about:
+document.getElementById("about")
+.value.trim()
 
 };
 
 
-
 localStorage.setItem(
-
 "psw_profile",
-
 JSON.stringify(profile)
-
 );
 
 
-
-document.getElementById(
-"displayWorkName"
-).textContent=
-workName;
-
+document.getElementById("displayWorkName")
+.textContent =
+profile.workName ||
+"Parbez Smart Works";
 
 
-const success=
-document.getElementById(
-"successMessage"
-);
-
-success.style.display="block";
-
-
-setTimeout(()=>{
-
-success.style.display="none";
-
-},2500);
+alert("Profile saved successfully!");
 
 }
 
-
-
-/* LOAD ON PAGE OPEN */
-
-loadProfile();
-
 </script>
 
-
 </body>
-
 </html>
