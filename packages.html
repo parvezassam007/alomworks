@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2563eb">
@@ -35,6 +37,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   background:white;
   color:#2563eb;
   font-size:17px;
+  cursor:pointer;
 }
 
 .package{
@@ -43,6 +46,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   border-radius:20px;
   padding:20px;
   margin-bottom:14px;
+  transition:.2s;
+}
+
+.package:active{
+  transform:scale(.98);
 }
 
 .package-icon{
@@ -69,6 +77,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   line-height:1.6;
 }
 
+.package ul{
+  margin:13px 0 0 18px;
+  color:#475569;
+  font-size:12px;
+  line-height:1.8;
+}
+
 .package-price{
   margin-top:15px;
   padding-top:13px;
@@ -76,6 +91,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:10px;
 }
 
 .package-price strong{
@@ -87,16 +103,24 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   border:0;
   background:#2563eb;
   color:white;
-  padding:9px 13px;
+  padding:10px 14px;
   border-radius:9px;
   font-size:11px;
   font-weight:bold;
+  cursor:pointer;
+}
+
+.package-price button:active{
+  transform:scale(.96);
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header class="topbar">
 
@@ -107,8 +131,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </div>
 
 <div>
+
 <h1>Parbez Smart Works</h1>
-<p>Electrical • Ceiling • Plumbing</p>
+
+<p>
+Electrical • Ceiling • Plumbing
+</p>
+
 </div>
 
 </div>
@@ -116,11 +145,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </header>
 
 
+
 <main class="page-container">
+
 
 <div class="page-title">
 
-<button class="back-btn"
+<button
+class="back-btn"
 onclick="location.href='index.html'">
 
 <i class="fa-solid fa-arrow-left"></i>
@@ -132,25 +164,56 @@ onclick="location.href='index.html'">
 </div>
 
 
+
+<!-- ELECTRICAL -->
+
 <div class="package">
 
 <div class="package-icon">
+
 <i class="fa-solid fa-bolt"></i>
+
 </div>
 
-<h3>Basic Electrical Package</h3>
+
+<h3>
+Basic Electrical Package
+</h3>
+
 
 <p>
-Switch installation, light points, fan points,
-basic wiring and electrical checking.
+Basic electrical installation and checking
+for homes and small projects.
 </p>
+
+
+<ul>
+
+<li>Switch installation</li>
+
+<li>Light points</li>
+
+<li>Fan points</li>
+
+<li>Basic wiring</li>
+
+<li>Electrical checking</li>
+
+</ul>
+
 
 <div class="package-price">
 
-<strong>Custom Price</strong>
+<strong>
+Custom Price
+</strong>
 
-<button onclick="usePackage('Basic Electrical Package')">
+
+<button
+onclick="usePackage('Basic Electrical Package')">
+
 Use Package
+
 </button>
 
 </div>
@@ -158,25 +221,56 @@ Use Package
 </div>
 
 
+
+<!-- CEILING -->
+
 <div class="package">
 
 <div class="package-icon">
-<i class="fa-solid fa-lightbulb"></i>
+
+<i class="fa-solid fa-border-all"></i>
+
 </div>
 
-<h3>False Ceiling Package</h3>
+
+<h3>
+False Ceiling Package
+</h3>
+
 
 <p>
-Gypsum ceiling, PVC ceiling, LED lighting,
-frame work and finishing.
+False ceiling installation with finishing
+and lighting work.
 </p>
+
+
+<ul>
+
+<li>Measurement & marking</li>
+
+<li>Frame work</li>
+
+<li>Gypsum / PVC ceiling</li>
+
+<li>LED lighting work</li>
+
+<li>Joint finishing</li>
+
+</ul>
+
 
 <div class="package-price">
 
-<strong>Custom Price</strong>
+<strong>
+Custom Price
+</strong>
 
-<button onclick="usePackage('False Ceiling Package')">
+
+<button
+onclick="usePackage('False Ceiling Package')">
+
 Use Package
+
 </button>
 
 </div>
@@ -184,61 +278,126 @@ Use Package
 </div>
 
 
+
+<!-- PLUMBING -->
+
 <div class="package">
 
 <div class="package-icon">
+
 <i class="fa-solid fa-faucet-drip"></i>
+
 </div>
 
-<h3>Plumbing Package</h3>
+
+<h3>
+Plumbing Package
+</h3>
+
 
 <p>
-Bathroom plumbing, kitchen plumbing,
-pipe work, leakage repair and tank work.
+Basic plumbing installation, repair and
+leakage checking.
 </p>
+
+
+<ul>
+
+<li>Bathroom plumbing</li>
+
+<li>Kitchen plumbing</li>
+
+<li>Pipe work</li>
+
+<li>Leakage repair</li>
+
+<li>Tank work</li>
+
+</ul>
+
 
 <div class="package-price">
 
-<strong>Custom Price</strong>
+<strong>
+Custom Price
+</strong>
 
-<button onclick="usePackage('Plumbing Package')">
+
+<button
+onclick="usePackage('Plumbing Package')">
+
 Use Package
+
 </button>
 
 </div>
 
 </div>
 
+
+
+<!-- COMPLETE HOME -->
 
 <div class="package">
 
 <div class="package-icon">
+
 <i class="fa-solid fa-house"></i>
+
 </div>
 
-<h3>Complete Home Package</h3>
+
+<h3>
+Complete Home Package
+</h3>
+
 
 <p>
-Electrical + False Ceiling + Plumbing
-for complete home work.
+Combined electrical, false ceiling and
+plumbing services for home projects.
 </p>
+
+
+<ul>
+
+<li>Electrical work</li>
+
+<li>False ceiling work</li>
+
+<li>LED lighting</li>
+
+<li>Plumbing work</li>
+
+<li>Final checking & finishing</li>
+
+</ul>
+
 
 <div class="package-price">
 
-<strong>Custom Price</strong>
+<strong>
+Custom Price
+</strong>
 
-<button onclick="usePackage('Complete Home Package')">
+
+<button
+onclick="usePackage('Complete Home Package')">
+
 Use Package
+
 </button>
 
 </div>
 
 </div>
+
 
 </main>
 
 
+
 <script>
+
 
 function usePackage(name){
 
@@ -247,16 +406,21 @@ localStorage.setItem(
 name
 );
 
+
 alert(
 name +
 "\n\nPackage selected successfully."
 );
 
+
 location.href="estimate.html";
 
 }
 
+
 </script>
 
+
 </body>
+
 </html>
