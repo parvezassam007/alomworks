@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+
+  <title>Parbez Smart Works</title>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <div class="brand">
+
+    <div class="brand-logo">
+      <i class="fa-solid fa-bolt"></i>
+    </div>
+
+    <div>
+      <h1>Parbez Smart Works</h1>
+      <p>Electrical • Ceiling • Plumbing</p>
+    </div>
+
+  </div>
+
+  <button class="icon-button"
+    onclick="showMessage('No new notifications')">
+
+    <i class="fa-regular fa-bell"></i>
+
+  </button>
+
+</header>
+
+
+<main class="container">
+
+  <!-- Welcome -->
+
+  <section class="welcome">
+
+    <div>
+
+      <p class="small-text">Welcome back 👋</p>
+
+      <h2>Parbez Works</h2>
+
+      <p>
+        Manage your electrical work,
+        estimates and bills easily.
+      </p>
+
+    </div>
+
+    <div class="welcome-icon">
+      ⚡
+    </div>
+
+  </section>
+
+
+  <!-- Quick Actions -->
+
+  <section>
+
+    <div class="section-heading">
+      <h2>Quick Actions</h2>
+    </div>
+
+    <div class="action-grid">
+
+      <a href="estimate.html"
+        class="action-card blue">
+
+        <div class="action-icon">
+          <i class="fa-solid fa-file-invoice"></i>
+        </div>
+
+        <h3>Create Estimate</h3>
+
+        <p>Make a new estimate</p>
+
+      </a>
+
+
+      <a href="bill.html"
+        class="action-card green">
+
+        <div class="action-icon">
+          <i class="fa-solid fa-receipt"></i>
+        </div>
+
+        <h3>Create Work Bill</h3>
+
+        <p>Create customer bill</p>
+
+      </a>
+
+
+      <a href="calculator.html"
+        class="action-card orange">
+
+        <div class="action-icon">
+          <i class="fa-solid fa-calculator"></i>
+        </div>
+
+        <h3>Electrical Calculator</h3>
+
+        <p>Calculate electrical values</p>
+
+      </a>
+
+
+      <a href="rates.html"
+        class="action-card purple">
+
+        <div class="action-icon">
+          <i class="fa-solid fa-tags"></i>
+        </div>
+
+        <h3>Rate Setting</h3>
+
+        <p>Manage your work rates</p>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- Business Summary -->
+
+  <section>
+
+    <div class="section-heading">
+      <h2>Business Summary</h2>
+    </div>
+
+    <div class="summary-grid">
+
+      <div class="summary-card">
+
+        <div class="summary-icon blue-bg">
+          <i class="fa-solid fa-file-lines"></i>
+        </div>
+
+        <div>
+          <span>Estimates</span>
+          <strong id="estimateCount">0</strong>
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div class="summary-icon green-bg">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+        </div>
+
+        <div>
+          <span>Bills</span>
+          <strong id="billCount">0</strong>
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div class="summary-icon cyan-bg">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+        </div>
+
+        <div>
+          <span>Received</span>
+          <strong id="paidTotal">₹0</strong>
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div class="summary-icon red-bg">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+
+        <div>
+          <span>Due</span>
+          <strong id="dueTotal">₹0</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- More Features -->
+
+  <section>
+
+    <div class="section-heading">
+      <h2>More Features</h2>
+    </div>
+
+
+    <div class="feature-list">
+
+      <a href="packages.html">
+
+        <div class="feature-left">
+
+          <div class="feature-icon">
+            <i class="fa-solid fa-box"></i>
+          </div>
+
+          <div>
+            <strong>Packages</strong>
+            <span>Service packages</span>
+          </div>
+
+        </div>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </a>
+
+
+      <a href="profile.html">
+
+        <div class="feature-left">
+
+          <div class="feature-icon">
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <div>
+            <strong>My Profile</strong>
+            <span>Business information</span>
+          </div>
+
+        </div>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </a>
+
+
+      <a href="learning.html">
+
+        <div class="feature-left">
+
+          <div class="feature-icon">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+
+          <div>
+            <strong>E-Book / Learning</strong>
+            <span>Electrical learning</span>
+          </div>
+
+        </div>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </a>
+
+
+      <a href="history.html">
+
+        <div class="feature-left">
+
+          <div class="feature-icon">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+
+          <div>
+            <strong>History</strong>
+            <span>Estimates & bills</span>
+          </div>
+
+        </div>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </a>
+
+
+      <a href="settings.html">
+
+        <div class="feature-left">
+
+          <div class="feature-icon">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+
+          <div>
+            <strong>Settings</strong>
+            <span>App settings</span>
+          </div>
+
+        </div>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- Bottom Navigation -->
+
+<nav class="bottom-nav">
+
+  <a href="index.html" class="active">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </a>
+
+  <a href="estimate.html">
+    <i class="fa-solid fa-file-invoice"></i>
+    <span>Estimates</span>
+  </a>
+
+  <a href="bill.html">
+    <i class="fa-solid fa-receipt"></i>
+    <span>Bills</span>
+  </a>
+
+  <a href="profile.html">
+    <i class="fa-solid fa-user"></i>
+    <span>Profile</span>
+  </a>
+
+</nav>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
