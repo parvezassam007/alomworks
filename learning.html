@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -35,6 +36,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   border-radius:13px;
   background:white;
   color:#2563eb;
+  font-size:17px;
+  cursor:pointer;
 }
 
 .learning-card{
@@ -48,13 +51,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 .learning-icon{
   width:52px;
   height:52px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   border-radius:15px;
+
   background:#dbeafe;
   color:#2563eb;
+
   font-size:22px;
+
   margin-bottom:14px;
 }
 
@@ -87,19 +95,141 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 }
 
 .open-btn{
+  width:100%;
   margin-top:12px;
+
   border:0;
   background:#2563eb;
   color:white;
-  padding:10px 15px;
+
+  padding:11px 15px;
+
   border-radius:10px;
+
   font-weight:bold;
+  cursor:pointer;
+}
+
+.open-btn:active{
+  transform:scale(.98);
+}
+
+
+/* LESSON VIEW */
+
+.lesson-view{
+  display:none;
+
+  position:fixed;
+  inset:0;
+
+  background:rgba(15,23,42,.55);
+
+  z-index:200;
+
+  align-items:flex-end;
+  justify-content:center;
+
+  padding:15px;
+}
+
+.lesson-view.show{
+  display:flex;
+}
+
+.lesson-box{
+  width:100%;
+  max-width:650px;
+  max-height:88vh;
+
+  overflow:auto;
+
+  background:white;
+
+  border-radius:22px;
+
+  padding:20px;
+}
+
+.lesson-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:16px;
+}
+
+.lesson-header h3{
+  font-size:18px;
+}
+
+.close-btn{
+  width:38px;
+  height:38px;
+
+  border:0;
+  border-radius:10px;
+
+  background:#fee2e2;
+  color:#dc2626;
+
+  cursor:pointer;
+}
+
+.lesson-content h4{
+  font-size:15px;
+  margin:18px 0 8px;
+}
+
+.lesson-content p{
+  font-size:13px;
+  line-height:1.7;
+  color:#475569;
+}
+
+.info-box{
+  margin-top:15px;
+
+  padding:13px;
+
+  border-radius:12px;
+
+  background:#eff6ff;
+  color:#1e40af;
+
+  font-size:12px;
+  line-height:1.6;
+}
+
+.warning-box{
+  margin-top:15px;
+
+  padding:13px;
+
+  border-radius:12px;
+
+  background:#fff7ed;
+  color:#9a3412;
+
+  font-size:12px;
+  line-height:1.6;
+}
+
+@media(min-width:700px){
+
+.lesson-view{
+  align-items:center;
+}
+
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header class="topbar">
 
@@ -110,8 +240,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </div>
 
 <div>
+
 <h1>Parbez Smart Works</h1>
-<p>Electrical • Ceiling • Plumbing</p>
+
+<p>
+Electrical • Ceiling • Plumbing
+</p>
+
 </div>
 
 </div>
@@ -119,12 +254,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </header>
 
 
+
 <main class="page-container">
 
 
 <div class="page-title">
 
-<button class="back-btn"
+<button
+class="back-btn"
 onclick="location.href='index.html'">
 
 <i class="fa-solid fa-arrow-left"></i>
@@ -136,6 +273,7 @@ onclick="location.href='index.html'">
 </div>
 
 
+
 <!-- ELECTRICAL -->
 
 <div class="learning-card">
@@ -144,11 +282,14 @@ onclick="location.href='index.html'">
 <i class="fa-solid fa-bolt"></i>
 </div>
 
-<h3>Electrical Basics</h3>
+<h3>
+Electrical Basics
+</h3>
 
 <p>
 Basic electrical concepts for beginners.
 </p>
+
 
 <div class="lesson-list">
 
@@ -179,17 +320,22 @@ AC & DC
 
 </div>
 
-<button class="open-btn"
-onclick="openLesson('Electrical Basics')">
 
-Start Learning
+<button
+class="open-btn"
+onclick="openLesson('electrical')">
+
+<i class="fa-solid fa-book-open"></i>
+
+&nbsp; Start Learning
 
 </button>
 
 </div>
 
 
-<!-- WIRING -->
+
+<!-- HOUSE WIRING -->
 
 <div class="learning-card">
 
@@ -197,12 +343,15 @@ Start Learning
 <i class="fa-solid fa-plug"></i>
 </div>
 
-<h3>House Wiring</h3>
+<h3>
+House Wiring
+</h3>
 
 <p>
 Learn the basics of household wiring,
 switches, lights, fans and distribution boards.
 </p>
+
 
 <div class="lesson-list">
 
@@ -228,14 +377,19 @@ MCB & DB
 
 </div>
 
-<button class="open-btn"
-onclick="openLesson('House Wiring')">
 
-Start Learning
+<button
+class="open-btn"
+onclick="openLesson('wiring')">
+
+<i class="fa-solid fa-book-open"></i>
+
+&nbsp; Start Learning
 
 </button>
 
 </div>
+
 
 
 <!-- SAFETY -->
@@ -246,13 +400,16 @@ Start Learning
 <i class="fa-solid fa-shield-halved"></i>
 </div>
 
-<h3>Electrical Safety</h3>
+<h3>
+Electrical Safety
+</h3>
 
 <p>
 Important safety principles for electrical work.
 Always follow local electrical codes and use
 appropriate protective equipment.
 </p>
+
 
 <div class="lesson-list">
 
@@ -263,24 +420,29 @@ Switch off supply before work
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Check for live voltage
+Verify the circuit is de-energized
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Use insulated tools
+Use appropriate insulated tools
 </div>
 
 </div>
 
-<button class="open-btn"
-onclick="openLesson('Electrical Safety')">
 
-Start Learning
+<button
+class="open-btn"
+onclick="openLesson('safety')">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+&nbsp; Start Learning
 
 </button>
 
 </div>
+
 
 
 <!-- CEILING -->
@@ -291,11 +453,14 @@ Start Learning
 <i class="fa-solid fa-border-all"></i>
 </div>
 
-<h3>False Ceiling Basics</h3>
+<h3>
+False Ceiling Basics
+</h3>
 
 <p>
 Basic workflow for ceiling installation.
 </p>
+
 
 <div class="lesson-list">
 
@@ -321,35 +486,338 @@ Joint Finishing
 
 </div>
 
-<button class="open-btn"
-onclick="openLesson('False Ceiling Basics')">
 
-Start Learning
+<button
+class="open-btn"
+onclick="openLesson('ceiling')">
+
+<i class="fa-solid fa-book-open"></i>
+
+&nbsp; Start Learning
 
 </button>
 
 </div>
 
+
 </main>
+
+
+
+<!-- LESSON MODAL -->
+
+<div
+id="lessonView"
+class="lesson-view"
+onclick="closeLessonOutside(event)">
+
+<div class="lesson-box">
+
+
+<div class="lesson-header">
+
+<h3 id="lessonTitle">
+Lesson
+</h3>
+
+<button
+class="close-btn"
+onclick="closeLesson()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+
+<div
+id="lessonContent"
+class="lesson-content">
+</div>
+
+
+</div>
+
+</div>
+
 
 
 <script>
 
-function openLesson(name){
 
-localStorage.setItem(
-"psw_current_lesson",
-name
-);
+const lessons={
 
-alert(
-name +
-"\n\nLesson section selected."
-);
+
+electrical:{
+
+title:"Electrical Basics",
+
+content:`
+
+<h4>1. Voltage</h4>
+
+<p>
+Voltage is the electrical potential difference
+that pushes electric current through a circuit.
+It is measured in volts (V).
+</p>
+
+
+<h4>2. Current</h4>
+
+<p>
+Current is the flow of electric charge.
+It is measured in amperes (A).
+</p>
+
+
+<h4>3. Resistance</h4>
+
+<p>
+Resistance opposes the flow of current.
+It is measured in ohms (Ω).
+</p>
+
+
+<h4>4. Power</h4>
+
+<p>
+Electrical power represents the rate at which
+electrical energy is used. It is measured in watts (W).
+</p>
+
+
+<h4>5. AC & DC</h4>
+
+<p>
+AC means alternating current, while DC means
+direct current. Household electricity is commonly
+supplied as AC.
+</p>
+
+
+<div class="info-box">
+Basic formulas: V = I × R and P = V × I.
+</div>
+
+`
+
+},
+
+
+
+wiring:{
+
+title:"House Wiring",
+
+content:`
+
+<h4>Switch Wiring</h4>
+
+<p>
+A switch is used to control a circuit.
+For household installations, wiring should be
+performed according to applicable electrical codes.
+</p>
+
+
+<h4>Light Point</h4>
+
+<p>
+A light point normally includes the supply circuit,
+switching arrangement and the light fitting.
+</p>
+
+
+<h4>Fan Point</h4>
+
+<p>
+A fan point requires the appropriate supply,
+switch/control arrangement and properly rated
+protective device.
+</p>
+
+
+<h4>MCB & DB</h4>
+
+<p>
+An MCB helps protect a circuit from overcurrent.
+A distribution board organizes and protects
+individual circuits.
+</p>
+
+
+<div class="warning-box">
+Never work on an energized circuit. Electrical
+installation should be carried out by a qualified
+person and according to local regulations.
+</div>
+
+`
+
+},
+
+
+
+safety:{
+
+title:"Electrical Safety",
+
+content:`
+
+<h4>Before Starting Work</h4>
+
+<p>
+Identify the correct circuit and switch off the
+appropriate supply before beginning work.
+</p>
+
+
+<h4>Verify the Circuit</h4>
+
+<p>
+Use an appropriate tester or meter to verify that
+the circuit is de-energized before touching conductors.
+</p>
+
+
+<h4>Use Proper Tools</h4>
+
+<p>
+Use tools and protective equipment suitable for
+the electrical task and keep equipment in good condition.
+</p>
+
+
+<h4>Keep the Area Safe</h4>
+
+<p>
+Keep the work area dry, organized and free from
+unnecessary hazards.
+</p>
+
+
+<div class="warning-box">
+Electrical work can cause serious injury or fire.
+If you are not qualified for the work, contact a
+licensed electrician.
+</div>
+
+`
+
+},
+
+
+
+ceiling:{
+
+title:"False Ceiling Basics",
+
+content:`
+
+<h4>1. Measurement & Marking</h4>
+
+<p>
+Measure the room carefully and mark the required
+ceiling level before starting the framework.
+</p>
+
+
+<h4>2. Framework</h4>
+
+<p>
+Install the appropriate framework according to
+the ceiling system and manufacturer instructions.
+</p>
+
+
+<h4>3. Board Installation</h4>
+
+<p>
+Fix the selected ceiling boards using the correct
+fasteners and spacing for the system being installed.
+</p>
+
+
+<h4>4. Joint Finishing</h4>
+
+<p>
+Treat joints correctly and prepare the surface
+for the final finish.
+</p>
+
+
+<div class="info-box">
+Always check the manufacturer's installation
+instructions for the specific ceiling material.
+</div>
+
+`
 
 }
 
+};
+
+
+
+function openLesson(type){
+
+const lesson=lessons[type];
+
+if(!lesson)return;
+
+
+localStorage.setItem(
+"psw_current_lesson",
+lesson.title
+);
+
+
+document.getElementById(
+"lessonTitle"
+).textContent=
+lesson.title;
+
+
+document.getElementById(
+"lessonContent"
+).innerHTML=
+lesson.content;
+
+
+document.getElementById(
+"lessonView"
+).classList.add("show");
+
+}
+
+
+
+function closeLesson(){
+
+document.getElementById(
+"lessonView"
+).classList.remove("show");
+
+}
+
+
+
+function closeLessonOutside(event){
+
+if(event.target.id==="lessonView"){
+
+closeLesson();
+
+}
+
+}
+
+
 </script>
 
+
 </body>
+
 </html>
