@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -51,18 +50,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 .learning-icon{
   width:52px;
   height:52px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border-radius:15px;
-
   background:#dbeafe;
   color:#2563eb;
-
   font-size:22px;
-
   margin-bottom:14px;
 }
 
@@ -82,11 +76,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 }
 
 .lesson{
-  padding:11px;
+  padding:12px;
   background:#f8fafc;
   border-radius:10px;
   margin-bottom:7px;
   font-size:12px;
+  line-height:1.5;
 }
 
 .lesson i{
@@ -97,139 +92,29 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 .open-btn{
   width:100%;
   margin-top:12px;
-
   border:0;
   background:#2563eb;
   color:white;
-
   padding:11px 15px;
-
   border-radius:10px;
-
   font-weight:bold;
   cursor:pointer;
 }
 
-.open-btn:active{
-  transform:scale(.98);
-}
-
-
-/* LESSON VIEW */
-
-.lesson-view{
-  display:none;
-
-  position:fixed;
-  inset:0;
-
-  background:rgba(15,23,42,.55);
-
-  z-index:200;
-
-  align-items:flex-end;
-  justify-content:center;
-
-  padding:15px;
-}
-
-.lesson-view.show{
-  display:flex;
-}
-
-.lesson-box{
-  width:100%;
-  max-width:650px;
-  max-height:88vh;
-
-  overflow:auto;
-
-  background:white;
-
-  border-radius:22px;
-
-  padding:20px;
-}
-
-.lesson-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  margin-bottom:16px;
-}
-
-.lesson-header h3{
-  font-size:18px;
-}
-
-.close-btn{
-  width:38px;
-  height:38px;
-
-  border:0;
-  border-radius:10px;
-
-  background:#fee2e2;
-  color:#dc2626;
-
-  cursor:pointer;
-}
-
-.lesson-content h4{
-  font-size:15px;
-  margin:18px 0 8px;
-}
-
-.lesson-content p{
-  font-size:13px;
-  line-height:1.7;
-  color:#475569;
-}
-
-.info-box{
-  margin-top:15px;
-
-  padding:13px;
-
-  border-radius:12px;
-
-  background:#eff6ff;
-  color:#1e40af;
-
-  font-size:12px;
-  line-height:1.6;
-}
-
-.warning-box{
-  margin-top:15px;
-
-  padding:13px;
-
-  border-radius:12px;
-
+.warning{
+  margin-top:12px;
+  padding:11px;
   background:#fff7ed;
-  color:#9a3412;
-
-  font-size:12px;
-  line-height:1.6;
-}
-
-@media(min-width:700px){
-
-.lesson-view{
-  align-items:center;
-}
-
+  color:#c2410c;
+  border-radius:10px;
+  font-size:11px;
+  line-height:1.5;
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <header class="topbar">
 
@@ -240,13 +125,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </div>
 
 <div>
-
 <h1>Parbez Smart Works</h1>
-
-<p>
-Electrical • Ceiling • Plumbing
-</p>
-
+<p>Electrical • Ceiling • Plumbing</p>
 </div>
 
 </div>
@@ -254,27 +134,23 @@ Electrical • Ceiling • Plumbing
 </header>
 
 
-
 <main class="page-container">
-
 
 <div class="page-title">
 
-<button
-class="back-btn"
+<button class="back-btn"
 onclick="location.href='index.html'">
 
 <i class="fa-solid fa-arrow-left"></i>
 
 </button>
 
-<h2>E-Book / Learning</h2>
+<h2>Basic Learning</h2>
 
 </div>
 
 
-
-<!-- ELECTRICAL -->
+<!-- ELECTRICAL BASICS -->
 
 <div class="learning-card">
 
@@ -282,57 +158,68 @@ onclick="location.href='index.html'">
 <i class="fa-solid fa-bolt"></i>
 </div>
 
-<h3>
-Electrical Basics
-</h3>
+<h3>Electrical Basics</h3>
 
 <p>
-Basic electrical concepts for beginners.
+Electrical work samajhne ke liye sabse pehle
+basic electrical concepts ko samajhna zaroori hai.
 </p>
-
 
 <div class="lesson-list">
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Voltage
+<strong>Voltage:</strong>
+Electrical pressure ko voltage kehte hain.
+Unit Volt (V) hai.
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Current
+<strong>Current:</strong>
+Circuit mein electrical charge ka flow current hai.
+Unit Ampere (A) hai.
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Resistance
+<strong>Resistance:</strong>
+Current ke flow ko oppose karne ko resistance kehte hain.
+Unit Ohm (Ω) hai.
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Power
+<strong>Power:</strong>
+Electrical equipment kitni power use karta hai,
+use Watt (W) mein measure kiya jata hai.
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-AC & DC
+<strong>Energy:</strong>
+Electricity consumption ko commonly kWh,
+yaani "Unit", mein measure kiya jata hai.
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+<strong>AC & DC:</strong>
+AC ka direction time ke saath change hota hai,
+jabki DC ek direction mein flow karta hai.
 </div>
 
 </div>
 
-
-<button
-class="open-btn"
-onclick="openLesson('electrical')">
+<button class="open-btn"
+onclick="openLesson('Electrical Basics')">
 
 <i class="fa-solid fa-book-open"></i>
-
-&nbsp; Start Learning
+ Start Learning
 
 </button>
 
 </div>
-
 
 
 <!-- HOUSE WIRING -->
@@ -340,59 +227,65 @@ onclick="openLesson('electrical')">
 <div class="learning-card">
 
 <div class="learning-icon">
-<i class="fa-solid fa-plug"></i>
+<i class="fa-solid fa-house"></i>
 </div>
 
-<h3>
-House Wiring
-</h3>
+<h3>House Wiring Basics</h3>
 
 <p>
-Learn the basics of household wiring,
-switches, lights, fans and distribution boards.
+House wiring mein switches, lights, fans,
+sockets aur distribution board jaise components
+use hote hain.
 </p>
-
 
 <div class="lesson-list">
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Switch Wiring
+Switch aur light point ka basic concept
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Light Point
+Fan point aur regulator ka basic concept
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Fan Point
+Socket aur appliance connection ka overview
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-MCB & DB
+MCB aur Distribution Board (DB) ka purpose
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Earthing ka importance
 </div>
 
 </div>
 
+<div class="warning">
+<i class="fa-solid fa-triangle-exclamation"></i>
+Live electrical wiring practical training ke bina
+khud se na karein. Supply isolate karke qualified
+electrician aur applicable electrical rules follow karein.
+</div>
 
-<button
-class="open-btn"
-onclick="openLesson('wiring')">
+<button class="open-btn"
+onclick="openLesson('House Wiring Basics')">
 
 <i class="fa-solid fa-book-open"></i>
-
-&nbsp; Start Learning
+ Start Learning
 
 </button>
 
 </div>
 
 
-
-<!-- SAFETY -->
+<!-- ELECTRICAL SAFETY -->
 
 <div class="learning-card">
 
@@ -400,52 +293,105 @@ onclick="openLesson('wiring')">
 <i class="fa-solid fa-shield-halved"></i>
 </div>
 
-<h3>
-Electrical Safety
-</h3>
+<h3>Electrical Safety</h3>
 
 <p>
-Important safety principles for electrical work.
-Always follow local electrical codes and use
-appropriate protective equipment.
+Electrical work mein safety sabse important hai.
+Kaam shuru karne se pehle proper isolation aur
+safety procedure follow karein.
 </p>
-
 
 <div class="lesson-list">
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Switch off supply before work
+Supply ko safely isolate karein
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Verify the circuit is de-energized
+Suitable voltage tester se condition verify karein
 </div>
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
-Use appropriate insulated tools
+Proper insulated tools use karein
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Damaged wire aur equipment ko ignore na karein
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Wet conditions mein electrical work se bachein
 </div>
 
 </div>
 
+<button class="open-btn"
+onclick="openLesson('Electrical Safety')">
 
-<button
-class="open-btn"
-onclick="openLesson('safety')">
-
-<i class="fa-solid fa-shield-halved"></i>
-
-&nbsp; Start Learning
+<i class="fa-solid fa-book-open"></i>
+ Safety Learning
 
 </button>
 
 </div>
 
 
+<!-- MEASUREMENT -->
 
-<!-- CEILING -->
+<div class="learning-card">
+
+<div class="learning-icon">
+<i class="fa-solid fa-ruler-combined"></i>
+</div>
+
+<h3>Electrical Measurement</h3>
+
+<p>
+Multimeter aur basic measuring concepts ko
+samajhna electrical troubleshooting mein useful hai.
+</p>
+
+<div class="lesson-list">
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Voltage measurement ka basic concept
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Continuity testing ka basic concept
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Resistance measurement ka basic concept
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Meter range aur symbols ko samajhna
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openLesson('Electrical Measurement')">
+
+<i class="fa-solid fa-book-open"></i>
+ Start Learning
+
+</button>
+
+</div>
+
+
+<!-- FALSE CEILING -->
 
 <div class="learning-card">
 
@@ -453,20 +399,24 @@ onclick="openLesson('safety')">
 <i class="fa-solid fa-border-all"></i>
 </div>
 
-<h3>
-False Ceiling Basics
-</h3>
+<h3>False Ceiling Basics</h3>
 
 <p>
-Basic workflow for ceiling installation.
+False ceiling work mein measurement se lekar
+frame, board installation aur finishing tak
+multiple steps hote hain.
 </p>
-
 
 <div class="lesson-list">
 
 <div class="lesson">
 <i class="fa-solid fa-circle-check"></i>
 Measurement & Marking
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Level Checking
 </div>
 
 <div class="lesson">
@@ -484,340 +434,99 @@ Board Installation
 Joint Finishing
 </div>
 
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Final Finishing & Inspection
 </div>
 
+</div>
 
-<button
-class="open-btn"
-onclick="openLesson('ceiling')">
+<button class="open-btn"
+onclick="openLesson('False Ceiling Basics')">
 
 <i class="fa-solid fa-book-open"></i>
-
-&nbsp; Start Learning
+ Start Learning
 
 </button>
 
 </div>
 
+
+<!-- PLUMBING -->
+
+<div class="learning-card">
+
+<div class="learning-icon">
+<i class="fa-solid fa-faucet-drip"></i>
+</div>
+
+<h3>Plumbing Basics</h3>
+
+<p>
+Basic plumbing mein pipes, fittings, leakage,
+water supply aur drainage systems ka overview
+samjha ja sakta hai.
+</p>
+
+<div class="lesson-list">
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Pipe aur fitting identification
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Bathroom plumbing basics
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Kitchen water connection basics
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Leakage checking ka basic concept
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Water tank connection overview
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openLesson('Plumbing Basics')">
+
+<i class="fa-solid fa-book-open"></i>
+ Start Learning
+
+</button>
+
+</div>
 
 </main>
 
 
-
-<!-- LESSON MODAL -->
-
-<div
-id="lessonView"
-class="lesson-view"
-onclick="closeLessonOutside(event)">
-
-<div class="lesson-box">
-
-
-<div class="lesson-header">
-
-<h3 id="lessonTitle">
-Lesson
-</h3>
-
-<button
-class="close-btn"
-onclick="closeLesson()">
-
-<i class="fa-solid fa-xmark"></i>
-
-</button>
-
-</div>
-
-
-<div
-id="lessonContent"
-class="lesson-content">
-</div>
-
-
-</div>
-
-</div>
-
-
-
 <script>
 
-
-const lessons={
-
-
-electrical:{
-
-title:"Electrical Basics",
-
-content:`
-
-<h4>1. Voltage</h4>
-
-<p>
-Voltage is the electrical potential difference
-that pushes electric current through a circuit.
-It is measured in volts (V).
-</p>
-
-
-<h4>2. Current</h4>
-
-<p>
-Current is the flow of electric charge.
-It is measured in amperes (A).
-</p>
-
-
-<h4>3. Resistance</h4>
-
-<p>
-Resistance opposes the flow of current.
-It is measured in ohms (Ω).
-</p>
-
-
-<h4>4. Power</h4>
-
-<p>
-Electrical power represents the rate at which
-electrical energy is used. It is measured in watts (W).
-</p>
-
-
-<h4>5. AC & DC</h4>
-
-<p>
-AC means alternating current, while DC means
-direct current. Household electricity is commonly
-supplied as AC.
-</p>
-
-
-<div class="info-box">
-Basic formulas: V = I × R and P = V × I.
-</div>
-
-`
-
-},
-
-
-
-wiring:{
-
-title:"House Wiring",
-
-content:`
-
-<h4>Switch Wiring</h4>
-
-<p>
-A switch is used to control a circuit.
-For household installations, wiring should be
-performed according to applicable electrical codes.
-</p>
-
-
-<h4>Light Point</h4>
-
-<p>
-A light point normally includes the supply circuit,
-switching arrangement and the light fitting.
-</p>
-
-
-<h4>Fan Point</h4>
-
-<p>
-A fan point requires the appropriate supply,
-switch/control arrangement and properly rated
-protective device.
-</p>
-
-
-<h4>MCB & DB</h4>
-
-<p>
-An MCB helps protect a circuit from overcurrent.
-A distribution board organizes and protects
-individual circuits.
-</p>
-
-
-<div class="warning-box">
-Never work on an energized circuit. Electrical
-installation should be carried out by a qualified
-person and according to local regulations.
-</div>
-
-`
-
-},
-
-
-
-safety:{
-
-title:"Electrical Safety",
-
-content:`
-
-<h4>Before Starting Work</h4>
-
-<p>
-Identify the correct circuit and switch off the
-appropriate supply before beginning work.
-</p>
-
-
-<h4>Verify the Circuit</h4>
-
-<p>
-Use an appropriate tester or meter to verify that
-the circuit is de-energized before touching conductors.
-</p>
-
-
-<h4>Use Proper Tools</h4>
-
-<p>
-Use tools and protective equipment suitable for
-the electrical task and keep equipment in good condition.
-</p>
-
-
-<h4>Keep the Area Safe</h4>
-
-<p>
-Keep the work area dry, organized and free from
-unnecessary hazards.
-</p>
-
-
-<div class="warning-box">
-Electrical work can cause serious injury or fire.
-If you are not qualified for the work, contact a
-licensed electrician.
-</div>
-
-`
-
-},
-
-
-
-ceiling:{
-
-title:"False Ceiling Basics",
-
-content:`
-
-<h4>1. Measurement & Marking</h4>
-
-<p>
-Measure the room carefully and mark the required
-ceiling level before starting the framework.
-</p>
-
-
-<h4>2. Framework</h4>
-
-<p>
-Install the appropriate framework according to
-the ceiling system and manufacturer instructions.
-</p>
-
-
-<h4>3. Board Installation</h4>
-
-<p>
-Fix the selected ceiling boards using the correct
-fasteners and spacing for the system being installed.
-</p>
-
-
-<h4>4. Joint Finishing</h4>
-
-<p>
-Treat joints correctly and prepare the surface
-for the final finish.
-</p>
-
-
-<div class="info-box">
-Always check the manufacturer's installation
-instructions for the specific ceiling material.
-</div>
-
-`
-
-}
-
-};
-
-
-
-function openLesson(type){
-
-const lesson=lessons[type];
-
-if(!lesson)return;
-
+function openLesson(name){
 
 localStorage.setItem(
 "psw_current_lesson",
-lesson.title
+name
 );
 
-
-document.getElementById(
-"lessonTitle"
-).textContent=
-lesson.title;
-
-
-document.getElementById(
-"lessonContent"
-).innerHTML=
-lesson.content;
-
-
-document.getElementById(
-"lessonView"
-).classList.add("show");
+alert(
+name +
+"\n\nLesson section selected."
+);
 
 }
-
-
-
-function closeLesson(){
-
-document.getElementById(
-"lessonView"
-).classList.remove("show");
-
-}
-
-
-
-function closeLessonOutside(event){
-
-if(event.target.id==="lessonView"){
-
-closeLesson();
-
-}
-
-}
-
 
 </script>
 
-
 </body>
-
 </html>
