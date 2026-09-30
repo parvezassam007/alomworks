@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -46,11 +45,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   border-radius:20px;
   padding:20px;
   margin-bottom:14px;
-  transition:.2s;
-}
-
-.package:active{
-  transform:scale(.98);
+  box-shadow:0 5px 18px rgba(15,23,42,.04);
 }
 
 .package-icon{
@@ -78,10 +73,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 }
 
 .package ul{
-  margin:13px 0 0 18px;
+  margin-top:12px;
+  padding-left:18px;
   color:#475569;
   font-size:12px;
-  line-height:1.8;
+  line-height:1.9;
 }
 
 .package-price{
@@ -110,17 +106,57 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   cursor:pointer;
 }
 
-.package-price button:active{
-  transform:scale(.96);
+.contact-box{
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  border-radius:18px;
+  padding:18px;
+  margin-top:18px;
+}
+
+.contact-box h3{
+  font-size:15px;
+  color:#1e3a8a;
+  margin-bottom:8px;
+}
+
+.contact-box p{
+  font-size:12px;
+  color:#475569;
+  line-height:1.6;
+}
+
+.contact-number{
+  display:block;
+  margin-top:8px;
+  color:#2563eb;
+  font-weight:bold;
+}
+
+.about-box{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:18px;
+  padding:18px;
+  margin-top:14px;
+}
+
+.about-box h3{
+  font-size:15px;
+  margin-bottom:8px;
+}
+
+.about-box p{
+  color:#64748b;
+  font-size:12px;
+  line-height:1.7;
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <header class="topbar">
 
@@ -131,13 +167,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </div>
 
 <div>
-
 <h1>Parbez Smart Works</h1>
-
-<p>
-Electrical • Ceiling • Plumbing
-</p>
-
+<p>Electrical • Ceiling • Plumbing</p>
 </div>
 
 </div>
@@ -145,14 +176,12 @@ Electrical • Ceiling • Plumbing
 </header>
 
 
-
 <main class="page-container">
 
 
 <div class="page-title">
 
-<button
-class="back-btn"
+<button class="back-btn"
 onclick="location.href='index.html'">
 
 <i class="fa-solid fa-arrow-left"></i>
@@ -164,62 +193,39 @@ onclick="location.href='index.html'">
 </div>
 
 
-
 <!-- ELECTRICAL -->
 
 <div class="package">
 
 <div class="package-icon">
-
 <i class="fa-solid fa-bolt"></i>
-
 </div>
 
-
-<h3>
-Basic Electrical Package
-</h3>
-
+<h3>Basic Electrical Package</h3>
 
 <p>
-Basic electrical installation and checking
-for homes and small projects.
+Basic electrical work for homes, shops and small projects.
 </p>
 
-
 <ul>
-
 <li>Switch installation</li>
-
 <li>Light points</li>
-
 <li>Fan points</li>
-
 <li>Basic wiring</li>
-
 <li>Electrical checking</li>
-
 </ul>
-
 
 <div class="package-price">
 
-<strong>
-Custom Price
-</strong>
+<strong>Custom Price</strong>
 
-
-<button
-onclick="usePackage('Basic Electrical Package')">
-
+<button onclick="usePackage('Basic Electrical Package')">
 Use Package
-
 </button>
 
 </div>
 
 </div>
-
 
 
 <!-- CEILING -->
@@ -227,56 +233,34 @@ Use Package
 <div class="package">
 
 <div class="package-icon">
-
 <i class="fa-solid fa-border-all"></i>
-
 </div>
 
-
-<h3>
-False Ceiling Package
-</h3>
-
+<h3>False Ceiling Package</h3>
 
 <p>
-False ceiling installation with finishing
-and lighting work.
+False ceiling work with lighting and finishing.
 </p>
 
-
 <ul>
-
-<li>Measurement & marking</li>
-
+<li>Gypsum ceiling</li>
+<li>PVC ceiling</li>
 <li>Frame work</li>
-
-<li>Gypsum / PVC ceiling</li>
-
-<li>LED lighting work</li>
-
+<li>LED lighting</li>
 <li>Joint finishing</li>
-
 </ul>
-
 
 <div class="package-price">
 
-<strong>
-Custom Price
-</strong>
+<strong>Custom Price</strong>
 
-
-<button
-onclick="usePackage('False Ceiling Package')">
-
+<button onclick="usePackage('False Ceiling Package')">
 Use Package
-
 </button>
 
 </div>
 
 </div>
-
 
 
 <!-- PLUMBING -->
@@ -284,56 +268,34 @@ Use Package
 <div class="package">
 
 <div class="package-icon">
-
 <i class="fa-solid fa-faucet-drip"></i>
-
 </div>
 
-
-<h3>
-Plumbing Package
-</h3>
-
+<h3>Plumbing Package</h3>
 
 <p>
-Basic plumbing installation, repair and
-leakage checking.
+Basic plumbing services for home and commercial work.
 </p>
 
-
 <ul>
-
 <li>Bathroom plumbing</li>
-
 <li>Kitchen plumbing</li>
-
 <li>Pipe work</li>
-
 <li>Leakage repair</li>
-
-<li>Tank work</li>
-
+<li>Water tank work</li>
 </ul>
-
 
 <div class="package-price">
 
-<strong>
-Custom Price
-</strong>
+<strong>Custom Price</strong>
 
-
-<button
-onclick="usePackage('Plumbing Package')">
-
+<button onclick="usePackage('Plumbing Package')">
 Use Package
-
 </button>
 
 </div>
 
 </div>
-
 
 
 <!-- COMPLETE HOME -->
@@ -341,50 +303,30 @@ Use Package
 <div class="package">
 
 <div class="package-icon">
-
 <i class="fa-solid fa-house"></i>
-
 </div>
 
-
-<h3>
-Complete Home Package
-</h3>
-
+<h3>Complete Home Package</h3>
 
 <p>
-Combined electrical, false ceiling and
-plumbing services for home projects.
+Complete home service combining electrical,
+false ceiling and plumbing work.
 </p>
 
-
 <ul>
-
 <li>Electrical work</li>
-
 <li>False ceiling work</li>
-
-<li>LED lighting</li>
-
 <li>Plumbing work</li>
-
-<li>Final checking & finishing</li>
-
+<li>LED installation</li>
+<li>Final checking</li>
 </ul>
-
 
 <div class="package-price">
 
-<strong>
-Custom Price
-</strong>
+<strong>Custom Price</strong>
 
-
-<button
-onclick="usePackage('Complete Home Package')">
-
+<button onclick="usePackage('Complete Home Package')">
 Use Package
-
 </button>
 
 </div>
@@ -392,12 +334,54 @@ Use Package
 </div>
 
 
+<!-- ABOUT -->
+
+<div class="about-box">
+
+<h3>About Parbez Smart Works</h3>
+
+<p>
+Parbez Smart Works provides electrical, false ceiling
+and plumbing services for homes, shops and other
+projects. Our work focuses on proper installation,
+clean finishing and practical solutions according to
+the customer's requirements.
+</p>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="contact-box">
+
+<h3>
+<i class="fa-solid fa-phone"></i>
+Contact Electrician
+</h3>
+
+<p>
+For service enquiries, estimates and work booking,
+contact Parbez Smart Works.
+</p>
+
+<span class="contact-number">
+<i class="fa-solid fa-phone"></i>
+9395305384
+</span>
+
+<span class="contact-number">
+<i class="fa-solid fa-phone"></i>
+9833762577
+</span>
+
+</div>
+
+
 </main>
 
 
-
 <script>
-
 
 function usePackage(name){
 
@@ -406,21 +390,16 @@ localStorage.setItem(
 name
 );
 
-
 alert(
 name +
 "\n\nPackage selected successfully."
 );
 
-
 location.href="estimate.html";
 
 }
 
-
 </script>
 
-
 </body>
-
 </html>
