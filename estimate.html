@@ -14,6 +14,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <link rel="stylesheet" href="style.css">
 
+<!-- PNG DOWNLOAD -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <style>
 
 .page-container{
@@ -60,7 +63,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 .field label{
   display:block;
   font-size:12px;
-  font-weight:600;
+  font-weight:bold;
   margin-bottom:6px;
 }
 
@@ -98,7 +101,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 .item-grid{
   display:grid;
-  grid-template-columns:1fr 75px 95px;
+  grid-template-columns:1fr 70px 90px;
   gap:8px;
 }
 
@@ -132,17 +135,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   cursor:pointer;
 }
 
-.package-notice{
-  display:none;
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  color:#1d4ed8;
-  padding:11px;
-  border-radius:11px;
-  margin-bottom:13px;
-  font-size:12px;
-}
-
 .summary{
   margin-top:18px;
   background:#f8fafc;
@@ -164,63 +156,159 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   font-weight:bold;
 }
 
-.primary{
+.primary,
+.secondary,
+.whatsapp-btn,
+.png-btn{
   width:100%;
   border:0;
-  background:#2563eb;
-  color:white;
   padding:14px;
   border-radius:12px;
-  margin-top:16px;
-  font-size:15px;
+  margin-top:10px;
+  font-size:14px;
   font-weight:bold;
   cursor:pointer;
 }
 
+.primary{
+  background:#2563eb;
+  color:white;
+}
+
 .secondary{
+  background:#f1f5f9;
+  color:#334155;
+}
+
+.whatsapp-btn{
+  background:#16a34a;
+  color:white;
+}
+
+.png-btn{
+  background:#7c3aed;
+  color:white;
+}
+
+
+/* =========================
+   ESTIMATE PREVIEW
+========================= */
+
+#estimatePreview{
+  background:white;
+  border:1px solid #dbe2ea;
+  border-radius:16px;
+  padding:20px;
+  margin-top:18px;
+}
+
+.preview-header{
+  text-align:center;
+  border-bottom:2px solid #2563eb;
+  padding-bottom:14px;
+  margin-bottom:15px;
+}
+
+.preview-header h2{
+  color:#2563eb;
+  font-size:21px;
+}
+
+.preview-header p{
+  color:#64748b;
+  font-size:11px;
+  margin-top:4px;
+}
+
+.preview-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.preview-box{
+  background:#f8fafc;
+  border-radius:10px;
+  padding:10px;
+}
+
+.preview-box span{
+  display:block;
+  color:#64748b;
+  font-size:10px;
+}
+
+.preview-box strong{
+  display:block;
+  margin-top:3px;
+  font-size:12px;
+}
+
+.preview-table{
   width:100%;
-  border:0;
-  background:#dcfce7;
-  color:#15803d;
-  padding:13px;
-  border-radius:12px;
-  margin-top:10px;
+  border-collapse:collapse;
+  font-size:11px;
+}
+
+.preview-table th,
+.preview-table td{
+  border-bottom:1px solid #e2e8f0;
+  padding:8px 4px;
+  text-align:left;
+}
+
+.preview-table th{
+  background:#eff6ff;
+  color:#1e40af;
+}
+
+.preview-table td:last-child,
+.preview-table th:last-child{
+  text-align:right;
+}
+
+.preview-total{
+  margin-top:15px;
+  margin-left:auto;
+  max-width:280px;
+}
+
+.preview-total div{
+  display:flex;
+  justify-content:space-between;
+  padding:5px 0;
+  font-size:12px;
+}
+
+.preview-grand{
+  border-top:2px solid #2563eb;
+  margin-top:5px;
+  padding-top:8px !important;
+  font-size:16px !important;
   font-weight:bold;
-  cursor:pointer;
+  color:#2563eb;
+}
+
+.preview-footer{
+  border-top:1px solid #e2e8f0;
+  margin-top:18px;
+  padding-top:12px;
+  text-align:center;
+  color:#64748b;
+  font-size:10px;
+  line-height:1.6;
 }
 
 @media(max-width:500px){
 
   .item-grid{
-    grid-template-columns:1fr 65px 85px;
+    grid-template-columns:1fr 60px 80px;
   }
 
-}
-
-@media print{
-
-  .topbar,
-  .back-btn,
-  .add-btn,
-  .delete-item,
-  .primary,
-  .secondary{
-    display:none !important;
-  }
-
-  body{
-    background:white;
-    padding:0;
-  }
-
-  .page-container{
-    max-width:none;
-    padding:10px;
-  }
-
-  .form-card{
-    border:1px solid #ccc;
-    box-shadow:none;
+  .preview-info{
+    grid-template-columns:1fr;
   }
 
 }
@@ -238,9 +326,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <div class="brand">
 
 <div class="brand-logo">
-
 <i class="fa-solid fa-bolt"></i>
-
 </div>
 
 <div>
@@ -258,14 +344,12 @@ Electrical • Ceiling • Plumbing
 </header>
 
 
-
 <main class="page-container">
 
 
 <div class="page-title">
 
-<button
-class="back-btn"
+<button class="back-btn"
 onclick="location.href='index.html'">
 
 <i class="fa-solid fa-arrow-left"></i>
@@ -277,88 +361,71 @@ onclick="location.href='index.html'">
 </div>
 
 
-
-<!-- CUSTOMER -->
+<!-- =========================
+     CUSTOMER
+========================= -->
 
 <div class="form-card">
 
-<h3>
-Customer Details
-</h3>
+<h3>Customer Details</h3>
 
 
 <div class="field">
 
-<label>
-Customer Name
-</label>
+<label>Customer Name</label>
 
 <input
 id="customerName"
 type="text"
-placeholder="Enter customer name">
+placeholder="Enter customer name"
+oninput="updatePreview()">
 
 </div>
 
 
-
 <div class="field">
 
-<label>
-Mobile Number
-</label>
+<label>Mobile Number</label>
 
 <input
 id="customerMobile"
 type="tel"
 maxlength="10"
 inputmode="numeric"
-placeholder="10 digit mobile number">
+placeholder="10 digit mobile number"
+oninput="updatePreview()">
 
 </div>
-
 
 
 <div class="field">
 
-<label>
-Site Address
-</label>
+<label>Site Address</label>
 
 <textarea
 id="siteAddress"
-placeholder="Enter site address"></textarea>
+placeholder="Enter site address"
+oninput="updatePreview()"></textarea>
 
 </div>
 
 </div>
 
 
-
-<!-- ITEMS -->
+<!-- =========================
+     ITEMS
+========================= -->
 
 <div class="form-card">
 
-<h3>
-Work / Items
-</h3>
-
-
-<div
-id="packageNotice"
-class="package-notice">
-</div>
-
+<h3>Work / Items</h3>
 
 <div id="items"></div>
 
-
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem()">
 
 <i class="fa-solid fa-plus"></i>
-
 Add Item
 
 </button>
@@ -366,21 +433,18 @@ Add Item
 </div>
 
 
-
-<!-- CHARGES -->
+<!-- =========================
+     CHARGES
+========================= -->
 
 <div class="form-card">
 
-<h3>
-Additional Charges
-</h3>
+<h3>Additional Charges</h3>
 
 
 <div class="field">
 
-<label>
-Labour Charge
-</label>
+<label>Labour Charge</label>
 
 <input
 id="labour"
@@ -392,12 +456,9 @@ oninput="calculateTotal()">
 </div>
 
 
-
 <div class="field">
 
-<label>
-Discount
-</label>
+<label>Discount</label>
 
 <input
 id="discount"
@@ -409,15 +470,11 @@ oninput="calculateTotal()">
 </div>
 
 
-
 <div class="summary">
-
 
 <div class="summary-row">
 
-<span>
-Items Total
-</span>
+<span>Items Total</span>
 
 <strong id="itemsTotal">
 ₹0
@@ -426,12 +483,9 @@ Items Total
 </div>
 
 
-
 <div class="summary-row">
 
-<span>
-Labour
-</span>
+<span>Labour</span>
 
 <strong id="labourTotal">
 ₹0
@@ -440,12 +494,9 @@ Labour
 </div>
 
 
-
 <div class="summary-row">
 
-<span>
-Discount
-</span>
+<span>Discount</span>
 
 <strong id="discountTotal">
 ₹0
@@ -454,12 +505,9 @@ Discount
 </div>
 
 
-
 <div class="summary-row total">
 
-<span>
-Grand Total
-</span>
+<span>Grand Total</span>
 
 <strong id="grandTotal">
 ₹0
@@ -467,33 +515,215 @@ Grand Total
 
 </div>
 
-
 </div>
 
 
-
-<button
-class="primary"
+<button class="primary"
 onclick="saveEstimate()">
 
 <i class="fa-solid fa-floppy-disk"></i>
-
 Save Estimate
 
 </button>
 
 
+<button class="png-btn"
+onclick="downloadEstimatePNG()">
 
-<button
-class="secondary"
-onclick="printEstimate()">
+<i class="fa-solid fa-image"></i>
+Download Estimate PNG
+
+</button>
+
+
+<button class="whatsapp-btn"
+onclick="sendEstimateWhatsApp()">
+
+<i class="fa-brands fa-whatsapp"></i>
+Send Estimate on WhatsApp
+
+</button>
+
+
+<button class="secondary"
+onclick="window.print()">
 
 <i class="fa-solid fa-print"></i>
-
 Print / PDF
 
 </button>
 
+</div>
+
+
+<!-- =========================
+     PREVIEW
+========================= -->
+
+<div id="estimatePreview">
+
+<div class="preview-header">
+
+<h2>PARBEZ SMART WORKS</h2>
+
+<p>
+Electrical • False Ceiling • Plumbing
+</p>
+
+<p>
+Hojai, Assam
+</p>
+
+</div>
+
+
+<div class="preview-info">
+
+<div class="preview-box">
+
+<span>Estimate No.</span>
+
+<strong id="previewEstimateNo">
+-
+</strong>
+
+</div>
+
+
+<div class="preview-box">
+
+<span>Date</span>
+
+<strong id="previewDate">
+-
+</strong>
+
+</div>
+
+
+<div class="preview-box">
+
+<span>Customer</span>
+
+<strong id="previewCustomer">
+-
+</strong>
+
+</div>
+
+
+<div class="preview-box">
+
+<span>Mobile</span>
+
+<strong id="previewMobile">
+-
+</strong>
+
+</div>
+
+
+<div class="preview-box"
+style="grid-column:1/-1;">
+
+<span>Site Address</span>
+
+<strong id="previewAddress">
+-
+</strong>
+
+</div>
+
+</div>
+
+
+<table class="preview-table">
+
+<thead>
+
+<tr>
+
+<th>Work / Item</th>
+
+<th>Qty</th>
+
+<th>Rate</th>
+
+<th>Amount</th>
+
+</tr>
+
+</thead>
+
+<tbody id="previewItems">
+
+</tbody>
+
+</table>
+
+
+<div class="preview-total">
+
+<div>
+
+<span>Items Total</span>
+
+<strong id="previewItemsTotal">
+₹0
+</strong>
+
+</div>
+
+
+<div>
+
+<span>Labour</span>
+
+<strong id="previewLabour">
+₹0
+</strong>
+
+</div>
+
+
+<div>
+
+<span>Discount</span>
+
+<strong id="previewDiscount">
+₹0
+</strong>
+
+</div>
+
+
+<div class="preview-grand">
+
+<span>Grand Total</span>
+
+<strong id="previewGrand">
+₹0
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="preview-footer">
+
+<strong>Parbez Smart Works</strong><br>
+
+Electrical • False Ceiling • Plumbing<br>
+
+Contact: 9395305384 / 9833762577<br>
+
+Hojai, Assam<br><br>
+
+Professional service for electrical,
+ceiling and plumbing work.
+
+</div>
 
 </div>
 
@@ -501,34 +731,124 @@ Print / PDF
 </main>
 
 
-
 <script>
 
+/* =========================
+   BUSINESS
+========================= */
 
-let itemNumber=0;
+const BUSINESS = {
 
+name: "Parbez Smart Works",
+
+owner: "Parbez Alom Badrul Alom",
+
+phone1: "9395305384",
+
+phone2: "9833762577",
+
+location: "Hojai, Assam",
+
+about:
+"Parbez Smart Works provides Electrical, False Ceiling and Plumbing services in Hojai, Assam. We handle house wiring, light and fan points, MCB and DB work, gypsum and PVC false ceiling, LED lighting, plumbing, leakage repair, bathroom and kitchen pipe work. Our goal is to provide reliable workmanship, clear estimates and convenient service for customers."
+
+};
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let itemNumber = 0;
+
+
+/* =========================
+   ESTIMATE NUMBER
+========================= */
+
+function getEstimateNumber(){
+
+let number =
+Number(
+localStorage.getItem("psw_estimate_number")
+) || 1;
+
+return "EST-" +
+String(number).padStart(4,"0");
+
+}
+
+
+function increaseEstimateNumber(){
+
+let number =
+Number(
+localStorage.getItem("psw_estimate_number")
+) || 1;
+
+localStorage.setItem(
+"psw_estimate_number",
+number + 1
+);
+
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+function getToday(){
+
+return new Date().toLocaleDateString(
+"en-IN",
+{
+day:"2-digit",
+month:"2-digit",
+year:"numeric"
+}
+);
+
+}
+
+
+/* =========================
+   MONEY
+========================= */
+
+function money(value){
+
+return "₹" +
+Number(value || 0)
+.toLocaleString("en-IN");
+
+}
 
 
 /* =========================
    ADD ITEM
 ========================= */
 
-function addItem(name="", qty=1, rate=0){
+function addItem(
+itemData = null
+){
 
 itemNumber++;
 
 
-const container=
+const container =
 document.getElementById("items");
 
 
-const div=
+const div =
 document.createElement("div");
 
 
 div.className="item";
 
-div.dataset.id=itemNumber;
+
+div.dataset.id=
+itemNumber;
 
 
 div.innerHTML=`
@@ -539,20 +859,23 @@ div.innerHTML=`
 class="item-name"
 type="text"
 placeholder="Item / Work"
-value="${escapeHTML(name)}">
+value="${escapeHTML(itemData?.name || "")}"
+oninput="calculateTotal()">
+
 
 <input
 class="item-qty"
 type="number"
 min="1"
-value="${qty}"
+value="${itemData?.qty || 1}"
 oninput="calculateTotal()">
+
 
 <input
 class="item-rate"
 type="number"
 min="0"
-value="${rate}"
+value="${itemData?.rate || 0}"
 oninput="calculateTotal()">
 
 </div>
@@ -560,9 +883,7 @@ oninput="calculateTotal()">
 
 <div class="item-total">
 
-<span>
-Item Total
-</span>
+<span>Item Total</span>
 
 <span class="row-total">
 ₹0
@@ -576,7 +897,6 @@ class="delete-item"
 onclick="removeItem(this)">
 
 <i class="fa-solid fa-trash"></i>
-
 Remove
 
 </button>
@@ -592,23 +912,23 @@ calculateTotal();
 }
 
 
-
 /* =========================
    REMOVE ITEM
 ========================= */
 
 function removeItem(button){
 
-button.closest(".item").remove();
+button
+.closest(".item")
+.remove();
 
 calculateTotal();
 
 }
 
 
-
 /* =========================
-   CALCULATE TOTAL
+   CALCULATE
 ========================= */
 
 function calculateTotal(){
@@ -620,87 +940,311 @@ document
 .querySelectorAll(".item")
 .forEach(item=>{
 
-const qty=
+const qty =
 Number(
 item.querySelector(".item-qty").value
-)||0;
+) || 0;
 
 
-const rate=
+const rate =
 Number(
 item.querySelector(".item-rate").value
-)||0;
+) || 0;
 
 
-const amount=
-qty*rate;
+const amount =
+qty * rate;
 
 
-total+=amount;
+total += amount;
 
 
-item.querySelector(".row-total")
-.textContent=
-"₹"+amount.toLocaleString("en-IN");
+item
+.querySelector(".row-total")
+.textContent =
+money(amount);
 
 });
 
 
-
-const labour=
+const labour =
 Number(
 document.getElementById("labour").value
-)||0;
+) || 0;
 
 
-const discount=
+const discount =
 Number(
 document.getElementById("discount").value
-)||0;
+) || 0;
 
 
-const grand=
+const grand =
 Math.max(
 0,
-total+labour-discount
+total + labour - discount
 );
 
 
-
 document.getElementById("itemsTotal")
-.textContent=
-"₹"+total.toLocaleString("en-IN");
+.textContent =
+money(total);
 
 
 document.getElementById("labourTotal")
-.textContent=
-"₹"+labour.toLocaleString("en-IN");
+.textContent =
+money(labour);
 
 
 document.getElementById("discountTotal")
-.textContent=
-"₹"+discount.toLocaleString("en-IN");
+.textContent =
+money(discount);
 
 
 document.getElementById("grandTotal")
-.textContent=
-"₹"+grand.toLocaleString("en-IN");
+.textContent =
+money(grand);
+
+
+updatePreview();
 
 }
 
 
+/* =========================
+   GET ITEMS
+========================= */
+
+function getItems(){
+
+const items=[];
+
+
+document
+.querySelectorAll(".item")
+.forEach(item=>{
+
+const name =
+item
+.querySelector(".item-name")
+.value
+.trim();
+
+
+const qty =
+Number(
+item.querySelector(".item-qty").value
+) || 0;
+
+
+const rate =
+Number(
+item.querySelector(".item-rate").value
+) || 0;
+
+
+if(name){
+
+items.push({
+
+name:name,
+
+qty:qty,
+
+rate:rate,
+
+amount:qty * rate
+
+});
+
+}
+
+});
+
+
+return items;
+
+}
+
 
 /* =========================
-   SAVE ESTIMATE
+   PREVIEW
+========================= */
+
+function updatePreview(){
+
+const estimateNo =
+getEstimateNumber();
+
+
+document.getElementById(
+"previewEstimateNo"
+).textContent =
+estimateNo;
+
+
+document.getElementById(
+"previewDate"
+).textContent =
+getToday();
+
+
+const customer =
+document.getElementById(
+"customerName"
+).value.trim();
+
+
+const mobile =
+document.getElementById(
+"customerMobile"
+).value.trim();
+
+
+const address =
+document.getElementById(
+"siteAddress"
+).value.trim();
+
+
+document.getElementById(
+"previewCustomer"
+).textContent =
+customer || "-";
+
+
+document.getElementById(
+"previewMobile"
+).textContent =
+mobile || "-";
+
+
+document.getElementById(
+"previewAddress"
+).textContent =
+address || "-";
+
+
+const items =
+getItems();
+
+
+const tbody =
+document.getElementById(
+"previewItems"
+);
+
+
+if(!items.length){
+
+tbody.innerHTML=`
+
+<tr>
+
+<td colspan="4"
+style="text-align:center;color:#64748b;">
+
+No items added
+
+</td>
+
+</tr>
+
+`;
+
+}else{
+
+tbody.innerHTML =
+items.map(item=>`
+
+<tr>
+
+<td>
+${escapeHTML(item.name)}
+</td>
+
+<td>
+${item.qty}
+</td>
+
+<td>
+${money(item.rate)}
+</td>
+
+<td>
+${money(item.amount)}
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+let itemsTotal=0;
+
+
+items.forEach(item=>{
+itemsTotal += item.amount;
+});
+
+
+const labour =
+Number(
+document.getElementById("labour").value
+) || 0;
+
+
+const discount =
+Number(
+document.getElementById("discount").value
+) || 0;
+
+
+const grand =
+Math.max(
+0,
+itemsTotal + labour - discount
+);
+
+
+document.getElementById(
+"previewItemsTotal"
+).textContent =
+money(itemsTotal);
+
+
+document.getElementById(
+"previewLabour"
+).textContent =
+money(labour);
+
+
+document.getElementById(
+"previewDiscount"
+).textContent =
+money(discount);
+
+
+document.getElementById(
+"previewGrand"
+).textContent =
+money(grand);
+
+}
+
+
+/* =========================
+   SAVE
 ========================= */
 
 function saveEstimate(){
 
-const customer=
-document
-.getElementById("customerName")
-.value
-.trim();
+const customer =
+document.getElementById(
+"customerName"
+).value.trim();
 
 
 if(!customer){
@@ -714,61 +1258,14 @@ return;
 }
 
 
-
-const items=[];
-
-
-document
-.querySelectorAll(".item")
-.forEach(item=>{
-
-const name=
-item
-.querySelector(".item-name")
-.value
-.trim();
-
-
-const qty=
-Number(
-item
-.querySelector(".item-qty")
-.value
-)||0;
-
-
-const rate=
-Number(
-item
-.querySelector(".item-rate")
-.value
-)||0;
-
-
-if(name){
-
-items.push({
-
-name:name,
-
-qty:qty,
-
-rate:rate,
-
-amount:qty*rate
-
-});
-
-}
-
-});
-
+const items =
+getItems();
 
 
 if(!items.length){
 
 alert(
-"Please add at least one work item."
+"At least one item/work add karo."
 );
 
 return;
@@ -776,34 +1273,31 @@ return;
 }
 
 
-
-const itemsTotal=
+const itemsTotal =
 items.reduce(
 (sum,item)=>
-sum+item.amount,
+sum + item.amount,
 0
 );
 
 
-
-const labour=
+const labour =
 Number(
 document.getElementById("labour").value
-)||0;
+) || 0;
 
 
-const discount=
+const discount =
 Number(
 document.getElementById("discount").value
-)||0;
+) || 0;
 
 
-const total=
+const total =
 Math.max(
 0,
-itemsTotal+labour-discount
+itemsTotal + labour - discount
 );
-
 
 
 const estimate={
@@ -811,29 +1305,26 @@ const estimate={
 id:Date.now(),
 
 estimateNo:
-"EST-"+String(
-Date.now()
-).slice(-6),
+getEstimateNumber(),
 
 date:
-new Date()
-.toLocaleDateString("en-IN"),
+getToday(),
 
 customer:customer,
 
 mobile:
-document
-.getElementById("customerMobile")
-.value
-.trim(),
+document.getElementById(
+"customerMobile"
+).value.trim(),
 
 address:
-document
-.getElementById("siteAddress")
-.value
-.trim(),
+document.getElementById(
+"siteAddress"
+).value.trim(),
 
 items:items,
+
+itemsTotal:itemsTotal,
 
 labour:labour,
 
@@ -844,18 +1335,15 @@ total:total
 };
 
 
-
-const estimates=
+const estimates =
 JSON.parse(
 localStorage.getItem(
 "psw_estimates"
-)||"[]"
+) || "[]"
 );
 
 
-
 estimates.push(estimate);
-
 
 
 localStorage.setItem(
@@ -864,38 +1352,273 @@ JSON.stringify(estimates)
 );
 
 
-
-/* Clear selected package */
-
-localStorage.removeItem(
-"psw_selected_package"
-);
-
+increaseEstimateNumber();
 
 
 alert(
-"Estimate saved successfully!\n\n"+
+"Estimate saved successfully!\n\n" +
 estimate.estimateNo
 );
 
 
-
-location.href="history.html";
+updatePreview();
 
 }
-
 
 
 /* =========================
-   PRINT
+   WHATSAPP
 ========================= */
 
-function printEstimate(){
+function sendEstimateWhatsApp(){
 
-window.print();
+const customer =
+document.getElementById(
+"customerName"
+).value.trim();
+
+
+const mobile =
+document.getElementById(
+"customerMobile"
+).value.trim();
+
+
+if(!customer){
+
+alert(
+"Customer name enter karo."
+);
+
+return;
 
 }
 
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert(
+"Customer ka 10 digit mobile number enter karo."
+);
+
+return;
+
+}
+
+
+const items =
+getItems();
+
+
+if(!items.length){
+
+alert(
+"At least one item/work add karo."
+);
+
+return;
+
+}
+
+
+const itemsTotal =
+items.reduce(
+(sum,item)=>
+sum + item.amount,
+0
+);
+
+
+const labour =
+Number(
+document.getElementById("labour").value
+) || 0;
+
+
+const discount =
+Number(
+document.getElementById("discount").value
+) || 0;
+
+
+const total =
+Math.max(
+0,
+itemsTotal + labour - discount
+);
+
+
+let message =
+`*PARBEZ SMART WORKS*
+
+*ESTIMATE*
+Estimate No: ${getEstimateNumber()}
+Date: ${getToday()}
+
+*Customer:*
+${customer}
+
+*Mobile:*
+${mobile}
+
+*Site Address:*
+${document.getElementById("siteAddress").value.trim() || "-"}
+
+*WORK / ITEMS:*
+`;
+
+
+items.forEach(
+(item,index)=>{
+
+message +=
+`\n${index + 1}. ${item.name}
+Qty: ${item.qty}
+Rate: ${money(item.rate)}
+Amount: ${money(item.amount)}
+`;
+
+}
+);
+
+
+message +=
+`
+*Items Total:* ${money(itemsTotal)}
+
+*Labour:* ${money(labour)}
+
+*Discount:* ${money(discount)}
+
+*GRAND TOTAL:* ${money(total)}
+
+*Parbez Smart Works*
+Electrical • False Ceiling • Plumbing
+
+Owner:
+${BUSINESS.owner}
+
+Contact:
+${BUSINESS.phone1}
+${BUSINESS.phone2}
+
+Location:
+${BUSINESS.location}
+
+About:
+${BUSINESS.about}
+
+Thank you.
+`;
+
+
+let number =
+mobile.replace(/\D/g,"");
+
+
+if(number.length === 10){
+
+number =
+"91" + number;
+
+}
+
+
+const url =
+"https://wa.me/" +
+number +
+"?text=" +
+encodeURIComponent(
+message.trim()
+);
+
+
+window.open(
+url,
+"_blank"
+);
+
+}
+
+
+/* =========================
+   PNG DOWNLOAD
+========================= */
+
+async function downloadEstimatePNG(){
+
+const customer =
+document.getElementById(
+"customerName"
+).value.trim();
+
+
+if(!customer){
+
+alert(
+"Customer name enter karo."
+);
+
+return;
+
+}
+
+
+updatePreview();
+
+
+const preview =
+document.getElementById(
+"estimatePreview"
+);
+
+
+try{
+
+const canvas =
+await html2canvas(
+preview,
+{
+scale:2,
+backgroundColor:"#ffffff",
+useCORS:true
+}
+);
+
+
+const link =
+document.createElement("a");
+
+
+const number =
+getEstimateNumber();
+
+
+link.download =
+number +
+"-Parbez-Smart-Works.png";
+
+
+link.href =
+canvas.toDataURL(
+"image/png"
+);
+
+
+link.click();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"PNG download nahi ho saka."
+);
+
+}
+
+}
 
 
 /* =========================
@@ -905,79 +1628,91 @@ window.print();
 function escapeHTML(value){
 
 return String(value)
-
 .replace(/&/g,"&amp;")
-
 .replace(/</g,"&lt;")
-
 .replace(/>/g,"&gt;")
-
 .replace(/"/g,"&quot;")
-
 .replace(/'/g,"&#039;");
 
 }
 
 
-
 /* =========================
-   PACKAGE AUTO LOAD
+   PACKAGE SUPPORT
 ========================= */
 
 function loadSelectedPackage(){
 
-const packageName=
+const selected =
 localStorage.getItem(
 "psw_selected_package"
 );
 
 
-if(packageName){
+if(!selected){
 
-const notice=
-document.getElementById(
-"packageNotice"
-);
-
-
-notice.style.display="block";
-
-
-notice.innerHTML=
-`
-<i class="fa-solid fa-box"></i>
-<strong>${escapeHTML(packageName)}</strong>
- selected. You can edit the item and rate below.
-`;
-
-
-addItem(
-packageName,
-1,
-0
-);
-
+return;
 
 }
 
-else{
+
+const packageNames={
+
+"Basic Electrical Package":
+"Basic Electrical Work",
+
+"False Ceiling Package":
+"False Ceiling Work",
+
+"Plumbing Package":
+"Plumbing Work",
+
+"Complete Home Package":
+"Complete Home Work"
+
+};
+
+
+const name =
+packageNames[selected] ||
+selected;
+
+
+const firstItem =
+document.querySelector(
+".item-name"
+);
+
+
+if(firstItem && !firstItem.value){
+
+firstItem.value=name;
+
+calculateTotal();
+
+}
+
+
+localStorage.removeItem(
+"psw_selected_package"
+);
+
+}
+
+
+/* =========================
+   START
+========================= */
 
 addItem();
 
-}
-
-}
-
-
-
-/* START */
-
 loadSelectedPackage();
 
+updatePreview();
 
 </script>
 
 
 </body>
 
-</html>
+  </html>
