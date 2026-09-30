@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+
+<title>My Profile | Parbez Smart Works</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.page-container{
+  max-width:700px;
+  margin:auto;
+  padding:18px;
+}
+
+.page-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.back-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:white;
+  color:#2563eb;
+}
+
+.profile-header{
+  background:linear-gradient(
+    135deg,
+    #2563eb,
+    #1d4ed8
+  );
+
+  color:white;
+  border-radius:22px;
+  padding:25px;
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.profile-logo{
+  width:75px;
+  height:75px;
+  margin:auto;
+  border-radius:23px;
+  background:rgba(255,255,255,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+}
+
+.profile-header h2{
+  margin-top:12px;
+  font-size:21px;
+}
+
+.profile-header p{
+  margin-top:5px;
+  font-size:12px;
+  opacity:.85;
+}
+
+.form-card{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:20px;
+  padding:18px;
+}
+
+.field{
+  margin-bottom:14px;
+}
+
+.field label{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.field input,
+.field textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #dbe2ea;
+  border-radius:11px;
+  background:#f8fafc;
+  outline:none;
+}
+
+.field textarea{
+  min-height:75px;
+  resize:vertical;
+}
+
+.save-btn{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-weight:bold;
+  font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="brand">
+
+<div class="brand-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<div>
+<h1>Parbez Smart Works</h1>
+<p>Electrical • Ceiling • Plumbing</p>
+</div>
+
+</div>
+
+</header>
+
+
+<main class="page-container">
+
+
+<div class="page-title">
+
+<button class="back-btn"
+onclick="location.href='index.html'">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+<h2>My Profile</h2>
+
+</div>
+
+
+<div class="profile-header">
+
+<div class="profile-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<h2 id="displayWorkName">
+Parbez Smart Works
+</h2>
+
+<p>
+Electrical • False Ceiling • Plumbing
+</p>
+
+</div>
+
+
+<div class="form-card">
+
+<div class="field">
+
+<label>Work / Business Name</label>
+
+<input id="workName"
+value="Parbez Smart Works">
+
+</div>
+
+
+<div class="field">
+
+<label>Owner Name</label>
+
+<input id="ownerName"
+value="Parbez Alom Badrul Alom">
+
+</div>
+
+
+<div class="field">
+
+<label>Mobile Number</label>
+
+<input id="mobile"
+type="tel"
+maxlength="10"
+inputmode="numeric"
+placeholder="10 digit mobile number">
+
+</div>
+
+
+<div class="field">
+
+<label>Location</label>
+
+<input id="location"
+value="Hojai, Assam">
+
+</div>
+
+
+<div class="field">
+
+<label>Instagram</label>
+
+<input id="instagram"
+value="@parbez_works">
+
+</div>
+
+
+<div class="field">
+
+<label>YouTube</label>
+
+<input id="youtube"
+value="@parbezworks">
+
+</div>
+
+
+<div class="field">
+
+<label>About Your Work</label>
+
+<textarea id="about"
+placeholder="Write about your business"></textarea>
+
+</div>
+
+
+<button class="save-btn"
+onclick="saveProfile()">
+
+<i class="fa-solid fa-floppy-disk"></i>
+Save Profile
+
+</button>
+
+</div>
+
+</main>
+
+
+<script>
+
+const saved=
+JSON.parse(
+localStorage.getItem("psw_profile") || "null"
+);
+
+
+if(saved){
+
+document.getElementById("workName").value=
+saved.workName || "Parbez Smart Works";
+
+document.getElementById("ownerName").value=
+saved.ownerName || "";
+
+document.getElementById("mobile").value=
+saved.mobile || "";
+
+document.getElementById("location").value=
+saved.location || "Hojai, Assam";
+
+document.getElementById("instagram").value=
+saved.instagram || "@parbez_works";
+
+document.getElementById("youtube").value=
+saved.youtube || "@parbezworks";
+
+document.getElementById("about").value=
+saved.about || "";
+
+document.getElementById("displayWorkName")
+.textContent=
+saved.workName || "Parbez Smart Works";
+
+}
+
+
+function saveProfile(){
+
+const profile={
+
+workName:
+document.getElementById("workName")
+.value.trim(),
+
+ownerName:
+document.getElementById("ownerName")
+.value.trim(),
+
+mobile:
+document.getElementById("mobile")
+.value.trim(),
+
+location:
+document.getElementById("location")
+.value.trim(),
+
+instagram:
+document.getElementById("instagram")
+.value.trim(),
+
+youtube:
+document.getElementById("youtube")
+.value.trim(),
+
+about:
+document.getElementById("about")
+.value.trim()
+
+};
+
+
+localStorage.setItem(
+"psw_profile",
+JSON.stringify(profile)
+);
+
+
+document.getElementById("displayWorkName")
+.textContent=
+profile.workName ||
+"Parbez Smart Works";
+
+
+alert("Profile saved successfully.");
+
+}
+
+</script>
+
+</body>
+</html>
