@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>History | Parbez Smart Works</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.page-container{
+  max-width:900px;
+  margin:auto;
+  padding:18px;
+}
+
+.page-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.back-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:white;
+  color:#2563eb;
+}
+
+.tabs{
+  display:flex;
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:13px;
+  padding:4px;
+  margin-bottom:16px;
+}
+
+.tabs button{
+  flex:1;
+  border:0;
+  padding:11px;
+  border-radius:10px;
+  background:transparent;
+  font-weight:bold;
+  color:#64748b;
+}
+
+.tabs button.active{
+  background:#2563eb;
+  color:white;
+}
+
+.document-card{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:17px;
+  padding:16px;
+  margin-bottom:12px;
+}
+
+.doc-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.doc-number{
+  font-size:13px;
+  font-weight:bold;
+  color:#2563eb;
+}
+
+.doc-date{
+  font-size:11px;
+  color:#64748b;
+}
+
+.customer{
+  font-size:16px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.amount{
+  font-size:19px;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+.status{
+  display:inline-block;
+  margin-top:8px;
+  padding:5px 9px;
+  border-radius:8px;
+  font-size:10px;
+  font-weight:bold;
+}
+
+.paid{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.partial{
+  background:#fef3c7;
+  color:#b45309;
+}
+
+.unpaid{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.doc-actions{
+  display:flex;
+  gap:8px;
+  margin-top:13px;
+}
+
+.doc-actions button{
+  flex:1;
+  border:0;
+  padding:10px;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.view{
+  background:#eff6ff;
+  color:#2563eb;
+}
+
+.delete{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.empty{
+  text-align:center;
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:18px;
+  padding:40px 20px;
+  color:#64748b;
+}
+
+.empty i{
+  font-size:35px;
+  margin-bottom:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="brand">
+
+<div class="brand-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<div>
+<h1>Parbez Smart Works</h1>
+<p>Electrical • Ceiling • Plumbing</p>
+</div>
+
+</div>
+
+</header>
+
+
+<main class="page-container">
+
+
+<div class="page-title">
+
+<button class="back-btn"
+onclick="location.href='index.html'">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+<h2>History</h2>
+
+</div>
+
+
+<div class="tabs">
+
+<button id="estimateTab"
+class="active"
+onclick="showHistory('estimates')">
+
+Estimates
+
+</button>
+
+
+<button id="billTab"
+onclick="showHistory('bills')">
+
+Bills
+
+</button>
+
+</div>
+
+
+<div id="historyList"></div>
+
+
+</main>
+
+
+<script>
+
+let currentType="estimates";
+
+
+function getData(type){
+
+if(type==="estimates"){
+
+return JSON.parse(
+localStorage.getItem("psw_estimates") || "[]"
+);
+
+}
+
+return JSON.parse(
+localStorage.getItem("psw_bills") || "[]"
+);
+
+}
+
+
+function showHistory(type){
+
+currentType=type;
+
+
+document
+.getElementById("estimateTab")
+.classList.toggle(
+"active",
+type==="estimates"
+);
+
+
+document
+.getElementById("billTab")
+.classList.toggle(
+"active",
+type==="bills"
+);
+
+
+renderHistory();
+
+}
+
+
+function renderHistory(){
+
+const list=
+document.getElementById("historyList");
+
+const data=getData(currentType);
+
+
+if(!data.length){
+
+list.innerHTML=`
+
+<div class="empty">
+
+<i class="fa-solid fa-folder-open"></i>
+
+<h3>No ${currentType} found</h3>
+
+<p style="font-size:12px;margin-top:6px;">
+Saved ${currentType} will appear here.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+list.innerHTML=
+data
+.slice()
+.reverse()
+.map(doc=>{
+
+const isBill=
+currentType==="bills";
+
+const number=
+isBill
+?doc.billNo
+:doc.estimateNo;
+
+const status=
+isBill
+?doc.status
+:"Estimate";
+
+
+let statusClass="";
+
+if(status==="Paid")
+statusClass="paid";
+
+if(status==="Partial")
+statusClass="partial";
+
+if(status==="Unpaid")
+statusClass="unpaid";
+
+
+return `
+
+<div class="document-card">
+
+<div class="doc-top">
+
+<div class="doc-number">
+${escapeHTML(number || "Document")}
+</div>
+
+<div class="doc-date">
+${escapeHTML(doc.date || "")}
+</div>
+
+</div>
+
+
+<div class="customer">
+${escapeHTML(doc.customer || "Unknown Customer")}
+</div>
+
+
+<div class="amount">
+₹${Number(doc.total || 0)
+.toLocaleString("en-IN")}
+</div>
+
+
+<span class="status ${statusClass}">
+${escapeHTML(status)}
+</span>
+
+
+<div class="doc-actions">
+
+<button class="view"
+onclick="viewDocument(${doc.id})">
+
+<i class="fa-solid fa-eye"></i>
+View
+
+</button>
+
+
+<button class="delete"
+onclick="deleteDocument(${doc.id})">
+
+<i class="fa-solid fa-trash"></i>
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+})
+.join("");
+
+}
+
+
+function viewDocument(id){
+
+const data=getData(currentType);
+
+const doc=data.find(
+item=>item.id===id
+);
+
+if(!doc)return;
+
+
+let text="";
+
+
+if(currentType==="bills"){
+
+text=
+`Bill: ${doc.billNo}
+Date: ${doc.date}
+Customer: ${doc.customer}
+Mobile: ${doc.mobile || "-"}
+Address: ${doc.address || "-"}
+Total: ₹${doc.total}
+Paid: ₹${doc.paid}
+Due: ₹${doc.due}
+Status: ${doc.status}
+Notes: ${doc.notes || "-"}`;
+
+}else{
+
+text=
+`Estimate: ${doc.estimateNo}
+Date: ${doc.date}
+Customer: ${doc.customer}
+Mobile: ${doc.mobile || "-"}
+Address: ${doc.address || "-"}
+Total: ₹${doc.total}`;
+
+}
+
+
+alert(text);
+
+}
+
+
+function deleteDocument(id){
+
+if(!confirm(
+"Delete this document?"
+))return;
+
+
+let data=getData(currentType);
+
+data=data.filter(
+item=>item.id!==id
+);
+
+
+localStorage.setItem(
+currentType==="bills"
+?"psw_bills"
+:"psw_estimates",
+JSON.stringify(data)
+);
+
+
+renderHistory();
+
+}
+
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+showHistory("estimates");
+
+</script>
+
+</body>
+</html>
