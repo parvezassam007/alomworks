@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rate Setting | Parbez Smart Works</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.page-container{
+  max-width:850px;
+  margin:auto;
+  padding:18px;
+}
+
+.page-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.back-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:white;
+  color:#2563eb;
+}
+
+.form-card,
+.rate-list{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.field{
+  margin-bottom:14px;
+}
+
+.field label{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.field input{
+  width:100%;
+  padding:13px;
+  border:1px solid #dbe2ea;
+  border-radius:11px;
+  background:#f8fafc;
+  outline:none;
+}
+
+.primary{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-weight:bold;
+}
+
+.rate-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:13px 0;
+  border-bottom:1px solid #e2e8f0;
+}
+
+.rate-item:last-child{
+  border-bottom:0;
+}
+
+.rate-name{
+  font-weight:bold;
+  font-size:14px;
+}
+
+.rate-unit{
+  color:#64748b;
+  font-size:11px;
+  margin-top:3px;
+}
+
+.rate-price{
+  color:#2563eb;
+  font-weight:bold;
+}
+
+.delete-rate{
+  border:0;
+  background:#fee2e2;
+  color:#dc2626;
+  padding:7px 9px;
+  border-radius:8px;
+  margin-left:7px;
+}
+
+.empty{
+  text-align:center;
+  color:#64748b;
+  padding:25px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="brand">
+
+<div class="brand-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<div>
+<h1>Parbez Smart Works</h1>
+<p>Electrical • Ceiling • Plumbing</p>
+</div>
+
+</div>
+
+</header>
+
+
+<main class="page-container">
+
+<div class="page-title">
+
+<button class="back-btn"
+onclick="location.href='index.html'">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+<h2>Rate Setting</h2>
+
+</div>
+
+
+<div class="form-card">
+
+<h3>Add New Rate</h3>
+
+<br>
+
+<div class="field">
+
+<label>Item / Work Name</label>
+
+<input id="rateName"
+placeholder="Example: Fan Point">
+
+</div>
+
+
+<div class="field">
+
+<label>Unit</label>
+
+<input id="rateUnit"
+placeholder="Example: Point">
+
+</div>
+
+
+<div class="field">
+
+<label>Rate (₹)</label>
+
+<input id="rateValue"
+type="number"
+min="0"
+placeholder="Example: 250">
+
+</div>
+
+
+<button class="primary"
+onclick="saveRate()">
+
+<i class="fa-solid fa-plus"></i>
+Add Rate
+
+</button>
+
+</div>
+
+
+<div class="rate-list">
+
+<h3>My Rates</h3>
+
+<br>
+
+<div id="rateList"></div>
+
+</div>
+
+</main>
+
+
+<script>
+
+function getRates(){
+
+return JSON.parse(
+localStorage.getItem("psw_rates") || "[]"
+);
+
+}
+
+
+function saveRate(){
+
+const name=
+document.getElementById("rateName")
+.value.trim();
+
+const unit=
+document.getElementById("rateUnit")
+.value.trim();
+
+const rate=
+Number(
+document.getElementById("rateValue")
+.value
+);
+
+
+if(!name){
+
+alert("Enter item/work name.");
+
+return;
+
+}
+
+if(!rate || rate<0){
+
+alert("Enter valid rate.");
+
+return;
+
+}
+
+
+const rates=getRates();
+
+
+rates.push({
+
+id:Date.now(),
+
+name:name,
+
+unit:unit || "Unit",
+
+rate:rate
+
+});
+
+
+localStorage.setItem(
+"psw_rates",
+JSON.stringify(rates)
+);
+
+
+document.getElementById("rateName").value="";
+document.getElementById("rateUnit").value="";
+document.getElementById("rateValue").value="";
+
+
+renderRates();
+
+}
+
+
+function deleteRate(id){
+
+const rates=
+getRates()
+.filter(rate=>rate.id!==id);
+
+localStorage.setItem(
+"psw_rates",
+JSON.stringify(rates)
+);
+
+renderRates();
+
+}
+
+
+function renderRates(){
+
+const container=
+document.getElementById("rateList");
+
+const rates=getRates();
+
+
+if(!rates.length){
+
+container.innerHTML=`
+
+<div class="empty">
+
+<i class="fa-solid fa-tags"
+style="font-size:30px;">
+</i>
+
+<p style="margin-top:10px;">
+No rates added yet.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+container.innerHTML=
+rates.map(rate=>`
+
+<div class="rate-item">
+
+<div>
+
+<div class="rate-name">
+${escapeHTML(rate.name)}
+</div>
+
+<div class="rate-unit">
+Per ${escapeHTML(rate.unit)}
+</div>
+
+</div>
+
+
+<div style="display:flex;align-items:center;">
+
+<span class="rate-price">
+₹${Number(rate.rate).toLocaleString("en-IN")}
+</span>
+
+<button class="delete-rate"
+onclick="deleteRate(${rate.id})">
+
+<i class="fa-solid fa-trash"></i>
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+renderRates();
+
+</script>
+
+</body>
+</html>
