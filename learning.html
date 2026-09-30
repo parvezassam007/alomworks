@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+
+<title>Learning | Parbez Smart Works</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.page-container{
+  max-width:850px;
+  margin:auto;
+  padding:18px;
+}
+
+.page-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.back-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:white;
+  color:#2563eb;
+}
+
+.learning-card{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:14px;
+}
+
+.learning-icon{
+  width:52px;
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:15px;
+  background:#dbeafe;
+  color:#2563eb;
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+.learning-card h3{
+  font-size:17px;
+  margin-bottom:7px;
+}
+
+.learning-card p{
+  color:#64748b;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.lesson-list{
+  margin-top:15px;
+}
+
+.lesson{
+  padding:11px;
+  background:#f8fafc;
+  border-radius:10px;
+  margin-bottom:7px;
+  font-size:12px;
+}
+
+.lesson i{
+  color:#2563eb;
+  margin-right:7px;
+}
+
+.open-btn{
+  margin-top:12px;
+  border:0;
+  background:#2563eb;
+  color:white;
+  padding:10px 15px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="brand">
+
+<div class="brand-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<div>
+<h1>Parbez Smart Works</h1>
+<p>Electrical • Ceiling • Plumbing</p>
+</div>
+
+</div>
+
+</header>
+
+
+<main class="page-container">
+
+
+<div class="page-title">
+
+<button class="back-btn"
+onclick="location.href='index.html'">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+<h2>E-Book / Learning</h2>
+
+</div>
+
+
+<!-- ELECTRICAL -->
+
+<div class="learning-card">
+
+<div class="learning-icon">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<h3>Electrical Basics</h3>
+
+<p>
+Basic electrical concepts for beginners.
+</p>
+
+<div class="lesson-list">
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Voltage
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Current
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Resistance
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Power
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+AC & DC
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openLesson('Electrical Basics')">
+
+Start Learning
+
+</button>
+
+</div>
+
+
+<!-- WIRING -->
+
+<div class="learning-card">
+
+<div class="learning-icon">
+<i class="fa-solid fa-plug"></i>
+</div>
+
+<h3>House Wiring</h3>
+
+<p>
+Learn the basics of household wiring,
+switches, lights, fans and distribution boards.
+</p>
+
+<div class="lesson-list">
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Switch Wiring
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Light Point
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Fan Point
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+MCB & DB
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openLesson('House Wiring')">
+
+Start Learning
+
+</button>
+
+</div>
+
+
+<!-- SAFETY -->
+
+<div class="learning-card">
+
+<div class="learning-icon">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+
+<h3>Electrical Safety</h3>
+
+<p>
+Important safety principles for electrical work.
+Always follow local electrical codes and use
+appropriate protective equipment.
+</p>
+
+<div class="lesson-list">
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Switch off supply before work
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Check for live voltage
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Use insulated tools
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openLesson('Electrical Safety')">
+
+Start Learning
+
+</button>
+
+</div>
+
+
+<!-- CEILING -->
+
+<div class="learning-card">
+
+<div class="learning-icon">
+<i class="fa-solid fa-border-all"></i>
+</div>
+
+<h3>False Ceiling Basics</h3>
+
+<p>
+Basic workflow for ceiling installation.
+</p>
+
+<div class="lesson-list">
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Measurement & Marking
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Frame Work
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Board Installation
+</div>
+
+<div class="lesson">
+<i class="fa-solid fa-circle-check"></i>
+Joint Finishing
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openLesson('False Ceiling Basics')">
+
+Start Learning
+
+</button>
+
+</div>
+
+</main>
+
+
+<script>
+
+function openLesson(name){
+
+localStorage.setItem(
+"psw_current_lesson",
+name
+);
+
+alert(
+name +
+"\n\nLesson section selected."
+);
+
+}
+
+</script>
+
+</body>
+</html>
