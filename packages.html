@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+
+<title>Packages | Parbez Smart Works</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.page-container{
+  max-width:850px;
+  margin:auto;
+  padding:18px;
+}
+
+.page-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.back-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:white;
+  color:#2563eb;
+  font-size:17px;
+}
+
+.package{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:14px;
+}
+
+.package-icon{
+  width:52px;
+  height:52px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#dbeafe;
+  color:#2563eb;
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+.package h3{
+  font-size:17px;
+  margin-bottom:7px;
+}
+
+.package p{
+  color:#64748b;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.package-price{
+  margin-top:15px;
+  padding-top:13px;
+  border-top:1px solid #e2e8f0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.package-price strong{
+  color:#2563eb;
+  font-size:15px;
+}
+
+.package-price button{
+  border:0;
+  background:#2563eb;
+  color:white;
+  padding:9px 13px;
+  border-radius:9px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="brand">
+
+<div class="brand-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<div>
+<h1>Parbez Smart Works</h1>
+<p>Electrical • Ceiling • Plumbing</p>
+</div>
+
+</div>
+
+</header>
+
+
+<main class="page-container">
+
+<div class="page-title">
+
+<button class="back-btn"
+onclick="location.href='index.html'">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+<h2>Service Packages</h2>
+
+</div>
+
+
+<div class="package">
+
+<div class="package-icon">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<h3>Basic Electrical Package</h3>
+
+<p>
+Switch installation, light points, fan points,
+basic wiring and electrical checking.
+</p>
+
+<div class="package-price">
+
+<strong>Custom Price</strong>
+
+<button onclick="usePackage('Basic Electrical Package')">
+Use Package
+</button>
+
+</div>
+
+</div>
+
+
+<div class="package">
+
+<div class="package-icon">
+<i class="fa-solid fa-lightbulb"></i>
+</div>
+
+<h3>False Ceiling Package</h3>
+
+<p>
+Gypsum ceiling, PVC ceiling, LED lighting,
+frame work and finishing.
+</p>
+
+<div class="package-price">
+
+<strong>Custom Price</strong>
+
+<button onclick="usePackage('False Ceiling Package')">
+Use Package
+</button>
+
+</div>
+
+</div>
+
+
+<div class="package">
+
+<div class="package-icon">
+<i class="fa-solid fa-faucet-drip"></i>
+</div>
+
+<h3>Plumbing Package</h3>
+
+<p>
+Bathroom plumbing, kitchen plumbing,
+pipe work, leakage repair and tank work.
+</p>
+
+<div class="package-price">
+
+<strong>Custom Price</strong>
+
+<button onclick="usePackage('Plumbing Package')">
+Use Package
+</button>
+
+</div>
+
+</div>
+
+
+<div class="package">
+
+<div class="package-icon">
+<i class="fa-solid fa-house"></i>
+</div>
+
+<h3>Complete Home Package</h3>
+
+<p>
+Electrical + False Ceiling + Plumbing
+for complete home work.
+</p>
+
+<div class="package-price">
+
+<strong>Custom Price</strong>
+
+<button onclick="usePackage('Complete Home Package')">
+Use Package
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+
+<script>
+
+function usePackage(name){
+
+localStorage.setItem(
+"psw_selected_package",
+name
+);
+
+alert(
+name +
+"\n\nPackage selected successfully."
+);
+
+location.href="estimate.html";
+
+}
+
+</script>
+
+</body>
+</html>
