@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -35,6 +36,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   border-radius:13px;
   background:white;
   color:#2563eb;
+  font-size:17px;
+  cursor:pointer;
 }
 
 .profile-header{
@@ -57,9 +60,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   margin:auto;
   border-radius:23px;
   background:rgba(255,255,255,.18);
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:34px;
 }
 
@@ -81,6 +86,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   padding:18px;
 }
 
+.form-card h3{
+  font-size:16px;
+  margin-bottom:16px;
+}
+
 .field{
   margin-bottom:14px;
 }
@@ -96,32 +106,68 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 .field textarea{
   width:100%;
   padding:13px;
+
   border:1px solid #dbe2ea;
   border-radius:11px;
+
   background:#f8fafc;
   outline:none;
+
+  font-size:14px;
+}
+
+.field input:focus,
+.field textarea:focus{
+  border-color:#2563eb;
+  background:white;
 }
 
 .field textarea{
-  min-height:75px;
+  min-height:90px;
   resize:vertical;
 }
 
 .save-btn{
   width:100%;
   padding:14px;
+
   border:0;
   border-radius:12px;
+
   background:#2563eb;
   color:white;
+
   font-weight:bold;
   font-size:14px;
+
+  cursor:pointer;
+}
+
+.save-btn:active{
+  transform:scale(.98);
+}
+
+.success{
+  margin-top:12px;
+  padding:11px;
+
+  background:#dcfce7;
+  color:#15803d;
+
+  border-radius:10px;
+
+  text-align:center;
+  font-size:12px;
+  display:none;
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header class="topbar">
 
@@ -132,8 +178,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </div>
 
 <div>
+
 <h1>Parbez Smart Works</h1>
-<p>Electrical • Ceiling • Plumbing</p>
+
+<p>
+Electrical • Ceiling • Plumbing
+</p>
+
 </div>
 
 </div>
@@ -141,12 +192,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </header>
 
 
+
 <main class="page-container">
 
 
 <div class="page-title">
 
-<button class="back-btn"
+<button
+class="back-btn"
 onclick="location.href='index.html'">
 
 <i class="fa-solid fa-arrow-left"></i>
@@ -158,15 +211,22 @@ onclick="location.href='index.html'">
 </div>
 
 
+
+<!-- PROFILE HEADER -->
+
 <div class="profile-header">
 
 <div class="profile-logo">
+
 <i class="fa-solid fa-bolt"></i>
+
 </div>
+
 
 <h2 id="displayWorkName">
 Parbez Smart Works
 </h2>
+
 
 <p>
 Electrical • False Ceiling • Plumbing
@@ -175,33 +235,57 @@ Electrical • False Ceiling • Plumbing
 </div>
 
 
+
+<!-- FORM -->
+
 <div class="form-card">
 
+<h3>
+Business Information
+</h3>
+
+
+
 <div class="field">
 
-<label>Work / Business Name</label>
+<label>
+Work / Business Name
+</label>
 
-<input id="workName"
-value="Parbez Smart Works">
+<input
+id="workName"
+type="text"
+value="Parbez Smart Works"
+placeholder="Enter business name">
 
 </div>
 
 
+
 <div class="field">
 
-<label>Owner Name</label>
+<label>
+Owner Name
+</label>
 
-<input id="ownerName"
-value="Parbez Alom Badrul Alom">
+<input
+id="ownerName"
+type="text"
+value="Parbez Alom Badrul Alom"
+placeholder="Enter owner name">
 
 </div>
 
 
+
 <div class="field">
 
-<label>Mobile Number</label>
+<label>
+Mobile Number
+</label>
 
-<input id="mobile"
+<input
+id="mobile"
 type="tel"
 maxlength="10"
 inputmode="numeric"
@@ -210,89 +294,146 @@ placeholder="10 digit mobile number">
 </div>
 
 
+
 <div class="field">
 
-<label>Location</label>
+<label>
+Location
+</label>
 
-<input id="location"
-value="Hojai, Assam">
+<input
+id="location"
+type="text"
+value="Hojai, Assam"
+placeholder="Enter business location">
 
 </div>
 
 
+
 <div class="field">
 
-<label>Instagram</label>
+<label>
+Instagram
+</label>
 
-<input id="instagram"
-value="@parbez_works">
+<input
+id="instagram"
+type="text"
+value="@parbez_works"
+placeholder="@username">
 
 </div>
 
 
+
 <div class="field">
 
-<label>YouTube</label>
+<label>
+YouTube
+</label>
 
-<input id="youtube"
-value="@parbezworks">
+<input
+id="youtube"
+type="text"
+value="@parbezworks"
+placeholder="@channel">
 
 </div>
 
 
+
 <div class="field">
 
-<label>About Your Work</label>
+<label>
+About Your Work
+</label>
 
-<textarea id="about"
+<textarea
+id="about"
 placeholder="Write about your business"></textarea>
 
 </div>
 
 
-<button class="save-btn"
+
+<button
+class="save-btn"
 onclick="saveProfile()">
 
 <i class="fa-solid fa-floppy-disk"></i>
-Save Profile
+
+&nbsp; Save Profile
 
 </button>
+
+
+<div
+id="successMessage"
+class="success">
+
+Profile saved successfully.
+
+</div>
 
 </div>
 
 </main>
 
 
+
 <script>
 
-const saved=
-JSON.parse(
+
+/* LOAD PROFILE */
+
+function loadProfile(){
+
+let saved;
+
+try{
+
+saved=JSON.parse(
 localStorage.getItem("psw_profile") || "null"
 );
 
+}catch(error){
 
-if(saved){
+saved=null;
+
+}
+
+
+if(!saved) return;
+
 
 document.getElementById("workName").value=
 saved.workName || "Parbez Smart Works";
 
+
 document.getElementById("ownerName").value=
-saved.ownerName || "";
+saved.ownerName || "Parbez Alom Badrul Alom";
+
 
 document.getElementById("mobile").value=
 saved.mobile || "";
 
+
 document.getElementById("location").value=
 saved.location || "Hojai, Assam";
+
 
 document.getElementById("instagram").value=
 saved.instagram || "@parbez_works";
 
+
 document.getElementById("youtube").value=
 saved.youtube || "@parbezworks";
 
+
 document.getElementById("about").value=
 saved.about || "";
+
 
 document.getElementById("displayWorkName")
 .textContent=
@@ -301,58 +442,136 @@ saved.workName || "Parbez Smart Works";
 }
 
 
+
+/* SAVE PROFILE */
+
 function saveProfile(){
+
+const workName=
+document.getElementById("workName")
+.value.trim();
+
+
+const ownerName=
+document.getElementById("ownerName")
+.value.trim();
+
+
+const mobile=
+document.getElementById("mobile")
+.value.trim();
+
+
+const location=
+document.getElementById("location")
+.value.trim();
+
+
+const instagram=
+document.getElementById("instagram")
+.value.trim();
+
+
+const youtube=
+document.getElementById("youtube")
+.value.trim();
+
+
+const about=
+document.getElementById("about")
+.value.trim();
+
+
+
+if(!workName){
+
+alert("Please enter business name.");
+
+return;
+
+}
+
+
+
+/* MOBILE VALIDATION */
+
+if(
+mobile &&
+!/^[0-9]{10}$/.test(mobile)
+){
+
+alert(
+"Please enter a valid 10 digit mobile number."
+);
+
+return;
+
+}
+
+
 
 const profile={
 
-workName:
-document.getElementById("workName")
-.value.trim(),
+workName:workName,
 
-ownerName:
-document.getElementById("ownerName")
-.value.trim(),
+ownerName:ownerName,
 
-mobile:
-document.getElementById("mobile")
-.value.trim(),
+mobile:mobile,
 
-location:
-document.getElementById("location")
-.value.trim(),
+location:location,
 
-instagram:
-document.getElementById("instagram")
-.value.trim(),
+instagram:instagram,
 
-youtube:
-document.getElementById("youtube")
-.value.trim(),
+youtube:youtube,
 
-about:
-document.getElementById("about")
-.value.trim()
+about:about
 
 };
 
 
+
 localStorage.setItem(
+
 "psw_profile",
+
 JSON.stringify(profile)
+
 );
 
 
-document.getElementById("displayWorkName")
-.textContent=
-profile.workName ||
-"Parbez Smart Works";
+
+document.getElementById(
+"displayWorkName"
+).textContent=
+workName;
 
 
-alert("Profile saved successfully.");
+
+const success=
+document.getElementById(
+"successMessage"
+);
+
+success.style.display="block";
+
+
+setTimeout(()=>{
+
+success.style.display="none";
+
+},2500);
 
 }
 
+
+
+/* LOAD ON PAGE OPEN */
+
+loadProfile();
+
 </script>
 
+
 </body>
+
 </html>
