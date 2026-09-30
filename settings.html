@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+
+<title>Settings | Parbez Smart Works</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.page-container{
+  max-width:700px;
+  margin:auto;
+  padding:18px;
+}
+
+.page-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.back-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:white;
+  color:#2563eb;
+  font-size:17px;
+  cursor:pointer;
+}
+
+.settings-card{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:18px;
+}
+
+.settings-header{
+  padding:18px;
+  border-bottom:1px solid #e2e8f0;
+}
+
+.settings-header h3{
+  font-size:16px;
+}
+
+.settings-header p{
+  margin-top:5px;
+  color:#64748b;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.setting-row{
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  border-bottom:1px solid #e2e8f0;
+}
+
+.setting-row:last-child{
+  border-bottom:0;
+}
+
+.setting-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.setting-icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#eff6ff;
+  color:#2563eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+.setting-text strong{
+  display:block;
+  font-size:13px;
+}
+
+.setting-text span{
+  display:block;
+  margin-top:3px;
+  color:#64748b;
+  font-size:11px;
+}
+
+.info-box{
+  background:#eff6ff;
+  color:#1e40af;
+  border-radius:14px;
+  padding:15px;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.danger-btn{
+  width:100%;
+  border:0;
+  background:#fee2e2;
+  color:#dc2626;
+  padding:13px;
+  border-radius:11px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.contact-btn{
+  display:block;
+  text-align:center;
+  width:100%;
+  background:#2563eb;
+  color:white;
+  padding:13px;
+  border-radius:11px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.version{
+  text-align:center;
+  color:#94a3b8;
+  font-size:11px;
+  margin:20px 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="brand">
+
+<div class="brand-logo">
+<i class="fa-solid fa-bolt"></i>
+</div>
+
+<div>
+<h1>Parbez Smart Works</h1>
+<p>Electrical • Ceiling • Plumbing</p>
+</div>
+
+</div>
+
+</header>
+
+
+<main class="page-container">
+
+
+<div class="page-title">
+
+<button class="back-btn"
+onclick="location.href='index.html'">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+<h2>Settings</h2>
+
+</div>
+
+
+<!-- BUSINESS -->
+
+<div class="settings-card">
+
+<div class="settings-header">
+
+<h3>Business Information</h3>
+
+<p>
+Parbez Smart Works ke business details.
+</p>
+
+</div>
+
+
+<div class="setting-row">
+
+<div class="setting-left">
+
+<div class="setting-icon">
+<i class="fa-solid fa-building"></i>
+</div>
+
+<div class="setting-text">
+
+<strong>Business Name</strong>
+
+<span>Parbez Smart Works</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="setting-row">
+
+<div class="setting-left">
+
+<div class="setting-icon">
+<i class="fa-solid fa-user"></i>
+</div>
+
+<div class="setting-text">
+
+<strong>Owner</strong>
+
+<span>Parbez Alom Badrul Alom</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="setting-row">
+
+<div class="setting-left">
+
+<div class="setting-icon">
+<i class="fa-solid fa-phone"></i>
+</div>
+
+<div class="setting-text">
+
+<strong>Electrician Contact</strong>
+
+<span>9395305384 • 9833762577</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="setting-row">
+
+<div class="setting-left">
+
+<div class="setting-icon">
+<i class="fa-solid fa-location-dot"></i>
+</div>
+
+<div class="setting-text">
+
+<strong>Location</strong>
+
+<span>Hojai, Assam</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ABOUT -->
+
+<div class="settings-card">
+
+<div class="settings-header">
+
+<h3>About Parbez Smart Works</h3>
+
+<p>
+Electrical, False Ceiling aur Plumbing services.
+</p>
+
+</div>
+
+<div style="padding:18px;">
+
+<div class="info-box">
+
+Parbez Smart Works Hojai, Assam mein
+Electrical, False Ceiling aur Plumbing
+services provide karta hai.
+
+House wiring, light aur fan point,
+MCB/DB work, gypsum/PVC false ceiling,
+LED lighting, plumbing, leakage repair,
+bathroom aur kitchen pipe work jaise
+services available hain.
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="settings-card">
+
+<div class="settings-header">
+
+<h3>Contact</h3>
+
+<p>
+Business ke liye directly WhatsApp par contact karein.
+</p>
+
+</div>
+
+<div style="padding:18px;">
+
+<a class="contact-btn"
+href="https://wa.me/919395305384"
+target="_blank">
+
+<i class="fa-brands fa-whatsapp"></i>
+ WhatsApp: 9395305384
+
+</a>
+
+
+<a class="contact-btn"
+href="https://wa.me/919833762577"
+target="_blank"
+style="background:#16a34a;">
+
+<i class="fa-brands fa-whatsapp"></i>
+ WhatsApp: 9833762577
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- DATA -->
+
+<div class="settings-card">
+
+<div class="settings-header">
+
+<h3>App Data</h3>
+
+<p>
+Saved estimates, bills, rates aur profile data
+isi device ke browser mein store hota hai.
+</p>
+
+</div>
+
+
+<div style="padding:18px;">
+
+<button class="danger-btn"
+onclick="clearAppData()">
+
+<i class="fa-solid fa-trash"></i>
+ Clear All App Data
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="version">
+
+Parbez Smart Works<br>
+Electrical • False Ceiling • Plumbing<br>
+Version 1.0
+
+</div>
+
+
+</main>
+
+
+<script>
+
+function clearAppData(){
+
+const confirmDelete = confirm(
+"WARNING!\n\n" +
+"Isse Estimates, Bills, Rates aur Profile data delete ho jayega.\n\n" +
+"Kya aap continue karna chahte hain?"
+);
+
+if(!confirmDelete){
+
+return;
+
+}
+
+
+localStorage.removeItem("psw_estimates");
+localStorage.removeItem("psw_bills");
+localStorage.removeItem("psw_rates");
+localStorage.removeItem("psw_packages");
+localStorage.removeItem("psw_profile");
+localStorage.removeItem("psw_selected_package");
+localStorage.removeItem("psw_current_lesson");
+localStorage.removeItem("psw_bill_number");
+
+
+alert(
+"All app data cleared successfully."
+);
+
+
+location.href="index.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
