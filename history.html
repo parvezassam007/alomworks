@@ -4,6 +4,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
 
 <title>History | Parbez Smart Works</title>
 
@@ -34,6 +35,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   border-radius:13px;
   background:white;
   color:#2563eb;
+  font-size:17px;
+  cursor:pointer;
 }
 
 .tabs{
@@ -53,6 +56,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   background:transparent;
   font-weight:bold;
   color:#64748b;
+  cursor:pointer;
 }
 
 .tabs button.active{
@@ -121,6 +125,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   color:#dc2626;
 }
 
+.estimate-status{
+  background:#dbeafe;
+  color:#2563eb;
+}
+
 .doc-actions{
   display:flex;
   gap:8px;
@@ -134,6 +143,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   border-radius:9px;
   font-size:12px;
   font-weight:bold;
+  cursor:pointer;
 }
 
 .view{
@@ -158,6 +168,117 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 .empty i{
   font-size:35px;
   margin-bottom:12px;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.55);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:200;
+  padding:15px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:600px;
+  max-height:85vh;
+  overflow:auto;
+  background:white;
+  border-radius:22px;
+  padding:20px;
+}
+
+.modal-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:15px;
+}
+
+.close-btn{
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:10px;
+  background:#fee2e2;
+  color:#dc2626;
+  cursor:pointer;
+}
+
+.detail-row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:10px 0;
+  border-bottom:1px solid #e2e8f0;
+  font-size:13px;
+}
+
+.detail-row span{
+  color:#64748b;
+}
+
+.detail-row strong{
+  text-align:right;
+}
+
+.item-table{
+  margin-top:15px;
+  border:1px solid #e2e8f0;
+  border-radius:13px;
+  overflow:hidden;
+}
+
+.item-row{
+  display:grid;
+  grid-template-columns:1fr 50px 85px;
+  gap:5px;
+  padding:10px;
+  font-size:12px;
+  border-bottom:1px solid #e2e8f0;
+}
+
+.item-row:last-child{
+  border-bottom:0;
+}
+
+.item-row.header{
+  background:#f8fafc;
+  font-weight:bold;
+}
+
+.modal-total{
+  margin-top:15px;
+  background:#eff6ff;
+  padding:15px;
+  border-radius:13px;
+  text-align:center;
+}
+
+.modal-total span{
+  display:block;
+  color:#64748b;
+  font-size:12px;
+}
+
+.modal-total strong{
+  display:block;
+  color:#2563eb;
+  font-size:23px;
+  margin-top:4px;
+}
+
+@media(min-width:700px){
+  .modal{
+    align-items:center;
+  }
 }
 
 </style>
@@ -185,7 +306,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <main class="page-container">
 
-
 <div class="page-title">
 
 <button class="back-btn"
@@ -206,14 +326,15 @@ onclick="location.href='index.html'">
 class="active"
 onclick="showHistory('estimates')">
 
+<i class="fa-solid fa-file-invoice"></i>
 Estimates
 
 </button>
 
-
 <button id="billTab"
 onclick="showHistory('bills')">
 
+<i class="fa-solid fa-receipt"></i>
 Bills
 
 </button>
@@ -223,8 +344,36 @@ Bills
 
 <div id="historyList"></div>
 
-
 </main>
+
+
+<!-- VIEW MODAL -->
+
+<div id="viewModal" class="modal"
+onclick="closeModalOutside(event)">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h3 id="modalTitle">
+Document Details
+</h3>
+
+<button class="close-btn"
+onclick="closeModal()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div id="modalContent"></div>
+
+</div>
+
+</div>
 
 
 <script>
@@ -233,6 +382,8 @@ let currentType="estimates";
 
 
 function getData(type){
+
+try{
 
 if(type==="estimates"){
 
@@ -246,13 +397,18 @@ return JSON.parse(
 localStorage.getItem("psw_bills") || "[]"
 );
 
+}catch(error){
+
+return [];
+
+}
+
 }
 
 
 function showHistory(type){
 
 currentType=type;
-
 
 document
 .getElementById("estimateTab")
@@ -261,14 +417,12 @@ document
 type==="estimates"
 );
 
-
 document
 .getElementById("billTab")
 .classList.toggle(
 "active",
 type==="bills"
 );
-
 
 renderHistory();
 
@@ -322,7 +476,7 @@ isBill
 
 const status=
 isBill
-?doc.status
+?(doc.status || "Unpaid")
 :"Estimate";
 
 
@@ -331,11 +485,14 @@ let statusClass="";
 if(status==="Paid")
 statusClass="paid";
 
-if(status==="Partial")
+else if(status==="Partial")
 statusClass="partial";
 
-if(status==="Unpaid")
+else if(status==="Unpaid")
 statusClass="unpaid";
+
+else
+statusClass="estimate-status";
 
 
 return `
@@ -374,7 +531,7 @@ ${escapeHTML(status)}
 <div class="doc-actions">
 
 <button class="view"
-onclick="viewDocument(${doc.id})">
+onclick="viewDocument(${Number(doc.id)})">
 
 <i class="fa-solid fa-eye"></i>
 View
@@ -383,7 +540,7 @@ View
 
 
 <button class="delete"
-onclick="deleteDocument(${doc.id})">
+onclick="deleteDocument(${Number(doc.id)})">
 
 <i class="fa-solid fa-trash"></i>
 Delete
@@ -407,43 +564,211 @@ function viewDocument(id){
 const data=getData(currentType);
 
 const doc=data.find(
-item=>item.id===id
+item=>Number(item.id)===Number(id)
 );
 
 if(!doc)return;
 
 
-let text="";
+const modal=
+document.getElementById("viewModal");
+
+const content=
+document.getElementById("modalContent");
+
+const isBill=
+currentType==="bills";
+
+const number=
+isBill
+?doc.billNo
+:doc.estimateNo;
 
 
-if(currentType==="bills"){
+document.getElementById("modalTitle")
+.textContent=
+isBill
+?"Bill Details"
+:"Estimate Details";
 
-text=
-`Bill: ${doc.billNo}
-Date: ${doc.date}
-Customer: ${doc.customer}
-Mobile: ${doc.mobile || "-"}
-Address: ${doc.address || "-"}
-Total: ₹${doc.total}
-Paid: ₹${doc.paid}
-Due: ₹${doc.due}
-Status: ${doc.status}
-Notes: ${doc.notes || "-"}`;
 
-}else{
+let itemsHTML="";
 
-text=
-`Estimate: ${doc.estimateNo}
-Date: ${doc.date}
-Customer: ${doc.customer}
-Mobile: ${doc.mobile || "-"}
-Address: ${doc.address || "-"}
-Total: ₹${doc.total}`;
+
+if(Array.isArray(doc.items) && doc.items.length){
+
+itemsHTML=`
+
+<div class="item-table">
+
+<div class="item-row header">
+
+<span>Work / Item</span>
+<span>Qty</span>
+<span>Amount</span>
+
+</div>
+
+${doc.items.map(item=>`
+
+<div class="item-row">
+
+<span>
+${escapeHTML(item.name || "-")}
+</span>
+
+<span>
+${Number(item.qty || 0)}
+</span>
+
+<span>
+₹${Number(item.amount || 0)
+.toLocaleString("en-IN")}
+</span>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
 
 }
 
 
-alert(text);
+content.innerHTML=`
+
+<div class="detail-row">
+<span>Document No.</span>
+<strong>${escapeHTML(number || "-")}</strong>
+</div>
+
+<div class="detail-row">
+<span>Date</span>
+<strong>${escapeHTML(doc.date || "-")}</strong>
+</div>
+
+<div class="detail-row">
+<span>Customer</span>
+<strong>${escapeHTML(doc.customer || "-")}</strong>
+</div>
+
+<div class="detail-row">
+<span>Mobile</span>
+<strong>${escapeHTML(doc.mobile || "-")}</strong>
+</div>
+
+<div class="detail-row">
+<span>Address</span>
+<strong>${escapeHTML(doc.address || "-")}</strong>
+</div>
+
+${itemsHTML}
+
+${isBill ? `
+
+<div class="detail-row">
+<span>Labour</span>
+<strong>
+₹${Number(doc.labour || 0)
+.toLocaleString("en-IN")}
+</strong>
+</div>
+
+<div class="detail-row">
+<span>Discount</span>
+<strong>
+₹${Number(doc.discount || 0)
+.toLocaleString("en-IN")}
+</strong>
+</div>
+
+<div class="detail-row">
+<span>Paid</span>
+<strong>
+₹${Number(doc.paid || 0)
+.toLocaleString("en-IN")}
+</strong>
+</div>
+
+<div class="detail-row">
+<span>Due</span>
+<strong>
+₹${Number(doc.due || 0)
+.toLocaleString("en-IN")}
+</strong>
+</div>
+
+<div class="detail-row">
+<span>Status</span>
+<strong>
+${escapeHTML(doc.status || "-")}
+</strong>
+</div>
+
+<div class="detail-row">
+<span>Notes</span>
+<strong>
+${escapeHTML(doc.notes || "-")}
+</strong>
+</div>
+
+` : `
+
+<div class="detail-row">
+<span>Labour</span>
+<strong>
+₹${Number(doc.labour || 0)
+.toLocaleString("en-IN")}
+</strong>
+</div>
+
+<div class="detail-row">
+<span>Discount</span>
+<strong>
+₹${Number(doc.discount || 0)
+.toLocaleString("en-IN")}
+</strong>
+</div>
+
+`}
+
+<div class="modal-total">
+
+<span>Total Amount</span>
+
+<strong>
+₹${Number(doc.total || 0)
+.toLocaleString("en-IN")}
+</strong>
+
+</div>
+
+`;
+
+
+modal.classList.add("show");
+
+}
+
+
+function closeModal(){
+
+document
+.getElementById("viewModal")
+.classList.remove("show");
+
+}
+
+
+function closeModalOutside(event){
+
+if(event.target.id==="viewModal"){
+
+closeModal();
+
+}
 
 }
 
@@ -451,22 +776,25 @@ alert(text);
 function deleteDocument(id){
 
 if(!confirm(
-"Delete this document?"
+"Delete this document permanently?"
 ))return;
 
 
 let data=getData(currentType);
 
 data=data.filter(
-item=>item.id!==id
+item=>Number(item.id)!==Number(id)
 );
 
 
 localStorage.setItem(
+
 currentType==="bills"
 ?"psw_bills"
 :"psw_estimates",
+
 JSON.stringify(data)
+
 );
 
 
@@ -477,7 +805,7 @@ renderHistory();
 
 function escapeHTML(value){
 
-return String(value)
+return String(value ?? "")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
