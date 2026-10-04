@@ -3,18 +3,14 @@
    COMMON JAVASCRIPT
 ========================================= */
 
-
-/* =========================================
-   BUSINESS INFORMATION
-========================================= */
-
 const BUSINESS = {
   name: "Parbez Smart Works",
   owner: "Parbez Alom Badrul Alom",
   phone1: "9395305384",
   phone2: "9833762577",
   location: "Hojai, Assam",
-
+  instagram: "@parbez_works",
+  youtube: "@parbezworks",
   about:
     "Parbez Smart Works provides professional Electrical, False Ceiling and Plumbing services in Hojai, Assam. We handle house wiring, light and fan points, MCB/DB work, gypsum and PVC false ceiling, LED lighting, plumbing, leakage repair and general home electrical work."
 };
@@ -34,13 +30,11 @@ function showMessage(message) {
 ========================================= */
 
 function getToday() {
-
   return new Date().toLocaleDateString("en-IN", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric"
   });
-
 }
 
 
@@ -49,10 +43,21 @@ function getToday() {
 ========================================= */
 
 function money(value) {
+  return "₹" + Number(value || 0).toLocaleString("en-IN");
+}
 
-  return "₹" +
-    Number(value || 0).toLocaleString("en-IN");
 
+/* =========================================
+   SAFE HTML
+========================================= */
+
+function escapeHTML(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 
@@ -61,18 +66,14 @@ function money(value) {
 ========================================= */
 
 function getNextBillNumber() {
-
   const number =
     Number(localStorage.getItem("psw_bill_number")) || 1;
 
-  return "PSW-" +
-    String(number).padStart(4, "0");
-
+  return "PSW-" + String(number).padStart(4, "0");
 }
 
 
 function increaseBillNumber() {
-
   const number =
     Number(localStorage.getItem("psw_bill_number")) || 1;
 
@@ -80,7 +81,6 @@ function increaseBillNumber() {
     "psw_bill_number",
     number + 1
   );
-
 }
 
 
@@ -89,18 +89,14 @@ function increaseBillNumber() {
 ========================================= */
 
 function getNextEstimateNumber() {
-
   const number =
     Number(localStorage.getItem("psw_estimate_number")) || 1;
 
-  return "EST-" +
-    String(number).padStart(4, "0");
-
+  return "EST-" + String(number).padStart(4, "0");
 }
 
 
 function increaseEstimateNumber() {
-
   const number =
     Number(localStorage.getItem("psw_estimate_number")) || 1;
 
@@ -108,57 +104,34 @@ function increaseEstimateNumber() {
     "psw_estimate_number",
     number + 1
   );
-
 }
 
 
 /* =========================================
-   BUSINESS PROFILE
+   PROFILE
 ========================================= */
 
 function getBusinessProfile() {
+  let saved = null;
 
-  const saved =
-    JSON.parse(
+  try {
+    saved = JSON.parse(
       localStorage.getItem("psw_profile") || "null"
     );
+  } catch (e) {
+    saved = null;
+  }
 
   return {
-
-    workName:
-      saved?.workName ||
-      BUSINESS.name,
-
-    ownerName:
-      saved?.ownerName ||
-      BUSINESS.owner,
-
-    mobile:
-      saved?.mobile ||
-      BUSINESS.phone1,
-
-    secondMobile:
-      saved?.secondMobile ||
-      BUSINESS.phone2,
-
-    location:
-      saved?.location ||
-      BUSINESS.location,
-
-    instagram:
-      saved?.instagram ||
-      "@parbez_works",
-
-    youtube:
-      saved?.youtube ||
-      "@parbezworks",
-
-    about:
-      saved?.about ||
-      BUSINESS.about
-
+    workName: saved?.workName || BUSINESS.name,
+    ownerName: saved?.ownerName || BUSINESS.owner,
+    mobile: saved?.mobile || BUSINESS.phone1,
+    secondMobile: saved?.secondMobile || BUSINESS.phone2,
+    location: saved?.location || BUSINESS.location,
+    instagram: saved?.instagram || BUSINESS.instagram,
+    youtube: saved?.youtube || BUSINESS.youtube,
+    about: saved?.about || BUSINESS.about
   };
-
 }
 
 
@@ -168,12 +141,16 @@ function getBusinessProfile() {
 
 function openWhatsApp(phone, message) {
 
-  let number =
-    String(phone || "")
-      .replace(/\D/g, "");
+  let number = String(phone || "")
+    .replace(/\D/g, "");
 
   if (number.length === 10) {
     number = "91" + number;
+  }
+
+  if (number.length < 12) {
+    alert("WhatsApp number invalid hai.");
+    return;
   }
 
   const url =
@@ -183,41 +160,35 @@ function openWhatsApp(phone, message) {
     encodeURIComponent(message || "");
 
   window.open(url, "_blank");
-
 }
 
-
-/* =========================================
-   BUSINESS WHATSAPP
-========================================= */
 
 function openBusinessWhatsApp(message) {
-
   openWhatsApp(
     BUSINESS.phone1,
-    message ||
-    "Hello Parbez Smart Works"
+    message || "Hello Parbez Smart Works"
   );
-
 }
 
 
 /* =========================================
-   DASHBOARD SUMMARY
+   DASHBOARD
 ========================================= */
 
 function updateDashboard() {
 
-  const estimates =
-    JSON.parse(
+  let estimates = [];
+  let bills = [];
+
+  try {
+    estimates = JSON.parse(
       localStorage.getItem("psw_estimates") || "[]"
     );
 
-  const bills =
-    JSON.parse(
+    bills = JSON.parse(
       localStorage.getItem("psw_bills") || "[]"
     );
-
+  } catch (e) {}
 
   const estimateCount =
     document.getElementById("estimateCount");
@@ -231,81 +202,58 @@ function updateDashboard() {
   const dueTotal =
     document.getElementById("dueTotal");
 
-
   if (estimateCount) {
-
-    estimateCount.textContent =
-      estimates.length;
-
+    estimateCount.textContent = estimates.length;
   }
-
 
   if (billCount) {
-
-    billCount.textContent =
-      bills.length;
-
+    billCount.textContent = bills.length;
   }
-
 
   let paid = 0;
   let due = 0;
 
-
   bills.forEach(bill => {
-
     paid += Number(bill.paid || 0);
-
     due += Number(bill.due || 0);
-
   });
 
-
   if (paidTotal) {
-
-    paidTotal.textContent =
-      money(paid);
-
+    paidTotal.textContent = money(paid);
   }
-
 
   if (dueTotal) {
-
-    dueTotal.textContent =
-      money(due);
-
+    dueTotal.textContent = money(due);
   }
-
 }
 
 
 /* =========================================
-   CLEAR APP DATA
+   CLEAR DATA
 ========================================= */
 
 function clearAllData() {
 
-  const confirmDelete =
-    confirm(
-      "Are you sure? This will delete saved estimates, bills, rates and profile data."
-    );
+  if (!confirm(
+    "Are you sure? All saved bills, estimates, rates, packages and profile data will be deleted."
+  )) {
+    return;
+  }
 
-  if (!confirmDelete) return;
+  [
+    "psw_estimates",
+    "psw_bills",
+    "psw_rates",
+    "psw_packages",
+    "psw_profile",
+    "psw_bill_number",
+    "psw_estimate_number"
+  ].forEach(key => {
+    localStorage.removeItem(key);
+  });
 
-
-  localStorage.removeItem("psw_estimates");
-  localStorage.removeItem("psw_bills");
-  localStorage.removeItem("psw_rates");
-  localStorage.removeItem("psw_packages");
-  localStorage.removeItem("psw_profile");
-  localStorage.removeItem("psw_bill_number");
-  localStorage.removeItem("psw_estimate_number");
-
-
-  alert("App data cleared.");
-
+  alert("App data cleared successfully.");
   location.reload();
-
 }
 
 
@@ -313,11 +261,6 @@ function clearAllData() {
    PAGE LOAD
 ========================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
-
-    updateDashboard();
-
-  }
-);
+document.addEventListener("DOMContentLoaded", () => {
+  updateDashboard();
+});
