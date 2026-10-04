@@ -12,453 +12,13 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+<link rel="stylesheet" href="style.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-<style>
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f1f5f9;
-  color:#0f172a;
-}
-
-.topbar{
-  background:linear-gradient(135deg,#2563eb,#1d4ed8);
-  color:white;
-  padding:15px 18px;
-  box-shadow:0 4px 15px rgba(0,0,0,.12);
-}
-
-.brand{
-  max-width:850px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brand-logo{
-  width:45px;
-  height:45px;
-  border-radius:13px;
-  background:white;
-  color:#2563eb;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:21px;
-}
-
-.brand h1{
-  margin:0;
-  font-size:18px;
-}
-
-.brand p{
-  margin:3px 0 0;
-  font-size:11px;
-  opacity:.9;
-}
-
-.page-container{
-  max-width:850px;
-  margin:auto;
-  padding:18px;
-}
-
-.page-title{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px;
-}
-
-.page-title h2{
-  margin:0;
-  font-size:21px;
-}
-
-.back-btn{
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:13px;
-  background:white;
-  color:#2563eb;
-  font-size:17px;
-  cursor:pointer;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
-}
-
-.form-card{
-  background:white;
-  border:1px solid #e2e8f0;
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:18px;
-  box-shadow:0 3px 12px rgba(15,23,42,.04);
-}
-
-.form-card h3{
-  font-size:16px;
-  margin:0 0 15px;
-}
-
-.field{
-  margin-bottom:14px;
-}
-
-.field label{
-  display:block;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:6px;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  border:1px solid #dbe2ea;
-  border-radius:11px;
-  padding:13px;
-  outline:none;
-  font-size:14px;
-  background:#f8fafc;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-  border-color:#2563eb;
-  background:white;
-}
-
-.field textarea{
-  min-height:75px;
-  resize:vertical;
-}
-
-.two-col{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.item{
-  border:1px solid #e2e8f0;
-  border-radius:15px;
-  padding:13px;
-  margin-bottom:12px;
-  background:#f8fafc;
-}
-
-.item-grid{
-  display:grid;
-  grid-template-columns:1.5fr 60px 90px 90px;
-  gap:8px;
-}
-
-.item input,
-.item select{
-  width:100%;
-  padding:11px 8px;
-  border:1px solid #dbe2ea;
-  border-radius:10px;
-  outline:none;
-  background:white;
-}
-
-.item-total{
-  margin-top:9px;
-  display:flex;
-  justify-content:space-between;
-  font-size:13px;
-  font-weight:bold;
-}
-
-.delete-item{
-  margin-top:9px;
-  border:0;
-  background:#fee2e2;
-  color:#dc2626;
-  padding:8px 11px;
-  border-radius:9px;
-  cursor:pointer;
-}
-
-.add-btn,
-.primary,
-.whatsapp-btn,
-.png-btn,
-.print-btn,
-.new-btn{
-  width:100%;
-  border:0;
-  padding:13px;
-  border-radius:11px;
-  margin-top:10px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.add-btn{
-  border:1px dashed #2563eb;
-  background:#eff6ff;
-  color:#2563eb;
-}
-
-.primary{
-  background:#2563eb;
-  color:white;
-}
-
-.primary:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
-
-.whatsapp-btn{
-  background:#16a34a;
-  color:white;
-}
-
-.png-btn{
-  background:#7c3aed;
-  color:white;
-}
-
-.print-btn{
-  background:#0f172a;
-  color:white;
-}
-
-.new-btn{
-  background:#e2e8f0;
-  color:#0f172a;
-}
-
-.summary{
-  margin-top:18px;
-  background:#f8fafc;
-  border-radius:15px;
-  padding:15px;
-}
-
-.summary-row{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:10px;
-  font-size:14px;
-}
-
-.summary-row.total{
-  border-top:1px solid #e2e8f0;
-  padding-top:13px;
-  font-size:19px;
-  font-weight:bold;
-}
-
-#estimatePreview{
-  background:white;
-  border:1px solid #dbe2ea;
-  border-radius:16px;
-  padding:22px;
-  margin-top:18px;
-}
-
-.preview-header{
-  text-align:center;
-  border-bottom:2px solid #2563eb;
-  padding-bottom:14px;
-  margin-bottom:15px;
-}
-
-.preview-header h2{
-  color:#2563eb;
-  font-size:21px;
-  margin:0;
-}
-
-.preview-header p{
-  color:#64748b;
-  font-size:11px;
-  margin:5px 0 0;
-}
-
-.preview-about{
-  color:#64748b;
-  font-size:10px;
-  line-height:1.5;
-  margin-top:8px;
-}
-
-.preview-info{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.preview-box{
-  background:#f8fafc;
-  border-radius:10px;
-  padding:10px;
-}
-
-.preview-box span{
-  display:block;
-  color:#64748b;
-  font-size:10px;
-}
-
-.preview-box strong{
-  display:block;
-  margin-top:3px;
-  font-size:12px;
-  word-break:break-word;
-}
-
-.preview-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:11px;
-}
-
-.preview-table th,
-.preview-table td{
-  border-bottom:1px solid #e2e8f0;
-  padding:8px 4px;
-  text-align:left;
-}
-
-.preview-table th{
-  background:#eff6ff;
-  color:#1e40af;
-}
-
-.preview-table th:nth-child(n+2),
-.preview-table td:nth-child(n+2){
-  text-align:right;
-}
-
-.preview-total{
-  margin-top:15px;
-  margin-left:auto;
-  max-width:280px;
-}
-
-.preview-total div{
-  display:flex;
-  justify-content:space-between;
-  padding:5px 0;
-  font-size:12px;
-}
-
-.preview-grand{
-  border-top:2px solid #2563eb;
-  margin-top:5px;
-  padding-top:8px!important;
-  font-size:17px!important;
-  font-weight:bold;
-  color:#2563eb;
-}
-
-.preview-notes{
-  margin-top:18px;
-  padding:12px;
-  background:#f8fafc;
-  border-radius:10px;
-  font-size:11px;
-  line-height:1.6;
-}
-
-.preview-footer{
-  border-top:1px solid #e2e8f0;
-  margin-top:18px;
-  padding-top:12px;
-  text-align:center;
-  color:#64748b;
-  font-size:10px;
-  line-height:1.6;
-}
-
-.hidden{
-  display:none!important;
-}
-
-@media(max-width:650px){
-
-  .item-grid{
-    grid-template-columns:1fr 65px;
-  }
-
-  .item-unit{
-    grid-column:1;
-  }
-
-  .item-rate{
-    grid-column:2;
-  }
-
-  .two-col{
-    grid-template-columns:1fr;
-  }
-
-  .preview-info{
-    grid-template-columns:1fr;
-  }
-
-  .preview-table{
-    font-size:9px;
-  }
-
-  .preview-table th,
-  .preview-table td{
-    padding:7px 2px;
-  }
-
-}
-
-@media print{
-
-  body{
-    background:white;
-  }
-
-  .topbar,
-  .page-title,
-  .form-card{
-    display:none!important;
-  }
-
-  .page-container{
-    max-width:none;
-    padding:0;
-  }
-
-  #estimatePreview{
-    display:block!important;
-    border:0;
-    margin:0;
-    border-radius:0;
-    box-shadow:none;
-  }
-
-}
-
-</style>
 
 </head>
 
-
 <body>
-
 
 <header class="topbar">
 
@@ -469,13 +29,8 @@ body{
 </div>
 
 <div>
-
 <h1>Parbez Smart Works</h1>
-
-<p>
-Electrical • Ceiling • Plumbing
-</p>
-
+<p>Electrical • Ceiling • Plumbing</p>
 </div>
 
 </div>
@@ -488,8 +43,7 @@ Electrical • Ceiling • Plumbing
 
 <div class="page-title">
 
-<button
-class="back-btn"
+<button class="back-btn"
 onclick="location.href='index.html'">
 
 <i class="fa-solid fa-arrow-left"></i>
@@ -501,45 +55,34 @@ onclick="location.href='index.html'">
 </div>
 
 
-
 <!-- CUSTOMER -->
 
 <div class="form-card">
 
-<h3>
-<i class="fa-solid fa-user"></i>
-Customer Details
-</h3>
-
+<h3>👤 Customer Details</h3>
 
 <div class="field">
 
 <label>Customer Name *</label>
 
-<input
-id="customerName"
+<input id="estimateCustomer"
 type="text"
-placeholder="Enter customer name">
+placeholder="Enter customer name"
+oninput="calculateEstimate()">
 
 </div>
 
-
-<div class="two-col">
 
 <div class="field">
 
 <label>Mobile Number</label>
 
-<input
-id="customerMobile"
+<input id="estimateMobile"
 type="tel"
 maxlength="10"
 inputmode="numeric"
 placeholder="10 digit mobile number"
-oninput="
-this.value=this.value.replace(/\D/g,'').slice(0,10);
-updatePreview();
-">
+oninput="calculateEstimate()">
 
 </div>
 
@@ -548,33 +91,25 @@ updatePreview();
 
 <label>Site Address</label>
 
-<input
-id="siteAddress"
-type="text"
-placeholder="Enter site address">
+<textarea id="estimateAddress"
+placeholder="Enter site address"
+oninput="calculateEstimate()"></textarea>
 
 </div>
 
 </div>
-
-</div>
-
 
 
 <!-- ITEMS -->
 
 <div class="form-card">
 
-<h3>
-<i class="fa-solid fa-list-check"></i>
-Work / Items
-</h3>
+<h3>🧰 Work / Items</h3>
 
-<div id="items"></div>
+<div id="estimateItems"></div>
 
-<button
-class="add-btn"
-onclick="addItem()">
+<button class="add-btn"
+onclick="addEstimateItem()">
 
 <i class="fa-solid fa-plus"></i>
 Add Item
@@ -584,29 +119,22 @@ Add Item
 </div>
 
 
-
 <!-- CHARGES -->
 
 <div class="form-card">
 
-<h3>
-<i class="fa-solid fa-calculator"></i>
-Additional Charges
-</h3>
+<h3>💰 Additional Charges</h3>
 
-
-<div class="two-col">
 
 <div class="field">
 
 <label>Labour Charge</label>
 
-<input
-id="labour"
+<input id="estimateLabour"
 type="number"
 min="0"
 value="0"
-oninput="calculateTotal()">
+oninput="calculateEstimate()">
 
 </div>
 
@@ -615,14 +143,11 @@ oninput="calculateTotal()">
 
 <label>Discount</label>
 
-<input
-id="discount"
+<input id="estimateDiscount"
 type="number"
 min="0"
 value="0"
-oninput="calculateTotal()">
-
-</div>
+oninput="calculateEstimate()">
 
 </div>
 
@@ -631,9 +156,9 @@ oninput="calculateTotal()">
 
 <label>Notes</label>
 
-<textarea
-id="notes"
-placeholder="Estimate notes, work details, warranty etc."></textarea>
+<textarea id="estimateNotes"
+placeholder="Write notes..."
+oninput="calculateEstimate()"></textarea>
 
 </div>
 
@@ -641,54 +166,29 @@ placeholder="Estimate notes, work details, warranty etc."></textarea>
 <div class="summary">
 
 <div class="summary-row">
-
 <span>Items Total</span>
-
-<strong id="itemsTotal">
-₹0
-</strong>
-
+<strong id="estimateItemsTotal">₹0</strong>
 </div>
 
-
 <div class="summary-row">
-
 <span>Labour</span>
-
-<strong id="labourTotal">
-₹0
-</strong>
-
+<strong id="estimateLabourTotal">₹0</strong>
 </div>
-
 
 <div class="summary-row">
-
 <span>Discount</span>
-
-<strong id="discountTotal">
-₹0
-</strong>
-
+<strong id="estimateDiscountTotal">₹0</strong>
 </div>
-
 
 <div class="summary-row total">
-
 <span>Grand Total</span>
-
-<strong id="grandTotal">
-₹0
-</strong>
-
+<strong id="estimateGrandTotal">₹0</strong>
 </div>
 
 </div>
 
 
-<button
-id="saveButton"
-class="primary"
+<button class="primary"
 onclick="saveEstimate()">
 
 <i class="fa-solid fa-floppy-disk"></i>
@@ -697,8 +197,7 @@ Save Estimate
 </button>
 
 
-<button
-class="png-btn"
+<button class="png-btn"
 onclick="downloadEstimatePNG()">
 
 <i class="fa-solid fa-image"></i>
@@ -707,8 +206,7 @@ Download Estimate PNG
 </button>
 
 
-<button
-class="whatsapp-btn"
+<button class="whatsapp-btn"
 onclick="sendEstimateWhatsApp()">
 
 <i class="fa-brands fa-whatsapp"></i>
@@ -717,9 +215,8 @@ Send Estimate on WhatsApp
 </button>
 
 
-<button
-class="print-btn"
-onclick="printEstimate()">
+<button class="secondary"
+onclick="window.print()">
 
 <i class="fa-solid fa-print"></i>
 Print / Save PDF
@@ -727,8 +224,7 @@ Print / Save PDF
 </button>
 
 
-<button
-class="new-btn"
+<button class="new-btn"
 onclick="newEstimate()">
 
 <i class="fa-solid fa-file-circle-plus"></i>
@@ -739,97 +235,50 @@ New Estimate
 </div>
 
 
-
 <!-- PREVIEW -->
 
-<div id="estimatePreview">
+<div id="estimatePreview"
+class="document-card print-area">
 
-
-<div class="preview-header">
+<div class="document-header">
 
 <h2>PARBEZ SMART WORKS</h2>
 
-<p>
-Electrical • False Ceiling • Plumbing
-</p>
+<p>Electrical • False Ceiling • Plumbing</p>
 
-<p>
-Hojai, Assam
-</p>
-
-<div class="preview-about">
-
-Professional electrical, false ceiling and plumbing
-work for homes, shops and other sites.
+<p>Hojai, Assam</p>
 
 </div>
-
-</div>
-
 
 
 <div class="preview-info">
 
-
 <div class="preview-box">
-
 <span>Estimate No.</span>
-
-<strong id="previewEstimateNo">
-EST-0001
-</strong>
-
+<strong id="previewEstimateNo">EST-0001</strong>
 </div>
 
-
 <div class="preview-box">
-
 <span>Date</span>
-
-<strong id="previewDate">
--
-</strong>
-
+<strong id="estimatePreviewDate">-</strong>
 </div>
 
-
 <div class="preview-box">
-
 <span>Customer</span>
-
-<strong id="previewCustomer">
--
-</strong>
-
+<strong id="estimatePreviewCustomer">-</strong>
 </div>
-
 
 <div class="preview-box">
-
 <span>Mobile</span>
-
-<strong id="previewMobile">
--
-</strong>
-
+<strong id="estimatePreviewMobile">-</strong>
 </div>
 
-
-<div
-class="preview-box"
-style="grid-column:1/-1;">
-
+<div class="preview-box full">
 <span>Site Address</span>
-
-<strong id="previewAddress">
--
-</strong>
-
+<strong id="estimatePreviewAddress">-</strong>
 </div>
 
-
 </div>
-
 
 
 <table class="preview-table">
@@ -837,977 +286,806 @@ style="grid-column:1/-1;">
 <thead>
 
 <tr>
-
 <th>Work / Item</th>
-
 <th>Qty</th>
-
 <th>Unit</th>
-
 <th>Rate</th>
-
 <th>Amount</th>
-
 </tr>
 
 </thead>
 
-<tbody id="previewItems">
-
-</tbody>
+<tbody id="previewEstimateItems"></tbody>
 
 </table>
-
 
 
 <div class="preview-total">
 
 <div>
-
 <span>Items Total</span>
-
-<strong id="previewItemsTotal">
-₹0
-</strong>
-
+<strong id="previewEstimateItemsTotal">₹0</strong>
 </div>
 
-
 <div>
-
 <span>Labour</span>
-
-<strong id="previewLabour">
-₹0
-</strong>
-
+<strong id="previewEstimateLabour">₹0</strong>
 </div>
-
 
 <div>
-
 <span>Discount</span>
-
-<strong id="previewDiscount">
-₹0
-</strong>
-
+<strong id="previewEstimateDiscount">₹0</strong>
 </div>
 
-
-<div class="preview-grand">
-
+<div class="grand">
 <span>Grand Total</span>
-
-<strong id="previewGrand">
-₹0
-</strong>
-
+<strong id="previewEstimateGrand">₹0</strong>
 </div>
 
 </div>
 
 
+<div class="payment-info">
 
-<div
-id="previewNotesBox"
-class="preview-notes hidden">
+<p><strong>Notes:</strong></p>
 
-<strong>Notes:</strong>
-
-<div id="previewNotes"></div>
+<div id="previewEstimateNotes">-</div>
 
 </div>
 
 
+<div class="document-footer">
 
-<div class="preview-footer">
+<strong>Parbez Smart Works</strong>
 
-<strong>Parbez Smart Works</strong><br>
+<p>Owner: Parbez Alom Badrul Alom</p>
 
-Owner: Parbez Alom Badrul Alom<br>
+<p>Electrical • False Ceiling • Plumbing</p>
 
-Electrical • False Ceiling • Plumbing<br>
+<p>Mobile: 9395305384 / 9833762577</p>
 
-Mobile: 9395305384 / 9833762577<br>
+<p>Hojai, Assam</p>
 
-Hojai, Assam<br>
+<p>Instagram: @parbez_works</p>
 
-Instagram: @parbez_works<br>
+<p>YouTube: @parbezworks</p>
 
-YouTube: @parbezworks
+<br>
+
+<p>
+Professional electrical, false ceiling and plumbing
+work for homes, shops and other sites.
+</p>
 
 </div>
 
-
 </div>
-
 
 </main>
 
 
+<script src="script.js"></script>
+
 
 <script>
 
-
-/* =========================
-   BUSINESS
-========================= */
-
-const BUSINESS = {
-
-name:"Parbez Smart Works",
-
-owner:"Parbez Alom Badrul Alom",
-
-phone1:"9395305384",
-
-phone2:"9833762577",
-
-location:"Hojai, Assam"
-
-};
+let estimateItemNumber = 0;
 
 
-/* =========================
-   VARIABLES
-========================= */
-
-let itemNumber=0;
-
-let currentEstimateNo=null;
-
-let estimateSaved=false;
-
-
-
-/* =========================
-   ESTIMATE NUMBER
-========================= */
-
-function getEstimateNumber(){
-
-const number=
-Number(
-localStorage.getItem(
-"psw_estimate_number"
-)
-)||1;
-
-return "EST-"+
-String(number)
-.padStart(4,"0");
-
-}
-
-
-function increaseEstimateNumber(){
-
-const number=
-Number(
-localStorage.getItem(
-"psw_estimate_number"
-)
-)||1;
-
-localStorage.setItem(
-"psw_estimate_number",
-number+1
-);
-
-}
-
-
-
-/* =========================
-   DATE
-========================= */
-
-function getToday(){
-
-return new Date()
-.toLocaleDateString(
-"en-IN",
-{
-day:"2-digit",
-month:"2-digit",
-year:"numeric"
-}
-);
-
-}
-
-
-
-/* =========================
-   MONEY
-========================= */
-
-function money(value){
-
-return "₹"+
-Number(value||0)
-.toLocaleString("en-IN");
-
-}
-
-
-
-/* =========================
+/* =========================================
    ADD ITEM
-========================= */
+========================================= */
 
-function addItem(data=null){
+function addEstimateItem(data = null) {
 
-itemNumber++;
+  estimateItemNumber++;
 
+  const container =
+    document.getElementById("estimateItems");
 
-const div=
-document.createElement("div");
+  const div =
+    document.createElement("div");
 
+  div.className = "item";
 
-div.className="item";
+  div.innerHTML = `
 
-div.innerHTML=`
+  <div class="item-grid">
 
-<div class="item-grid">
+    <input
+    class="item-name"
+    type="text"
+    placeholder="Item / Work"
+    value="${escapeHTML(data?.name || "")}"
+    oninput="calculateEstimate()">
 
+    <input
+    class="item-qty"
+    type="number"
+    min="1"
+    value="${data?.qty || 1}"
+    oninput="calculateEstimate()">
 
-<input
-class="item-name"
-list="workSuggestions"
-type="text"
-placeholder="Item / Work"
-value="${escapeHTML(data?.name||"")}"
-oninput="calculateTotal()">
+    <input
+    class="item-unit"
+    type="text"
+    placeholder="Unit"
+    value="${escapeHTML(data?.unit || "pcs")}"
+    oninput="calculateEstimate()">
 
+    <input
+    class="item-rate"
+    type="number"
+    min="0"
+    value="${data?.rate || 0}"
+    oninput="calculateEstimate()">
 
-<input
-class="item-qty"
-type="number"
-min="0"
-step="0.01"
-value="${data?.qty||1}"
-oninput="calculateTotal()">
+  </div>
 
+  <div class="item-total">
 
-<select
-class="item-unit"
-onchange="calculateTotal()">
+    <span>Item Total</span>
 
-<option value="Nos">Nos</option>
-<option value="Point">Point</option>
-<option value="Sq Ft">Sq Ft</option>
-<option value="Meter">Meter</option>
-<option value="Feet">Feet</option>
-<option value="Set">Set</option>
-<option value="Job">Job</option>
-<option value="Day">Day</option>
-<option value="Other">Other</option>
+    <strong class="row-total">₹0</strong>
 
-</select>
+  </div>
 
+  <button
+  class="delete-item"
+  onclick="this.closest('.item').remove();calculateEstimate()">
 
-<input
-class="item-rate"
-type="number"
-min="0"
-step="0.01"
-value="${data?.rate||0}"
-placeholder="Rate"
-oninput="calculateTotal()">
+    <i class="fa-solid fa-trash"></i>
+    Remove
 
-</div>
+  </button>
 
+  `;
 
-<div class="item-total">
+  container.appendChild(div);
 
-<span>Item Total</span>
-
-<span class="row-total">
-₹0
-</span>
-
-</div>
-
-
-<button
-class="delete-item"
-onclick="removeItem(this)">
-
-<i class="fa-solid fa-trash"></i>
-Remove
-
-</button>
-
-`;
-
-
-document
-.getElementById("items")
-.appendChild(div);
-
-
-if(data?.unit){
-
-div.querySelector(".item-unit").value=
-data.unit;
-
+  calculateEstimate();
 }
 
 
-calculateTotal();
-
-}
-
-
-
-/* =========================
-   REMOVE ITEM
-========================= */
-
-function removeItem(button){
-
-const items=
-document.querySelectorAll(".item");
-
-
-if(items.length<=1){
-
-alert(
-"At least one item is required."
-);
-
-return;
-
-}
-
-
-button
-.closest(".item")
-.remove();
-
-
-calculateTotal();
-
-}
-
-
-
-/* =========================
+/* =========================================
    GET ITEMS
-========================= */
+========================================= */
 
-function getItems(){
+function getEstimateItems() {
 
-const items=[];
+  const items = [];
 
+  document.querySelectorAll("#estimateItems .item")
+    .forEach(item => {
 
-document
-.querySelectorAll(".item")
-.forEach(item=>{
+      const name =
+        item.querySelector(".item-name")
+          .value.trim();
 
-const name=
-item.querySelector(".item-name")
-.value.trim();
+      const qty =
+        Number(
+          item.querySelector(".item-qty").value
+        ) || 0;
 
+      const unit =
+        item.querySelector(".item-unit")
+          .value.trim() || "pcs";
 
-const qty=
-Number(
-item.querySelector(".item-qty")
-.value
-)||0;
+      const rate =
+        Number(
+          item.querySelector(".item-rate").value
+        ) || 0;
 
+      if (name) {
 
-const unit=
-item.querySelector(".item-unit")
-.value;
+        items.push({
+          name,
+          qty,
+          unit,
+          rate,
+          amount: qty * rate
+        });
 
+      }
 
-const rate=
-Number(
-item.querySelector(".item-rate")
-.value
-)||0;
+    });
 
-
-if(name){
-
-items.push({
-
-name:name,
-
-qty:qty,
-
-unit:unit,
-
-rate:rate,
-
-amount:qty*rate
-
-});
-
-}
-
-});
-
-
-return items;
-
+  return items;
 }
 
 
-
-/* =========================
+/* =========================================
    CALCULATE
-========================= */
+========================================= */
 
-function calculateTotal(){
+function calculateEstimate() {
 
-const items=
-getItems();
+  const items = getEstimateItems();
 
-
-const itemsTotal=
-items.reduce(
-(sum,item)=>
-sum+item.amount,
-0
-);
+  let itemsTotal = 0;
 
 
-const labour=
-Math.max(
-0,
-Number(
-document.getElementById("labour")
-.value
-)||0
-);
+  document.querySelectorAll("#estimateItems .item")
+    .forEach(item => {
+
+      const qty =
+        Number(
+          item.querySelector(".item-qty").value
+        ) || 0;
+
+      const rate =
+        Number(
+          item.querySelector(".item-rate").value
+        ) || 0;
+
+      const amount = qty * rate;
+
+      itemsTotal += amount;
+
+      item.querySelector(".row-total")
+        .textContent = money(amount);
+
+    });
 
 
-let discount=
-Math.max(
-0,
-Number(
-document.getElementById("discount")
-.value
-)||0
-);
+  const labour =
+    Number(
+      document.getElementById("estimateLabour").value
+    ) || 0;
+
+  const discount =
+    Number(
+      document.getElementById("estimateDiscount").value
+    ) || 0;
 
 
-if(discount>itemsTotal+labour){
+  const grand =
+    Math.max(
+      0,
+      itemsTotal + labour - discount
+    );
 
-discount=
-itemsTotal+labour;
 
-document.getElementById("discount")
-.value=
-discount;
+  document.getElementById(
+    "estimateItemsTotal"
+  ).textContent = money(itemsTotal);
 
+  document.getElementById(
+    "estimateLabourTotal"
+  ).textContent = money(labour);
+
+  document.getElementById(
+    "estimateDiscountTotal"
+  ).textContent = money(discount);
+
+  document.getElementById(
+    "estimateGrandTotal"
+  ).textContent = money(grand);
+
+
+  updateEstimatePreview();
 }
 
 
-const grand=
-Math.max(
-0,
-itemsTotal+labour-discount
-);
-
-
-document.getElementById(
-"itemsTotal"
-).textContent=
-money(itemsTotal);
-
-
-document.getElementById(
-"labourTotal"
-).textContent=
-money(labour);
-
-
-document.getElementById(
-"discountTotal"
-).textContent=
-money(discount);
-
-
-document.getElementById(
-"grandTotal"
-).textContent=
-money(grand);
-
-
-document
-.querySelectorAll(".item")
-.forEach(item=>{
-
-const qty=
-Number(
-item.querySelector(".item-qty")
-.value
-)||0;
-
-
-const rate=
-Number(
-item.querySelector(".item-rate")
-.value
-)||0;
-
-
-item.querySelector(
-".row-total"
-).textContent=
-money(qty*rate);
-
-});
-
-
-updatePreview();
-
-}
-
-
-
-/* =========================
+/* =========================================
    PREVIEW
-========================= */
+========================================= */
 
-function updatePreview(){
+function updateEstimatePreview() {
 
-const estimateNo=
-currentEstimateNo||
-getEstimateNumber();
+  const items =
+    getEstimateItems();
 
+  const itemsTotal =
+    items.reduce(
+      (sum, item) => sum + item.amount,
+      0
+    );
 
-document.getElementById(
-"previewEstimateNo"
-).textContent=
-estimateNo;
+  const labour =
+    Number(
+      document.getElementById("estimateLabour").value
+    ) || 0;
 
+  const discount =
+    Number(
+      document.getElementById("estimateDiscount").value
+    ) || 0;
 
-document.getElementById(
-"previewDate"
-).textContent=
-getToday();
-
-
-document.getElementById(
-"previewCustomer"
-).textContent=
-document.getElementById(
-"customerName"
-).value.trim()||"-";
-
-
-document.getElementById(
-"previewMobile"
-).textContent=
-document.getElementById(
-"customerMobile"
-).value.trim()||"-";
+  const grand =
+    Math.max(
+      0,
+      itemsTotal + labour - discount
+    );
 
 
-document.getElementById(
-"previewAddress"
-).textContent=
-document.getElementById(
-"siteAddress"
-).value.trim()||"-";
+  document.getElementById(
+    "previewEstimateNo"
+  ).textContent =
+    getNextEstimateNumber();
+
+  document.getElementById(
+    "estimatePreviewDate"
+  ).textContent =
+    getToday();
+
+  document.getElementById(
+    "estimatePreviewCustomer"
+  ).textContent =
+    document.getElementById(
+      "estimateCustomer"
+    ).value.trim() || "-";
+
+  document.getElementById(
+    "estimatePreviewMobile"
+  ).textContent =
+    document.getElementById(
+      "estimateMobile"
+    ).value.trim() || "-";
+
+  document.getElementById(
+    "estimatePreviewAddress"
+  ).textContent =
+    document.getElementById(
+      "estimateAddress"
+    ).value.trim() || "-";
 
 
-const items=
-getItems();
+  const tbody =
+    document.getElementById(
+      "previewEstimateItems"
+    );
 
 
-const tbody=
-document.getElementById(
-"previewItems"
-);
+  if (!items.length) {
+
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5" class="empty-row">
+          No items added
+        </td>
+      </tr>
+    `;
+
+  } else {
+
+    tbody.innerHTML =
+      items.map(item => `
+        <tr>
+          <td>${escapeHTML(item.name)}</td>
+          <td>${item.qty}</td>
+          <td>${escapeHTML(item.unit)}</td>
+          <td>${money(item.rate)}</td>
+          <td>${money(item.amount)}</td>
+        </tr>
+      `).join("");
+
+  }
 
 
-if(!items.length){
+  document.getElementById(
+    "previewEstimateItemsTotal"
+  ).textContent =
+    money(itemsTotal);
 
-tbody.innerHTML=`
+  document.getElementById(
+    "previewEstimateLabour"
+  ).textContent =
+    money(labour);
 
-<tr>
+  document.getElementById(
+    "previewEstimateDiscount"
+  ).textContent =
+    money(discount);
 
-<td colspan="5"
-style="text-align:center;color:#64748b;">
+  document.getElementById(
+    "previewEstimateGrand"
+  ).textContent =
+    money(grand);
 
-No items added
+  document.getElementById(
+    "previewEstimateNotes"
+  ).textContent =
+    document.getElementById(
+      "estimateNotes"
+    ).value.trim() || "-";
+}
 
-</td>
 
-</tr>
+/* =========================================
+   SAVE
+========================================= */
 
+function saveEstimate() {
+
+  const customer =
+    document.getElementById(
+      "estimateCustomer"
+    ).value.trim();
+
+  const items =
+    getEstimateItems();
+
+
+  if (!customer) {
+    alert("Customer name enter karo.");
+    return;
+  }
+
+  if (!items.length) {
+    alert("At least one item/work add karo.");
+    return;
+  }
+
+
+  const itemsTotal =
+    items.reduce(
+      (sum, item) => sum + item.amount,
+      0
+    );
+
+  const labour =
+    Number(
+      document.getElementById("estimateLabour").value
+    ) || 0;
+
+  const discount =
+    Number(
+      document.getElementById("estimateDiscount").value
+    ) || 0;
+
+  const total =
+    Math.max(
+      0,
+      itemsTotal + labour - discount
+    );
+
+
+  const estimate = {
+
+    id: Date.now(),
+
+    estimateNo:
+      getNextEstimateNumber(),
+
+    date:
+      getToday(),
+
+    customer,
+
+    mobile:
+      document.getElementById(
+        "estimateMobile"
+      ).value.trim(),
+
+    address:
+      document.getElementById(
+        "estimateAddress"
+      ).value.trim(),
+
+    items,
+
+    itemsTotal,
+
+    labour,
+
+    discount,
+
+    total,
+
+    notes:
+      document.getElementById(
+        "estimateNotes"
+      ).value.trim()
+
+  };
+
+
+  let estimates = [];
+
+  try {
+
+    estimates =
+      JSON.parse(
+        localStorage.getItem(
+          "psw_estimates"
+        ) || "[]"
+      );
+
+  } catch (e) {
+
+    estimates = [];
+
+  }
+
+
+  estimates.push(estimate);
+
+
+  localStorage.setItem(
+    "psw_estimates",
+    JSON.stringify(estimates)
+  );
+
+
+  increaseEstimateNumber();
+
+
+  alert(
+    "Estimate saved successfully!\n\n" +
+    estimate.estimateNo
+  );
+
+
+  updateEstimatePreview();
+}
+
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+function sendEstimateWhatsApp() {
+
+  const customer =
+    document.getElementById(
+      "estimateCustomer"
+    ).value.trim();
+
+  const mobile =
+    document.getElementById(
+      "estimateMobile"
+    ).value.trim();
+
+  const items =
+    getEstimateItems();
+
+
+  if (!customer) {
+    alert("Customer name enter karo.");
+    return;
+  }
+
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    alert("Customer ka 10 digit mobile number enter karo.");
+    return;
+  }
+
+  if (!items.length) {
+    alert("At least one item/work add karo.");
+    return;
+  }
+
+
+  const itemsTotal =
+    items.reduce(
+      (sum, item) => sum + item.amount,
+      0
+    );
+
+  const labour =
+    Number(
+      document.getElementById(
+        "estimateLabour"
+      ).value
+    ) || 0;
+
+  const discount =
+    Number(
+      document.getElementById(
+        "estimateDiscount"
+      ).value
+    ) || 0;
+
+  const grand =
+    Math.max(
+      0,
+      itemsTotal + labour - discount
+    );
+
+
+  let message =
+`*PARBEZ SMART WORKS*
+
+*ESTIMATE*
+Estimate No: ${getNextEstimateNumber()}
+Date: ${getToday()}
+
+*Customer:*
+${customer}
+
+*Mobile:*
+${mobile}
+
+*Site Address:*
+${document.getElementById("estimateAddress").value.trim() || "-"}
+
+*WORK / ITEMS:*
 `;
 
-}
-else{
 
-tbody.innerHTML=
-items.map(item=>`
+  items.forEach((item, index) => {
 
-<tr>
+    message +=
+`\n${index + 1}. ${item.name}
+Qty: ${item.qty} ${item.unit}
+Rate: ${money(item.rate)}
+Amount: ${money(item.amount)}
+`;
 
-<td>
-${escapeHTML(item.name)}
-</td>
-
-<td>
-${item.qty}
-</td>
-
-<td>
-${escapeHTML(item.unit)}
-</td>
-
-<td>
-${money(item.rate)}
-</td>
-
-<td>
-${money(item.amount)}
-</td>
-
-</tr>
-
-`).join("");
-
-}
+  });
 
 
-const itemsTotal=
-items.reduce(
-(sum,item)=>
-sum+item.amount,
-0
-);
+  message +=
+`
+*Items Total:* ${money(itemsTotal)}
+*Labour:* ${money(labour)}
+*Discount:* ${money(discount)}
+*GRAND TOTAL:* ${money(grand)}
+
+*Notes:*
+${document.getElementById("estimateNotes").value.trim() || "-"}
+
+*Parbez Smart Works*
+Electrical • False Ceiling • Plumbing
+
+Owner:
+${BUSINESS.owner}
+
+Contact:
+${BUSINESS.phone1}
+${BUSINESS.phone2}
+
+Location:
+${BUSINESS.location}
+
+Thank you.
+`;
 
 
-const labour=
-Math.max(
-0,
-Number(
-document.getElementById("labour")
-.value
-)||0
-);
-
-
-const discount=
-Math.max(
-0,
-Number(
-document.getElementById("discount")
-.value
-)||0
-);
-
-
-const grand=
-Math.max(
-0,
-itemsTotal+labour-discount
-);
-
-
-document.getElementById(
-"previewItemsTotal"
-).textContent=
-money(itemsTotal);
-
-
-document.getElementById(
-"previewLabour"
-).textContent=
-money(labour);
-
-
-document.getElementById(
-"previewDiscount"
-).textContent=
-money(discount);
-
-
-document.getElementById(
-"previewGrand"
-).textContent=
-money(grand);
-
-
-const notes=
-document.getElementById(
-"notes"
-).value.trim();
-
-
-const notesBox=
-document.getElementById(
-"previewNotesBox"
-);
-
-
-if(notes){
-
-notesBox.classList.remove(
-"hidden"
-);
-
-document.getElementById(
-"previewNotes"
-).textContent=
-notes;
-
-}
-else{
-
-notesBox.classList.add(
-"hidden"
-);
-
-}
-
+  openWhatsApp(
+    mobile,
+    message.trim()
+  );
 }
 
 
+/* =========================================
+   PNG
+========================================= */
 
-/* =========================
-   INPUT LISTENER
-========================= */
+async function downloadEstimatePNG() {
+
+  const customer =
+    document.getElementById(
+      "estimateCustomer"
+    ).value.trim();
+
+
+  if (!customer) {
+    alert("Customer name enter karo.");
+    return;
+  }
+
+
+  updateEstimatePreview();
+
+
+  const preview =
+    document.getElementById(
+      "estimatePreview"
+    );
+
+
+  try {
+
+    const canvas =
+      await html2canvas(
+        preview,
+        {
+          scale: 2,
+          backgroundColor: "#ffffff",
+          useCORS: true
+        }
+      );
+
+
+    const link =
+      document.createElement("a");
+
+
+    link.download =
+      getNextEstimateNumber() +
+      "-Parbez-Smart-Works.png";
+
+
+    link.href =
+      canvas.toDataURL("image/png");
+
+
+    link.click();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "PNG download nahi ho saka."
+    );
+
+  }
+}
+
+
+/* =========================================
+   NEW ESTIMATE
+========================================= */
+
+function newEstimate() {
+
+  if (!confirm(
+    "New estimate banana hai? Current data clear ho jayega."
+  )) {
+    return;
+  }
+
+
+  document.getElementById(
+    "estimateCustomer"
+  ).value = "";
+
+  document.getElementById(
+    "estimateMobile"
+  ).value = "";
+
+  document.getElementById(
+    "estimateAddress"
+  ).value = "";
+
+  document.getElementById(
+    "estimateLabour"
+  ).value = 0;
+
+  document.getElementById(
+    "estimateDiscount"
+  ).value = 0;
+
+  document.getElementById(
+    "estimateNotes"
+  ).value = "";
+
+
+  document.getElementById(
+    "estimateItems"
+  ).innerHTML = "";
+
+
+  estimateItemNumber = 0;
+
+
+  addEstimateItem();
+
+  updateEstimatePreview();
+}
+
+
+/* =========================================
+   START
+========================================= */
 
 document.addEventListener(
-"input",
-function(e){
+  "DOMContentLoaded",
+  () => {
 
-if(
+    addEstimateItem();
 
-e.target.id==="customerName"||
+    updateEstimatePreview();
 
-e.target.id==="customerMobile"||
-
-e.target.id==="siteAddress"||
-
-e.target.id==="notes"
-
-){
-
-updatePreview();
-
-}
-
-});
-
-
-
-/* =========================
-   SAVE ESTIMATE
-========================= */
-
-function saveEstimate(){
-
-if(estimateSaved){
-
-alert(
-"This estimate is already saved."
+  }
 );
 
-return;
+</script>
 
-}
-
-
-const customer=
-document.getElementById(
-"customerName"
-).value.trim();
-
-
-const mobile=
-document.getElementById(
-"customerMobile"
-).value.trim();
-
-
-if(!customer){
-
-alert(
-"Please enter customer name."
-);
-
-return;
-
-}
-
-
-if(
-mobile &&
-!/^[0-9]{10}$/.test(mobile)
-){
-
-alert(
-"Please enter a valid 10 digit mobile number."
-);
-
-return;
-
-}
-
-
-const items=
-getItems();
-
-
-if(!items.length){
-
-alert(
-"Please add at least one work item."
-);
-
-return;
-
-}
-
-
-const itemsTotal=
-items.reduce(
-(sum,item)=>
-sum+item.amount,
-0
-);
-
-
-const labour=
-Math.max(
-0,
-Number(
-document.getElementById("labour")
-.value
-)||0
-);
-
-
-const discount=
-Math.min(
-Math.max(
-0,
-Number(
-document.getElementById("discount")
-.value
-)||0
-),
-itemsTotal+labour
-);
-
-
-const total=
-Math.max(
-0,
-itemsTotal+labour-discount
-);
-
-
-currentEstimateNo=
-getEstimateNumber();
-
-
-const estimate={
-
-id:Date.now(),
-
-estimateNo:
-currentEstimateNo,
-
-date:
-getToday(),
-
-customer:customer,
-
-mobile:mobile,
-
-address:
-document.getElementById(
-"siteAddress"
-).value.trim(),
-
-items:items,
-
-itemsTotal:itemsTotal,
-
-labour:labour,
-
-discount:discount,
-
-total:total,
-
-notes:
-document.getElementById(
-"notes"
-).value.trim()
-
-};
-
-
-const estimates=
-JSON.parse(
-localStorage.getItem(
-"psw_estimates"
-)||"[]"
-);
-
-
-estimates.push(
-estimate
-);
-
-
-localStorage.setItem(
-"psw_estimates",
-JSON.stringify(
-estimates
-)
-);
-
-
-increaseEstimateNumber();
-
-
-estimateSaved=true;
-
-
-const button=
-document.getElementById(
-"saveButton"
-);
-
-
-button.disabled=true;
-
-
-button.innerHTML=
-'<i class="fa-solid fa-check"></i> Estimate Saved';
-
-
-updatePreview();
-
-
-alert(
-"Estimate saved successfully!\n\n"+
-currentEstimateNo
-);
-
-}
-
-
-
-/* =========================
-   WHATSAPP
-========================= */
-
-function sendEstimateWhatsApp(){
-
-const customer=
-document.g
+</body>
+</html>
