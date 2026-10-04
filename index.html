@@ -1,60 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">  <title>Parbez Smart Works</title>  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >  <link rel="stylesheet" href="style.css">
+</head><body>  <!-- ================= TOP BAR ================= -->  <header class="topbar"><div class="brand">
 
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2563eb">
-
-<title>Parbez Smart Works</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-
-<body>
-
-
-<!-- ================= TOP BAR ================= -->
-
-<header class="topbar">
-
-  <div class="brand">
-
-    <div class="brand-logo">
-      <i class="fa-solid fa-bolt"></i>
-    </div>
-
-    <div>
-      <h1>Parbez Smart Works</h1>
-      <p>Electrical • False Ceiling • Plumbing</p>
-    </div>
-
+  <div class="brand-logo">
+    <i class="fa-solid fa-bolt"></i>
   </div>
 
-  <button
-    class="icon-button"
-    onclick="showMessage('Parbez Smart Works')">
+  <div>
+    <h1>Parbez Smart Works</h1>
+    <p>Electrical • Ceiling • Plumbing</p>
+  </div>
 
-    <i class="fa-solid fa-bolt"></i>
+</div>
 
-  </button>
+<button
+  class="icon-button"
+  type="button"
+  onclick="showMessage('Parbez Smart Works')"
+  aria-label="Parbez Smart Works">
 
-</header>
+  <i class="fa-solid fa-bolt"></i>
 
+</button>
 
-
-<!-- ================= MAIN ================= -->
-
-<main class="container">
-
-
-<!-- ================= WELCOME ================= -->
+  </header>  <!-- ================= MAIN ================= -->  <main class="container"><!-- ================= WELCOME ================= -->
 
 <section class="welcome">
 
@@ -76,11 +50,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   </div>
 
   <div class="welcome-icon">
-    ⚡
+    <i class="fa-solid fa-bolt"></i>
   </div>
 
 </section>
-
 
 
 <!-- ================= QUICK ACTIONS ================= -->
@@ -91,12 +64,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     <h2>Quick Actions</h2>
   </div>
 
-
   <div class="action-grid">
 
 
-    <a href="estimate.html"
-       class="action-card blue">
+    <!-- ESTIMATE -->
+
+    <a
+      href="estimate.html"
+      class="action-card blue">
 
       <div class="action-icon">
         <i class="fa-solid fa-file-invoice"></i>
@@ -113,9 +88,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </a>
 
 
+    <!-- BILL -->
 
-    <a href="bill.html"
-       class="action-card green">
+    <a
+      href="bill.html"
+      class="action-card green">
 
       <div class="action-icon">
         <i class="fa-solid fa-receipt"></i>
@@ -132,9 +109,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </a>
 
 
+    <!-- CALCULATOR -->
 
-    <a href="calculator.html"
-       class="action-card orange">
+    <a
+      href="calculator.html"
+      class="action-card orange">
 
       <div class="action-icon">
         <i class="fa-solid fa-calculator"></i>
@@ -151,9 +130,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </a>
 
 
+    <!-- RATES -->
 
-    <a href="rates.html"
-       class="action-card purple">
+    <a
+      href="rates.html"
+      class="action-card purple">
 
       <div class="action-icon">
         <i class="fa-solid fa-tags"></i>
@@ -174,7 +155,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </section>
 
 
-
 <!-- ================= BUSINESS SUMMARY ================= -->
 
 <section>
@@ -183,9 +163,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     <h2>Business Summary</h2>
   </div>
 
-
   <div class="summary-grid">
 
+
+    <!-- ESTIMATES -->
 
     <div class="summary-card">
 
@@ -201,6 +182,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </div>
 
 
+    <!-- BILLS -->
 
     <div class="summary-card">
 
@@ -216,6 +198,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </div>
 
 
+    <!-- RECEIVED -->
 
     <div class="summary-card">
 
@@ -231,6 +214,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </div>
 
 
+    <!-- DUE -->
 
     <div class="summary-card">
 
@@ -250,7 +234,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </section>
 
 
-
 <!-- ================= ABOUT ================= -->
 
 <section>
@@ -258,7 +241,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   <div class="section-heading">
     <h2>About Parbez Smart Works</h2>
   </div>
-
 
   <div class="about-card">
 
@@ -307,7 +289,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </section>
 
 
-
 <!-- ================= CONTACT ================= -->
 
 <section>
@@ -316,9 +297,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     <h2>Contact Electrician</h2>
   </div>
 
-
   <div class="contact-card">
 
+
+    <!-- PHONE 1 -->
 
     <div class="contact-row">
 
@@ -340,7 +322,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
       <a
         href="tel:9395305384"
-        class="call-btn">
+        class="call-btn"
+        aria-label="Call 9395305384">
 
         <i class="fa-solid fa-phone"></i>
 
@@ -349,6 +332,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </div>
 
 
+    <!-- PHONE 2 -->
 
     <div class="contact-row">
 
@@ -370,7 +354,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
       <a
         href="tel:9833762577"
-        class="call-btn">
+        class="call-btn"
+        aria-label="Call 9833762577">
 
         <i class="fa-solid fa-phone"></i>
 
@@ -379,10 +364,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </div>
 
 
+    <!-- WHATSAPP -->
 
     <a
       href="https://wa.me/919395305384"
       target="_blank"
+      rel="noopener"
       class="whatsapp-btn">
 
       <i class="fa-brands fa-whatsapp"></i>
@@ -396,7 +383,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </section>
 
 
-
 <!-- ================= MORE FEATURES ================= -->
 
 <section>
@@ -405,9 +391,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     <h2>More Features</h2>
   </div>
 
-
   <div class="feature-list">
 
+
+    <!-- PACKAGES -->
 
     <a href="packages.html">
 
@@ -419,7 +406,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         <div>
           <strong>Service Packages</strong>
-          <span>Electrical, ceiling & plumbing packages</span>
+          <span>
+            Electrical, ceiling & plumbing packages
+          </span>
         </div>
 
       </div>
@@ -429,6 +418,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </a>
 
 
+    <!-- PROFILE -->
 
     <a href="profile.html">
 
@@ -440,7 +430,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         <div>
           <strong>My Profile</strong>
-          <span>Business information & contact</span>
+          <span>
+            Business information & contact
+          </span>
         </div>
 
       </div>
@@ -450,6 +442,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </a>
 
 
+    <!-- LEARNING -->
 
     <a href="learning.html">
 
@@ -461,7 +454,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         <div>
           <strong>Basic Learning</strong>
-          <span>Electrical work step-by-step learning</span>
+          <span>
+            Electrical work step-by-step learning
+          </span>
         </div>
 
       </div>
@@ -471,6 +466,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </a>
 
 
+    <!-- HISTORY -->
 
     <a href="history.html">
 
@@ -482,7 +478,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         <div>
           <strong>History</strong>
-          <span>Saved estimates & bills</span>
+          <span>
+            Saved estimates & bills
+          </span>
         </div>
 
       </div>
@@ -492,6 +490,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </a>
 
 
+    <!-- SETTINGS -->
 
     <a href="settings.html">
 
@@ -503,7 +502,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         <div>
           <strong>Settings</strong>
-          <span>Manage app data</span>
+          <span>
+            Manage app data
+          </span>
         </div>
 
       </div>
@@ -516,55 +517,38 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 </section>
 
+  </main>  <!-- ================= BOTTOM NAV ================= -->  <nav class="bottom-nav"><a
+  href="index.html"
+  class="active">
 
-</main>
+  <i class="fa-solid fa-house"></i>
+  <span>Home</span>
 
-
-
-<!-- ================= BOTTOM NAV ================= -->
-
-<nav class="bottom-nav">
-
-
-  <a href="index.html"
-     class="active">
-
-    <i class="fa-solid fa-house"></i>
-    <span>Home</span>
-
-  </a>
+</a>
 
 
-  <a href="estimate.html">
+<a href="estimate.html">
 
-    <i class="fa-solid fa-file-invoice"></i>
-    <span>Estimates</span>
+  <i class="fa-solid fa-file-invoice"></i>
+  <span>Estimates</span>
 
-  </a>
-
-
-  <a href="bill.html">
-
-    <i class="fa-solid fa-receipt"></i>
-    <span>Bills</span>
-
-  </a>
+</a>
 
 
-  <a href="profile.html">
+<a href="bill.html">
 
-    <i class="fa-solid fa-user"></i>
-    <span>Profile</span>
+  <i class="fa-solid fa-receipt"></i>
+  <span>Bills</span>
 
-  </a>
-
-
-</nav>
+</a>
 
 
+<a href="profile.html">
 
-<script src="script.js"></script>
+  <i class="fa-solid fa-user"></i>
+  <span>Profile</span>
 
+</a>
 
-</body>
+  </nav>  <!-- ================= JAVASCRIPT ================= -->  <script src="script.js"></script></body>
 </html>
