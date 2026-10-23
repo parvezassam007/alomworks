@@ -3,346 +3,748 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All-in-One Calculator | Parbez Smart Works</title>
+<meta name="theme-color" content="#2563eb">
+
+<title>Electrical Calculator | Parbez Smart Works</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <link rel="stylesheet" href="style.css">
+
 <style>
-:root{--blue:#2563eb;--dark:#10213d;--bg:#f1f5f9;--green:#15803d}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#172033}
-header{background:linear-gradient(135deg,#1d4ed8,#0f172a);color:white;padding:24px 15px;text-align:center}
-header h1{margin:0 0 8px;font-size:25px}
-header p{margin:0;color:#dbeafe}
-.container{max-width:1000px;margin:auto;padding:15px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:8px 0 14px}
-.tabs button{white-space:nowrap;border:0;background:white;padding:12px 15px;border-radius:10px;cursor:pointer;font-weight:bold;color:#1e3a8a}
-.tabs button.active{background:var(--blue);color:white}
-.panel{display:none;background:white;padding:18px;border-radius:14px;box-shadow:0 4px 15px #0000000d;margin-bottom:18px}
-.panel.active{display:block}
-h2{font-size:21px;margin-top:0;color:#1d4ed8}
-h3{font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-label{display:block;font-size:14px;font-weight:bold;margin-bottom:6px}
-input,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px;background:white}
-button.action{border:0;background:var(--blue);color:white;padding:12px 16px;border-radius:8px;font-size:15px;font-weight:bold;cursor:pointer;margin:10px 5px 5px 0}
-button.secondary{background:#475569}
-button.green{background:var(--green)}
-button.red{background:#b91c1c}
-.result{background:#eff6ff;border-left:4px solid var(--blue);padding:14px;border-radius:8px;margin-top:14px;overflow-wrap:anywhere}
-.result strong{color:#1d4ed8}
-.muted{font-size:13px;color:#64748b;line-height:1.5}
-.calc-display{width:100%;font-size:28px;text-align:right;margin-bottom:10px;background:#f8fafc}
-.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.calc-grid button{padding:17px 4px;border:0;border-radius:8px;background:#e2e8f0;font-size:19px;font-weight:bold;cursor:pointer}
-.calc-grid button.op{background:#dbeafe;color:#1d4ed8}
-.calc-grid button.equal{background:var(--blue);color:white}
-.calc-grid button.clear{background:#fee2e2;color:#b91c1c}
-footer{text-align:center;color:#64748b;padding:20px;font-size:13px}
-table{width:100%;border-collapse:collapse;margin-top:12px}
-td,th{padding:9px;border:1px solid #cbd5e1;text-align:left;font-size:14px}
-@media(max-width:480px){.container{padding:10px}.panel{padding:13px}.calc-grid button{padding:15px 2px}}
+* {
+  box-sizing: border-box;
+}
+
+.page-container {
+  max-width: 850px;
+  margin: auto;
+  padding: 18px;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.back-btn {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 13px;
+  background: white;
+  color: #2563eb;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.calc-menu {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.calc-menu button {
+  min-width: 0;
+  border: 1px solid #e2e8f0;
+  background: white;
+  border-radius: 18px;
+  padding: 18px 12px;
+  cursor: pointer;
+  text-align: left;
+  color: #0f172a;
+}
+
+.calc-menu button.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.calc-menu i {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: #dbeafe;
+  color: #2563eb;
+  margin-bottom: 12px;
+  font-size: 19px;
+}
+
+.calc-menu strong {
+  display: block;
+  font-size: 14px;
+}
+
+.calc-menu span {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.calc-box,
+.about-card {
+  margin-top: 18px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 18px;
+  min-width: 0;
+}
+
+.calc-box h3 {
+  margin: 0 0 16px;
+  font-size: 19px;
+}
+
+.calc-field {
+  margin-bottom: 13px;
+}
+
+.calc-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #334155;
+}
+
+.calc-field input,
+.calc-field select {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 12px;
+  border: 1px solid #dbe2ea;
+  border-radius: 11px;
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 16px;
+  outline: none;
+}
+
+.calc-field input:focus,
+.calc-field select:focus {
+  border-color: #2563eb;
+}
+
+.calc-btn {
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  border-radius: 11px;
+  font-weight: bold;
+  margin-top: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.result {
+  margin-top: 16px;
+  padding: 17px;
+  background: #eff6ff;
+  border-radius: 14px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.result-row {
+  padding: 10px 0;
+  border-bottom: 1px solid #dbeafe;
+}
+
+.result-row:last-child {
+  border-bottom: 0;
+}
+
+.result span {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.result strong {
+  display: block;
+  color: #2563eb;
+  font-size: 23px;
+  margin-top: 5px;
+}
+
+.result-note {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #64748b;
+  margin-top: 12px;
+}
+
+.warning-note {
+  color: #92400e;
+  background: #fffbeb;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.about-card h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.about-card p {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.contact {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 12px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.contact strong {
+  color: #2563eb;
+}
+
+.small-help {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+@media(max-width:350px) {
+  .page-container {
+    padding: 12px;
+  }
+
+  .calc-menu {
+    gap: 8px;
+  }
+
+  .calc-menu button {
+    padding: 13px 9px;
+  }
+}
 </style>
 </head>
+
 <body>
 
-<header>
-  <h1>⚡ Parbez Smart Works</h1>
-  <p>Electrical • False Ceiling • Plumbing</p>
-  <p style="margin-top:10px">All-in-One Hisab Calculator</p>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">
+      <i class="fa-solid fa-bolt"></i>
+    </div>
+
+    <div>
+      <h1>Parbez Smart Works</h1>
+      <p>Electrical • Ceiling • Plumbing</p>
+    </div>
+  </div>
 </header>
 
-<div class="container">
+<main class="page-container">
 
-<div class="tabs">
-<button class="active" onclick="showPanel('normal',this)">Normal</button>
-<button onclick="showPanel('area',this)">Square Feet</button>
-<button onclick="showPanel('material',this)">Material</button>
-<button onclick="showPanel('work',this)">Work Hisab</button>
-<button onclick="showPanel('light',this)">Lighting</button>
-<button onclick="showPanel('electrical',this)">Electrical</button>
-<button onclick="showPanel('units',this)">Units</button>
-<button onclick="showPanel('convert',this)">Conversion</button>
-</div>
+  <div class="page-title">
+    <button class="back-btn"
+      type="button"
+      onclick="location.href='index.html'"
+      aria-label="Go back">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
 
-<!-- NORMAL CALCULATOR -->
-<section id="normal" class="panel active">
-<h2>Normal Calculator</h2>
-<input id="display" class="calc-display" type="text" value="0" readonly aria-label="Calculator display">
-<div class="calc-grid">
-<button class="clear" onclick="clearCalc()">AC</button>
-<button onclick="backspace()">⌫</button>
-<button class="op" onclick="press('%')">%</button>
-<button class="op" onclick="press('/')">÷</button>
-<button onclick="press('7')">7</button><button onclick="press('8')">8</button>
-<button onclick="press('9')">9</button><button class="op" onclick="press('*')">×</button>
-<button onclick="press('4')">4</button><button onclick="press('5')">5</button>
-<button onclick="press('6')">6</button><button class="op" onclick="press('-')">−</button>
-<button onclick="press('1')">1</button><button onclick="press('2')">2</button>
-<button onclick="press('3')">3</button><button class="op" onclick="press('+')">+</button>
-<button onclick="press('00')">00</button><button onclick="press('0')">0</button>
-<button onclick="press('.')">.</button><button class="equal" onclick="calculate()">=</button>
-</div>
-<p class="muted">Normal addition, subtraction, multiplication and division.</p>
-</section>
+    <h2>Electrical Calculator</h2>
+  </div>
 
-<!-- SQUARE FEET -->
-<section id="area" class="panel">
-<h2>Square Feet Calculator</h2>
-<div class="grid">
-<div><label>Length (feet)</label><input id="alen" type="number" min="0" step="any" placeholder="e.g. 30"></div>
-<div><label>Width (feet)</label><input id="awid" type="number" min="0" step="any" placeholder="e.g. 22"></div>
-<div><label>Rate per square foot (₹)</label><input id="arate" type="number" min="0" step="any" placeholder="Optional"></div>
-</div>
-<button class="action" onclick="areaCalc()">Calculate Area</button>
-<div id="areaResult" class="result">Enter length and width.</div>
-<h3>Feet and inch area</h3>
-<div class="grid">
-<div><label>Length — feet</label><input id="af1" type="number" min="0" step="any" value="0"></div>
-<div><label>Length — inches</label><input id="ai1" type="number" min="0" step="any" value="0"></div>
-<div><label>Width — feet</label><input id="af2" type="number" min="0" step="any" value="0"></div>
-<div><label>Width — inches</label><input id="ai2" type="number" min="0" step="any" value="0"></div>
-</div>
-<button class="action" onclick="mixedArea()">Calculate</button>
-<div id="mixedResult" class="result">Enter measurements.</div>
-</section>
+  <div class="calc-menu">
 
-<!-- MATERIAL CALCULATOR -->
-<section id="material" class="panel">
-<h2>Material Cost Calculator</h2>
-<div class="grid">
-<div><label>Material name</label><input id="matName" placeholder="e.g. Gypsum board"></div>
-<div><label>Quantity</label><input id="matQty" type="number" min="0" step="any" placeholder="e.g. 20"></div>
-<div><label>Unit</label><select id="matUnit"><option>Piece</option><option>Square feet</option><option>Meter</option><option>Kg</option><option>Bundle</option><option>Roll</option><option>Bag</option><option>Other</option></select></div>
-<div><label>Rate per unit (₹)</label><input id="matRate" type="number" min="0" step="any" placeholder="e.g. 350"></div>
-</div>
-<button class="action" onclick="materialCalc()">Calculate Cost</button>
-<button class="action secondary" onclick="addMaterial()">Add to List</button>
-<div id="matResult" class="result">Enter quantity and rate.</div>
-<div id="matList"></div>
-<button class="action red" onclick="clearMaterials()">Clear List</button>
-</section>
+    <button type="button" data-calc="ohm" onclick="openCalc('ohm')">
+      <i class="fa-solid fa-bolt"></i>
+      <strong>Ohm's Law</strong>
+      <span>V • I • R</span>
+    </button>
 
-<!-- WORK ACCOUNT -->
-<section id="work" class="panel">
-<h2>Work Hisab / Bill Calculator</h2>
-<div class="grid">
-<div><label>Customer name</label><input id="customer" placeholder="Customer name"></div>
-<div><label>Work details</label><input id="workDetails" placeholder="e.g. Ceiling work"></div>
-<div><label>Material cost (₹)</label><input id="materialCost" type="number" min="0" step="any" value="0"></div>
-<div><label>Labour cost (₹)</label><input id="labourCost" type="number" min="0" step="any" value="0"></div>
-<div><label>Other charges (₹)</label><input id="otherCost" type="number" min="0" step="any" value="0"></div>
-<div><label>Discount (₹)</label><input id="discount" type="number" min="0" step="any" value="0"></div>
-<div><label>Advance received (₹)</label><input id="advance" type="number" min="0" step="any" value="0"></div>
-</div>
-<button class="action" onclick="workCalc()">Calculate Bill</button>
-<button class="action green" onclick="shareBill()">Share Bill on WhatsApp</button>
-<button class="action secondary" onclick="window.print()">Print / Save PDF</button>
-<div id="workResult" class="result">Enter work costs.</div>
-</section>
+    <button type="button" data-calc="power" onclick="openCalc('power')">
+      <i class="fa-solid fa-plug"></i>
+      <strong>Power</strong>
+      <span>W • V • A</span>
+    </button>
 
-<!-- LIGHTING -->
-<section id="light" class="panel">
-<h2>Room / Shop Lighting Calculator</h2>
-<div class="grid">
-<div><label>Room length (feet)</label><input id="ll" type="number" min="0" step="any" value="30"></div>
-<div><label>Room width (feet)</label><input id="lw" type="number" min="0" step="any" value="22"></div>
-<div><label>Ceiling height (feet)</label><input id="lh" type="number" min="0" step="any" value="12"></div>
-<div><label>Target brightness (lux)</label><select id="lux"><option value="100">100 — General</option><option value="200">200 — Basic shop</option><option value="300" selected>300 — Furniture shop</option><option value="500">500 — Detailed work</option></select></div>
-<div><label>One light's power (watts)</label><input id="lwatt" type="number" min="1" step="any" value="18"></div>
-<div><label>One light's lumens</label><input id="lumen" type="number" min="1" step="any" value="1800"></div>
-<div><label>Utilization factor (0–1)</label><input id="uf" type="number" min="0.1" max="1" step="any" value="0.7"></div>
-<div><label>Maintenance factor (0–1)</label><input id="mf" type="number" min="0.1" max="1" step="any" value="0.8"></div>
-<div><label>Hours used daily</label><input id="lhours" type="number" min="0" max="24" step="any" value="8"></div>
-</div>
-<button class="action" onclick="lightCalc()">Calculate Lights</button>
-<div id="lightResult" class="result">Enter room and light details.</div>
-<p class="muted">This is an estimate. Actual brightness depends on light distribution, mounting height, furniture layout and wall/ceiling colour.</p>
-</section>
+    <button type="button" data-calc="hp" onclick="openCalc('hp')">
+      <i class="fa-solid fa-gauge-high"></i>
+      <strong>kW → HP</strong>
+      <span>Power conversion</span>
+    </button>
 
-<!-- ELECTRICAL -->
-<section id="electrical" class="panel">
-<h2>Electrical Calculators</h2>
-<h3>1. Ohm's Law — Current (I = V ÷ R)</h3>
-<div class="grid">
-<div><label>Voltage (V)</label><input id="volt" type="number" step="any" placeholder="e.g. 230"></div>
-<div><label>Resistance (Ω)</label><input id="resist" type="number" step="any" placeholder="e.g. 10"></div>
-</div>
-<button class="action" onclick="ohmCalc()">Calculate Current</button>
-<div id="ohmResult" class="result"></div>
+    <button type="button" data-calc="unit" onclick="openCalc('unit')">
+      <i class="fa-solid fa-house"></i>
+      <strong>Electricity Unit</strong>
+      <span>Unit calculation</span>
+    </button>
 
-<h3>2. Power (P = V × I)</h3>
-<div class="grid">
-<div><label>Voltage (V)</label><input id="pvolt" type="number" step="any" placeholder="Voltage"></div>
-<div><label>Current (A)</label><input id="amp" type="number" step="any" placeholder="Amps"></div>
-</div>
-<button class="action" onclick="powerCalc()">Calculate Power</button>
-<div id="powerResult" class="result"></div>
+    <button type="button" data-calc="voltage" onclick="openCalc('voltage')">
+      <i class="fa-solid fa-wave-square"></i>
+      <strong>Voltage</strong>
+      <span>V = W ÷ A</span>
+    </button>
 
-<h3>3. Kilowatts to Horsepower</h3>
-<div class="grid"><div><label>Power (kW)</label><input id="kw" type="number" step="any" placeholder="e.g. 1"></div></div>
-<button class="action" onclick="hpCalc()">Convert to HP</button>
-<div id="hpResult" class="result"></div>
+    <button type="button" data-calc="resistance" onclick="openCalc('resistance')">
+      <i class="fa-solid fa-circle-nodes"></i>
+      <strong>Resistance</strong>
+      <span>R = V ÷ I</span>
+    </button>
 
-<h3>4. Resistance (R = V ÷ I)</h3>
-<div class="grid">
-<div><label>Voltage (V)</label><input id="rvolt" type="number" step="any"></div>
-<div><label>Current (A)</label><input id="ramp" type="number" step="any"></div>
-</div>
-<button class="action" onclick="resistanceCalc()">Calculate Resistance</button>
-<div id="resResult" class="result"></div>
-<p class="muted">These calculators are for basic calculations, not a substitute for safe wiring design or professional inspection.</p>
-</section>
+    <button type="button" data-calc="lighting" onclick="openCalc('lighting')">
+      <i class="fa-solid fa-lightbulb"></i>
+      <strong>Lighting Calculator</strong>
+      <span>Room • Lux • Bulbs</span>
+    </button>
 
-<!-- UNITS -->
-<section id="units" class="panel">
-<h2>Electricity Unit Calculator</h2>
-<div class="grid">
-<div><label>Appliance power (watts)</label><input id="uwatt" type="number" min="0" step="any" placeholder="e.g. 1000"></div>
-<div><label>Hours used per day</label><input id="uhours" type="number" min="0" max="24" step="any" placeholder="e.g. 8"></div>
-<div><label>Number of appliances</label><input id="ucount" type="number" min="0" step="1" value="1"></div>
-<div><label>Electricity rate per unit (₹)</label><input id="urate" type="number" min="0" step="any" placeholder="e.g. 8"></div>
-<div><label>Days</label><input id="udays" type="number" min="0" step="any" value="30"></div>
-</div>
-<button class="action" onclick="unitCalc()">Calculate Units</button>
-<div id="unitResult" class="result"></div>
-<p class="muted">1 electricity unit = 1 kWh. The actual bill may include fixed charges, taxes and other fees.</p>
-</section>
+  </div>
 
-<!-- CONVERSION -->
-<section id="convert" class="panel">
-<h2>Measurement Conversion</h2>
-<div class="grid">
-<div><label>Feet to inches — feet</label><input id="feetIn" type="number" step="any" placeholder="Feet"></div>
-</div>
-<button class="action" onclick="feetToInches()">Feet to Inches</button>
-<div id="conv1" class="result"></div>
+  <section id="calculatorBox" class="calc-box" aria-live="polite">
+    <h3>Select a calculator</h3>
+    <p style="color:#64748b;font-size:13px">
+      Choose any calculator above to start.
+    </p>
+  </section>
 
-<div class="grid" style="margin-top:15px">
-<div><label>Inches to feet — inches</label><input id="inchFt" type="number" step="any" placeholder="Inches"></div>
-</div>
-<button class="action" onclick="inchesToFeet()">Inches to Feet</button>
-<div id="conv2" class="result"></div>
+  <section class="about-card">
+    <h3>About Parbez Smart Works</h3>
 
-<div class="grid" style="margin-top:15px">
-<div><label>Meters</label><input id="meters" type="number" step="any" placeholder="Meters"></div>
-</div>
-<button class="action" onclick="metersToFeet()">Meters to Feet</button>
-<div id="conv3" class="result"></div>
+    <p>
+      Parbez Smart Works provides electrical, false ceiling and plumbing
+      services for homes, shops and other projects. This app helps manage
+      estimates, bills and basic electrical calculations.
+    </p>
 
-<div class="grid" style="margin-top:15px">
-<div><label>Inches to millimeters</label><input id="inchMm" type="number" step="any" placeholder="Inches"></div>
-</div>
-<button class="action" onclick="inchesToMm()">Inches to Millimeters</button>
-<div id="conv4" class="result"></div>
-</section>
+    <div class="contact">
+      <strong>Owner:</strong> Parbez Alom Badrul Alom<br>
+      <strong>Mobile:</strong> 9395305384 / 9833762577<br>
+      <strong>Location:</strong> Hojai, Assam<br>
+      <strong>Instagram:</strong> @parbez_works<br>
+      <strong>YouTube:</strong> @parbezworks
+    </div>
+  </section>
 
-</div>
-
-<footer>© 2026 Parbez Smart Works | Electrical • False Ceiling • Plumbing</footer>
+</main>
 
 <script>
-function showPanel(id,btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-}
-function val(id){return Number(document.getElementById(id).value)}
-function money(n){return '₹'+Number(n).toLocaleString('en-IN',{maximumFractionDigits:2})}
-function fmt(n){return Number(n).toLocaleString('en-IN',{maximumFractionDigits:2})}
-function out(id,html){document.getElementById(id).innerHTML=html}
-function validNonnegative(...nums){return nums.every(n=>Number.isFinite(n)&&n>=0)}
-function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+"use strict";
 
-/* Normal calculator: only allow numeric arithmetic characters */
-let expression='';
-function press(v){
-  if(expression==='Error')expression='';
-  if(expression==='0' && /^[0-9]$/.test(v))expression='';
-  expression+=v;
-  document.getElementById('display').value=expression;
-}
-function clearCalc(){expression='';document.getElementById('display').value='0'}
-function backspace(){expression=expression.slice(0,-1);document.getElementById('display').value=expression||'0'}
-function calculate(){
-  try{
-    if(!expression || !/^[0-9+\-*/%.() ]+$/.test(expression))throw Error();
-    let result=Function('"use strict";return ('+expression+')')();
-    if(!Number.isFinite(result))throw Error();
-    expression=String(Math.round((result+Number.EPSILON)*1e8)/1e8);
-    document.getElementById('display').value=expression;
-  }catch(e){expression='Error';document.getElementById('display').value='Error'}
+const calculatorBox = document.getElementById("calculatorBox");
+
+function openCalc(type) {
+  document.querySelectorAll(".calc-menu button").forEach(button => {
+    button.classList.toggle("active", button.dataset.calc === type);
+  });
+
+  const templates = {
+
+    ohm: `
+      <h3>Ohm's Law — Current</h3>
+      <div class="calc-field">
+        <label for="voltage">Voltage (V)</label>
+        <input id="voltage" type="number" min="0.001" step="any" placeholder="Example: 230">
+      </div>
+      <div class="calc-field">
+        <label for="resistance">Resistance (Ω)</label>
+        <input id="resistance" type="number" min="0.001" step="any" placeholder="Example: 10">
+      </div>
+      <button class="calc-btn" onclick="calculateOhm()">Calculate Current</button>
+      <div id="calcResult"></div>
+    `,
+
+    power: `
+      <h3>Power Calculator</h3>
+      <div class="calc-field">
+        <label for="powerVoltage">Voltage (V)</label>
+        <input id="powerVoltage" type="number" min="0.001" step="any" placeholder="Example: 230">
+      </div>
+      <div class="calc-field">
+        <label for="powerCurrent">Current (A)</label>
+        <input id="powerCurrent" type="number" min="0.001" step="any" placeholder="Example: 5">
+      </div>
+      <button class="calc-btn" onclick="calculatePower()">Calculate Power</button>
+      <div id="calcResult"></div>
+      <p class="small-help">For AC equipment, actual real power may differ because of power factor.</p>
+    `,
+
+    hp: `
+      <h3>kW → HP Converter</h3>
+      <div class="calc-field">
+        <label for="kw">Power (kW)</label>
+        <input id="kw" type="number" min="0.001" step="any" placeholder="Example: 1.5">
+      </div>
+      <button class="calc-btn" onclick="calculateHP()">Convert</button>
+      <div id="calcResult"></div>
+    `,
+
+    unit: `
+      <h3>Electricity Unit Calculator</h3>
+      <div class="calc-field">
+        <label for="unitPower">Power (Watt)</label>
+        <input id="unitPower" type="number" min="0.001" step="any" placeholder="Example: 1000">
+      </div>
+      <div class="calc-field">
+        <label for="unitHours">Usage Hours per Day</label>
+        <input id="unitHours" type="number" min="0" max="24" step="any" placeholder="Example: 8">
+      </div>
+      <div class="calc-field">
+        <label for="unitDays">Number of Days</label>
+        <input id="unitDays" type="number" min="1" max="366" step="1" value="30">
+      </div>
+      <button class="calc-btn" onclick="calculateUnits()">Calculate Units</button>
+      <div id="calcResult"></div>
+      <p class="small-help">1 electricity unit = 1 kWh. This is an estimate, not the electricity bill amount.</p>
+    `,
+
+    voltage: `
+      <h3>Voltage Calculator</h3>
+      <div class="calc-field">
+        <label for="voltagePower">Power (W)</label>
+        <input id="voltagePower" type="number" min="0.001" step="any" placeholder="Example: 1000">
+      </div>
+      <div class="calc-field">
+        <label for="voltageCurrent">Current (A)</label>
+        <input id="voltageCurrent" type="number" min="0.001" step="any" placeholder="Example: 5">
+      </div>
+      <button class="calc-btn" onclick="calculateVoltage()">Calculate Voltage</button>
+      <div id="calcResult"></div>
+      <p class="small-help">Uses V = P ÷ I for DC or an appropriate unity-power-factor load.</p>
+    `,
+
+    resistance: `
+      <h3>Resistance Calculator</h3>
+      <div class="calc-field">
+        <label for="resVoltage">Voltage (V)</label>
+        <input id="resVoltage" type="number" min="0.001" step="any" placeholder="Example: 230">
+      </div>
+      <div class="calc-field">
+        <label for="resCurrent">Current (A)</label>
+        <input id="resCurrent" type="number" min="0.001" step="any" placeholder="Example: 5">
+      </div>
+      <button class="calc-btn" onclick="calculateResistance()">Calculate Resistance</button>
+      <div id="calcResult"></div>
+    `,
+
+    lighting: `
+      <h3>Lighting Calculator</h3>
+
+      <div class="calc-field">
+        <label for="lightLength">Room Length (feet)</label>
+        <input id="lightLength" type="number" min="0.1" max="500" step="any" placeholder="Example: 30">
+      </div>
+
+      <div class="calc-field">
+        <label for="lightWidth">Room Width (feet)</label>
+        <input id="lightWidth" type="number" min="0.1" max="500" step="any" placeholder="Example: 22">
+      </div>
+
+      <div class="calc-field">
+        <label for="lightHeight">Ceiling Height (feet)</label>
+        <input id="lightHeight" type="number" min="1" max="100" step="any" placeholder="Example: 12">
+      </div>
+
+      <div class="calc-field">
+        <label for="lightLux">Required Brightness</label>
+        <select id="lightLux">
+          <option value="200">200 Lux — Basic lighting</option>
+          <option value="300" selected>300 Lux — General shop</option>
+          <option value="500">500 Lux — Detailed work</option>
+          <option value="750">750 Lux — Fine work</option>
+        </select>
+      </div>
+
+      <div class="calc-field">
+        <label for="lightWatt">Power per Light (W)</label>
+        <input id="lightWatt" type="number" min="1" max="1000" step="any" value="18">
+      </div>
+
+      <div class="calc-field">
+        <label for="lightLumens">Lumens per Light</label>
+        <input id="lightLumens" type="number" min="1" max="50000" step="any" value="1800">
+      </div>
+
+      <div class="calc-field">
+        <label for="lightUF">Utilization Factor</label>
+        <select id="lightUF">
+          <option value="0.5">50%</option>
+          <option value="0.6">60%</option>
+          <option value="0.7" selected>70%</option>
+          <option value="0.8">80%</option>
+        </select>
+      </div>
+
+      <div class="calc-field">
+        <label for="lightMF">Maintenance Factor</label>
+        <select id="lightMF">
+          <option value="0.7">70%</option>
+          <option value="0.8" selected>80%</option>
+          <option value="0.9">90%</option>
+        </select>
+      </div>
+
+      <button class="calc-btn" onclick="calculateLighting()">Calculate Lights</button>
+
+      <div id="calcResult"></div>
+
+      <p class="small-help">
+        Enter the actual lumen output printed on the light's packaging whenever possible.
+      </p>
+    `
+  };
+
+  calculatorBox.innerHTML = templates[type] || "<h3>Calculator not found</h3>";
 }
 
-/* Square feet */
-function areaCalc(){
-  let l=val('alen'),w=val('awid'),r=val('arate');
-  if(!validNonnegative(l,w,r)){out('areaResult','Please enter valid non-negative numbers.');return}
-  let a=l*w;
-  out('areaResult',`Area: <strong>${fmt(a)} sq ft</strong><br>Rate: ${money(r)} per sq ft<br>Total amount: <strong>${money(a*r)}</strong>`);
-}
-function mixedArea(){
-  let l=val('af1')+val('ai1')/12,w=val('af2')+val('ai2')/12;
-  if(!validNonnegative(val('af1'),val('ai1'),val('af2'),val('ai2'))){out('mixedResult','Enter valid measurements.');return}
-  out('mixedResult',`Length: ${fmt(l)} ft<br>Width: ${fmt(w)} ft<br>Area: <strong>${fmt(l*w)} sq ft</strong>`);
+/* Safe input validation */
+function readPositive(id, label) {
+  const element = document.getElementById(id);
+  const value = Number(element.value);
+
+  if (
+    element.value.trim() === "" ||
+    !Number.isFinite(value) ||
+    value <= 0
+  ) {
+    alert("Please enter a valid value for " + label + ".");
+    element.focus();
+    return null;
+  }
+
+  return value;
 }
 
-/* Material list */
-let materials=[];
-function materialCalc(){
-  let name=document.getElementById('matName').value.trim()||'Material';
-  let q=val('matQty'),r=val('matRate');
-  if(!validNonnegative(q,r)){out('matResult','Enter valid quantity and rate.');return}
-  out('matResult',`${safeText(name)}: ${fmt(q)} × ${money(r)} = <strong>${money(q*r)}</strong>`);
-}
-function addMaterial(){
-  let name=document.getElementById('matName').value.trim()||'Material';
-  let q=val('matQty'),r=val('matRate'),unit=document.getElementById('matUnit').value;
-  if(!validNonnegative(q,r)){out('matResult','Enter valid quantity and rate.');return}
-  materials.push({name,q,r,unit,total:q*r});
-  renderMaterials();
-}
-function renderMaterials(){
-  let total=materials.reduce((s,m)=>s+m.total,0);
-  let html='<table><thead><tr><th>Material</th><th>Qty</th><th>Rate</th><th>Total</th></tr></thead><tbody>';
-  materials.forEach(m=>html+=`<tr><td>${safeText(m.name)}</td><td>${fmt(m.q)} ${safeText(m.unit)}</td><td>${money(m.r)}</td><td>${money(m.total)}</td></tr>`);
-  html+=`</tbody></table><div class="result">Total material cost: <strong>${money(total)}</strong></div>`;
-  out('matList',html);
-}
-function clearMaterials(){materials=[];out('matList','');out('matResult','Material list cleared.')}
+function showResult(label, value, note = "") {
+  const result = document.getElementById("calcResult");
 
-/* Work bill */
-let currentBill=null;
-function workCalc(){
-  let material=val('materialCost'),labour=val('labourCost'),other=val('otherCost'),discount=val('discount'),advance=val('advance');
-  if(!validNonnegative(material,labour,other,discount,advance)){out('workResult','Enter valid non-negative costs.');return}
-  let subtotal=material+labour+other,total=Math.max(0,subtotal-discount),balance=total-advance;
-  currentBill={customer:document.getElementById('customer').value.trim(),details:document.getElementById('workDetails').value.trim(),material,labour,other,discount,advance,subtotal,total,balance};
-  out('workResult',`<b>Work Bill Summary</b><br>Customer: ${safeText(currentBill.customer||'Not entered')}<br>Work: ${safeText(currentBill.details||'Not entered')}<hr>Material: ${money(material)}<br>Labour: ${money(labour)}<br>Other charges: ${money(other)}<br>Subtotal: ${money(subtotal)}<br>Discount: −${money(discount)}<br><b>Final bill: ${money(total)}</b><br>Advance received: ${money(advance)}<br><strong>Balance: ${money(balance)}</strong>${balance<0?'<br><span style="color:#b91c1c">Advance is greater than the final bill.</span>':''}`);
-}
-function shareBill(){
-  if(!currentBill){workCalc();if(!currentBill)return}
-  let b=currentBill;
-  let message=`PARBEZ SMART WORKS - WORK BILL\nCustomer: ${b.customer||'Not entered'}\nWork: ${b.details||'Not entered'}\nMaterial: ${money(b.material)}\nLabour: ${money(b.labour)}\nOther: ${money(b.other)}\nSubtotal: ${money(b.subtotal)}\nDiscount: ${money(b.discount)}\nFINAL BILL: ${money(b.total)}\nAdvance: ${money(b.advance)}\nBALANCE: ${money(b.balance)}\n\nElectrical • False Ceiling • Plumbing`;
-  window.open('https://wa.me/?text='+encodeURIComponent(message),'_blank');
+  if (!result) return;
+
+  result.innerHTML = "";
+
+  const card = document.createElement("div");
+  card.className = "result";
+
+  const title = document.createElement("span");
+  title.textContent = label;
+
+  const output = document.createElement("strong");
+  output.textContent = value;
+
+  card.appendChild(title);
+  card.appendChild(output);
+
+  if (note) {
+    const noteElement = document.createElement("p");
+    noteElement.className = "result-note";
+    noteElement.textContent = note;
+    card.appendChild(noteElement);
+  }
+
+  result.appendChild(card);
 }
 
-/* Lighting */
-function lightCalc(){
-  let l=val('ll'),w=val('lw'),h=val('lh'),lux=val('lux'),watts=val('lwatt'),lumens=val('lumen'),uf=val('uf'),mf=val('mf'),hours=val('lhours');
-  if(!validNonnegative(l,w,h,watts,lumens,hours)||l===0||w===0||watts===0||lumens===0||uf<=0||uf>1||mf<=0||mf>1||hours>24){out('lightResult','Please enter valid room, light and usage values.');return}
-  let area=l*w;
-  let count=Math.ceil(lux*area/(lumens*uf*mf));
-  let load=count*watts;
-  let monthly=load/1000*hours*30;
-  out('lightResult',`Floor area: <strong>${fmt(area)} sq ft</strong><br>Estimated lights needed: <strong>${count}</strong><br>Total connected load: <strong>${fmt(load)} W (${fmt(load/1000)} kW)</strong><br>Estimated monthly use: <strong>${fmt(monthly)} units</strong><br>At ₹8/unit: <strong>${money(monthly*8)}</strong> (estimate)`);
+/* OHM'S LAW: I = V / R */
+function calculateOhm() {
+  const v = readPositive("voltage", "voltage");
+  if (v === null) return;
+
+  const r = readPositive("resistance", "resistance");
+  if (r === null) return;
+
+  showResult("Current", (v / r).toFixed(3) + " A");
 }
 
-/* Electrical calculators */
-function ohmCalc(){
-  let v=val('volt'),r=val('resist');
-  if(!validNonnegative(v,r)||r===0){out('ohmResult','Enter valid voltage and resistance (resistance must be above 0).');return}
-  out('ohmResult',`Current = Voltage ÷ Resistance = <strong>${fmt(v/r)} A</strong>`);
+/* POWER: P = V x I */
+function calculatePower() {
+  const v = readPositive("powerVoltage", "voltage");
+  if (v === null) return;
+
+  const a = readPositive("powerCurrent", "current");
+  if (a === null) return;
+
+  showResult("Apparent Power / Unity-PF Power", (v * a).toFixed(2) + " VA / W");
 }
-function powerCalc(){
-  let v=val('pvolt'),a=val('amp');
-  if(!validNonnegative(v,a)){out('powerResult','Enter valid values.');
+
+/* HP CONVERSION */
+function calculateHP() {
+  const kw = readPositive("kw", "power");
+  if (kw === null) return;
+
+  showResult("Horsepower", (kw * 1.34102).toFixed(3) + " HP");
+}
+
+/* ELECTRICITY UNITS */
+function calculateUnits() {
+  const watt = readPositive("unitPower", "power");
+  if (watt === null) return;
+
+  const hoursElement = document.getElementById("unitHours");
+  const daysElement = document.getElementById("unitDays");
+
+  const hours = Number(hoursElement.value);
+  const days = Number(daysElement.value);
+
+  if (
+    hoursElement.value.trim() === "" ||
+    !Number.isFinite(hours) ||
+    hours < 0 ||
+    hours > 24
+  ) {
+    alert("Daily usage must be between 0 and 24 hours.");
+    hoursElement.focus();
+    return;
+  }
+
+  if (
+    daysElement.value.trim() === "" ||
+    !Number.isFinite(days) ||
+    days < 1 ||
+    days > 366
+  ) {
+    alert("Enter between 1 and 366 days.");
+    daysElement.focus();
+    return;
+  }
+
+  const units = (watt * hours * days) / 1000;
+
+  showResult(
+    "Estimated Electricity Consumption",
+    units.toFixed(2) + " Units",
+    "Energy consumption only; your bill also depends on your tariff and charges."
+  );
+}
+
+/* VOLTAGE: V = P / I */
+function calculateVoltage() {
+  const power = readPositive("voltagePower", "power");
+  if (power === null) return;
+
+  const current = readPositive("voltageCurrent", "current");
+  if (current === null) return;
+
+  showResult("Voltage", (power / current).toFixed(2) + " V");
+}
+
+/* RESISTANCE: R = V / I */
+function calculateResistance() {
+  const voltage = readPositive("resVoltage", "voltage");
+  if (voltage === null) return;
+
+  const current = readPositive("resCurrent", "current");
+  if (current === null) return;
+
+  showResult("Resistance", (voltage / current).toFixed(3) + " Ω");
+}
+
+/* LIGHTING CALCULATOR */
+function calculateLighting() {
+  const length = readPositive("lightLength", "room length");
+  if (length === null) return;
+
+  const width = readPositive("lightWidth", "room width");
+  if (width === null) return;
+
+  const height = readPositive("lightHeight", "ceiling height");
+  if (height === null) return;
+
+  const watt = readPositive("lightWatt", "light wattage");
+  if (watt === null) return;
+
+  const lumens = readPositive("lightLumens", "lumens per light");
+  if (lumens === null) return;
+
+  if (length > 500 || width > 500 || height > 100 ||
+      watt > 1000 || lumens > 50000) {
+    alert("Please check the entered values.");
+    return;
+  }
+
+  const lux = Number(document.getElementById("lightLux").value);
+  const uf = Number(document.getElementById("lightUF").value);
+  const mf = Number(document.getElementById("lightMF").value);
+
+  const areaSqFt = length * width;
+  const areaSqM = areaSqFt * 0.09290304;
+
+  /*
+    Estimated total lamp lumens needed:
+    area in m² x target lux / (utilization factor x maintenance factor)
+  */
+  const requiredLumens = (areaSqM * lux) / (uf * mf);
+  const bulbCount = Math.ceil(requiredLumens / lumens);
+
+  const totalWatt = bulbCount * watt;
+
+  const estimatedLux =
+    (bulbCount * lumens * uf * mf) / areaSqM;
+
+  const units30Days = (totalWatt * 8 * 30) / 1000;
+
+  const result = document.getElementById("calcResult");
+  result.innerHTML = "";
+
+  const card = document.createElement("div");
+  card.className = "result";
+
+  const rows = [
+    ["Room Area", areaSqFt.toFixed(1) + " sq ft"],
+    ["Area in Square Metres", areaSqM.toFixed(2) + " m²"],
+    ["Target Brightness", lux + " Lux"],
+    ["Estimated Number of Lights", bulbCount + " Lights"],
+    ["Total Electrical Load", totalWatt.toFixed(1) + " W"],
+    ["Estimated Average Illuminance", estimatedLux.toFixed(0) + " Lux"],
+    ["Estimated Units for 30 Days", units30Days.toFixed(2) + " kWh"]
+  ];
+
+  rows.forEach(([label, value]) => {
+    const row = document.createElement("div");
+    row.className = "result-row";
+
+    const title = document.createElement("span");
+    title.textContent = label;
+
+    const output = document.createElement("strong");
+    output.textContent = value;
+
+    row.appendChild(title);
+    row.appendChild(output);
+    card.appendChild(row);
+  });
+
+  result.appendChild(card);
+
+  const note = document.createElement("p");
+  note.className = "result-note";
+  note.textContent =
+    "Electricity estimate assumes all lights operate 8 hours daily for 30 days. One unit equals one kWh.";
+  result.appendChild(note);
+
+  const warning = document.createElement("p");
+  warning.className = "warning-note";
+  warning.textContent =
+    "Planning estimate only. Ceiling height, light distribution, wall colours, shadows and furniture placement affect real illumination. This calculation does not replace a lighting layout or on-site lux measurement.";
+  result.appendChild(warning);
+}
+</script>
+
+</body>
+</html>
