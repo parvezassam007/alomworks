@@ -1,566 +1,719 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2563eb">
+<!DOCTYPE html>  <html lang="en">  
+<head>  <meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<meta name="theme-color" content="#2563eb">  <title>Electrical Calculator | Parbez Smart Works</title>  <link rel="stylesheet"  
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">  <link rel="stylesheet" href="style.css">  <style>  
+  
+.page-container{  
+  max-width:850px;  
+  margin:auto;  
+  padding:18px;  
+}  
+  
+.page-title{  
+  display:flex;  
+  align-items:center;  
+  gap:12px;  
+  margin-bottom:18px;  
+}  
+  
+.back-btn{  
+  width:42px;  
+  height:42px;  
+  border:0;  
+  border-radius:13px;  
+  background:white;  
+  color:#2563eb;  
+  font-size:17px;  
+  cursor:pointer;  
+}  
+  
+.calc-menu{  
+  display:grid;  
+  grid-template-columns:repeat(2,1fr);  
+  gap:12px;  
+}  
+  
+.calc-menu button{  
+  border:1px solid #e2e8f0;  
+  background:white;  
+  border-radius:18px;  
+  padding:18px 12px;  
+  cursor:pointer;  
+  text-align:left;  
+}  
+  
+.calc-menu i{  
+  width:44px;  
+  height:44px;  
+  display:flex;  
+  align-items:center;  
+  justify-content:center;  
+  border-radius:13px;  
+  background:#dbeafe;  
+  color:#2563eb;  
+  margin-bottom:12px;  
+  font-size:19px;  
+}  
+  
+.calc-menu strong{  
+  display:block;  
+  font-size:14px;  
+}  
+  
+.calc-menu span{  
+  display:block;  
+  color:#64748b;  
+  font-size:11px;  
+  margin-top:4px;  
+}  
+  
+.calc-box{  
+  margin-top:18px;  
+  background:white;  
+  border:1px solid #e2e8f0;  
+  border-radius:20px;  
+  padding:18px;  
+}  
+  
+.calc-box h3{  
+  margin-bottom:16px;  
+}  
+  
+.calc-field{  
+  margin-bottom:13px;  
+}  
+  
+.calc-field label{  
+  display:block;  
+  font-size:12px;  
+  font-weight:bold;  
+  margin-bottom:6px;  
+}  
+  
+.calc-field input{  
+  width:100%;  
+  padding:13px;  
+  border:1px solid #dbe2ea;  
+  border-radius:11px;  
+  background:#f8fafc;  
+  font-size:15px;  
+  outline:none;  
+}  
+  
+.calc-btn{  
+  width:100%;  
+  border:0;  
+  padding:14px;  
+  background:#2563eb;  
+  color:white;  
+  border-radius:11px;  
+  font-weight:bold;  
+  margin-top:5px;  
+  cursor:pointer;  
+}  
+  
+.result{  
+  margin-top:16px;  
+  padding:17px;  
+  background:#eff6ff;  
+  border-radius:14px;  
+  text-align:center;  
+}  
+  
+.result span{  
+  display:block;  
+  color:#64748b;  
+  font-size:12px;  
+}  
+  
+.result strong{  
+  display:block;  
+  color:#2563eb;  
+  font-size:25px;  
+  margin-top:5px;  
+}  
+  
+.about-card{  
+  margin-top:18px;  
+  background:white;  
+  border:1px solid #e2e8f0;  
+  border-radius:20px;  
+  padding:18px;  
+}  
+  
+.about-card h3{  
+  font-size:16px;  
+  margin-bottom:8px;  
+}  
+  
+.about-card p{  
+  color:#64748b;  
+  font-size:12px;  
+  line-height:1.6;  
+}  
+  
+.contact{  
+  margin-top:12px;  
+  padding-top:12px;  
+  border-top:1px solid #e2e8f0;  
+  font-size:12px;  
+  line-height:1.8;  
+}  
+  
+.contact strong{  
+  color:#2563eb;  
+}  
+  
+@media(max-width:450px){  
+  
+  .calc-menu{  
+    grid-template-columns:1fr 1fr;  
+  }  
+  
+}  
+  
+</style>  </head>  <body>  <header class="topbar">  <div class="brand">  <div class="brand-logo">  
+<i class="fa-solid fa-bolt"></i>  
+</div>  <div>  <h1>Parbez Smart Works</h1>  <p>  
+Electrical • Ceiling • Plumbing  
+</p>  </div>  </div>  </header>  <main class="page-container">  <div class="page-title">  <button class="back-btn"  
+onclick="location.href='index.html'">
 
-<title>Electrical Calculator | Parbez Smart Works</title>
-<meta name="description" content="Electrical calculator, Ohm's Law, power, current, electricity units and lighting calculator by Parbez Smart Works.">
+<i class="fa-solid fa-arrow-left"></i>
 
-<style>
-:root {
-  --primary: #2563eb;
-  --dark: #0f172a;
-  --bg: #f1f5f9;
-  --card: #ffffff;
-  --text: #1e293b;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --green: #15803d;
-  --red: #dc2626;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-header {
-  background: var(--dark);
-  color: white;
-  padding: 20px 15px;
-}
-.header-inner, main {
-  width: 100%;
-  max-width: 950px;
-  margin: auto;
-}
-header h1 { margin: 0 0 6px; font-size: 23px; }
-header p { margin: 0; color: #cbd5e1; font-size: 14px; }
-main { padding: 16px 12px 90px; }
-.notice {
-  background: #dbeafe;
-  border: 1px solid #bfdbfe;
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-.section-title { margin: 20px 0 10px; font-size: 18px; }
-.menu {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-.menu button {
-  min-height: 76px;
-  padding: 13px 8px;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  background: white;
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: left;
-}
-.menu button span {
-  display: block;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 400;
-  margin-top: 6px;
-}
-.menu button.active {
-  border: 2px solid var(--primary);
-  background: #eff6ff;
-}
-.panel {
-  margin-top: 15px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 16px;
-  box-shadow: 0 4px 15px rgba(15,23,42,.04);
-}
-.panel h2 { margin: 0 0 7px; font-size: 20px; }
-.description {
-  margin: 0 0 16px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--muted);
-}
-.field { margin-bottom: 13px; }
-label {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-input, select {
-  width: 100%;
-  min-height: 44px;
-  border: 1px solid #cbd5e1;
-  border-radius: 9px;
-  padding: 10px;
-  background: white;
-  color: var(--text);
-  font-size: 16px;
-}
-input:focus, select:focus {
-  outline: 2px solid #bfdbfe;
-  border-color: var(--primary);
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 12px;
-}
-.btn-row { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 8px; }
-.btn {
-  border: 0;
-  border-radius: 9px;
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  min-height: 44px;
-}
-.btn-primary { background: var(--primary); color: white; }
-.btn-secondary { background: #e2e8f0; color: var(--dark); }
-.result {
-  display: none;
-  margin-top: 15px;
-  padding: 14px;
-  border-radius: 11px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  overflow-wrap: anywhere;
-}
-.result.show { display: block; }
-.result h3 { margin: 0 0 10px; font-size: 16px; color: var(--green); }
-.result-line {
-  padding: 8px 0;
-  border-bottom: 1px solid #dcfce7;
-  font-size: 14px;
-  line-height: 1.5;
-}
-.result-line:last-child { border-bottom: 0; }
-.error {
-  display: none;
-  margin-top: 12px;
-  padding: 10px;
-  border-radius: 9px;
-  background: #fef2f2;
-  color: var(--red);
-  font-size: 13px;
-}
-.error.show { display: block; }
-.hidden { display: none !important; }
-.small { color: var(--muted); font-size: 12px; line-height: 1.5; }
-footer {
-  padding: 20px 12px;
-  text-align: center;
-  font-size: 12px;
-  color: var(--muted);
-}
-@media (min-width: 650px) {
-  .menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .panel { padding: 22px; }
-}
-@media (max-width: 380px) {
-  .grid { grid-template-columns: 1fr; }
-}
-</style>
-</head>
+</button>  <h2>Electrical Calculator</h2>  </div>  <div class="calc-menu">  <button onclick="openCalc('ohm')">  <i class="fa-solid fa-bolt"></i>
 
-<body>
-<header>
-  <div class="header-inner">
-    <h1>⚡ Parbez Smart Works</h1>
-    <p>Electrical • Ceiling • Plumbing</p>
-  </div>
-</header>
+<strong>Ohm's Law</strong>
 
-<main>
-  <div class="notice">
-    <strong>Electrical Calculator</strong><br>
-    Electrical calculations aur normal hisaab yahan kar sakte ho.
-    Wiring ya electrical installation se pehle proper safety aur suitable ratings check karein.
-  </div>
+<span>V • I • R</span>
 
-  <h2 class="section-title">Select Calculator</h2>
+</button>  <button onclick="openCalc('power')">  <i class="fa-solid fa-plug"></i>
 
-  <div class="menu" id="calculatorMenu">
-    <button type="button" class="active" data-calc="basic">
-      🧮 Normal Calculator
-      <span>Plus, minus, multiply, divide</span>
-    </button>
-    <button type="button" data-calc="ohm">
-      ⚡ Ohm's Law
-      <span>Voltage, current, resistance</span>
-    </button>
-    <button type="button" data-calc="power">
-      🔌 Watt / Ampere
-      <span>Power and current calculation</span>
-    </button>
-    <button type="button" data-calc="hp">
-      ⚙️ kW to HP
-      <span>Power unit conversion</span>
-    </button>
-    <button type="button" data-calc="units">
-      💡 Electricity Units
-      <span>Units and bill estimate</span>
-    </button>
-    <button type="button" data-calc="voltage">
-      🔋 Voltage Drop
-      <span>Approximate cable voltage drop</span>
-    </button>
-    <button type="button" data-calc="resistance">
-      🧲 Resistance
-      <span>Resistors in series and parallel</span>
-    </button>
-    <button type="button" data-calc="lighting">
-      💡 Room Lighting
-      <span>Approximate lumens and lights</span>
-    </button>
-  </div>
+<strong>Power</strong>
 
-  <section class="panel" id="calculatorPanel">
-    <h2 id="calcTitle">Normal Calculator</h2>
-    <p class="description" id="calcDescription">Do numbers ka hisaab karein.</p>
+<span>W • V • A</span>
 
-    <!-- NORMAL CALCULATOR -->
-    <div id="form-basic" class="calc-form">
-      <div class="grid">
-        <div class="field">
-          <label for="basicA">First Number</label>
-          <input id="basicA" type="number" step="any" placeholder="Enter first number">
-        </div>
-        <div class="field">
-          <label for="basicB">Second Number</label>
-          <input id="basicB" type="number" step="any" placeholder="Enter second number">
-        </div>
-      </div>
-      <div class="field">
-        <label for="basicOperation">Operation</label>
-        <select id="basicOperation">
-          <option value="add">Addition (+)</option>
-          <option value="subtract">Subtraction (−)</option>
-          <option value="multiply">Multiplication (×)</option>
-          <option value="divide">Division (÷)</option>
-          <option value="percent">First number ka second number %</option>
-        </select>
-      </div>
-      <button class="btn btn-primary" type="button" id="basicCalculate">Calculate</button>
-    </div>
+</button>  <button onclick="openCalc('hp')">  <i class="fa-solid fa-gauge-high"></i>
 
-    <!-- OHM'S LAW -->
-    <div id="form-ohm" class="calc-form hidden">
-      <div class="field">
-        <label for="ohmMode">Kya calculate karna hai?</label>
-        <select id="ohmMode">
-          <option value="current">Current (Ampere) — V ÷ R</option>
-          <option value="voltage">Voltage (Volt) — I × R</option>
-          <option value="resistance">Resistance (Ohm) — V ÷ I</option>
-        </select>
-      </div>
-      <div class="grid">
-        <div class="field">
-          <label for="ohmV">Voltage (V)</label>
-          <input id="ohmV" type="number" min="0" step="any" placeholder="Voltage">
-        </div>
-        <div class="field">
-          <label for="ohmI">Current (A)</label>
-          <input id="ohmI" type="number" min="0" step="any" placeholder="Current">
-        </div>
-        <div class="field">
-          <label for="ohmR">Resistance (Ω)</label>
-          <input id="ohmR" type="number" min="0" step="any" placeholder="Resistance">
-        </div>
-      </div>
-      <p class="small">Required values bharo. Jis value ko calculate karna hai, us field ko khaali chhodo.</p>
-      <button class="btn btn-primary" type="button" id="ohmCalculate">Calculate</button>
-    </div>
+<strong>kW → HP</strong>
 
-    <!-- POWER -->
-    <div id="form-power" class="calc-form hidden">
-      <div class="field">
-        <label for="powerMode">Calculation</label>
-        <select id="powerMode">
-          <option value="current">Current (A) = Watt ÷ Volt</option>
-          <option value="power">Power (W) = Volt × Ampere</option>
-          <option value="voltage">Voltage (V) = Watt ÷ Ampere</option>
-          <option value="kw">Watt to Kilowatt (kW)</option>
-        </select>
-      </div>
-      <div class="grid">
-        <div class="field">
-          <label for="powerW">Power (Watt)</label>
-          <input id="powerW" type="number" min="0" step="any" placeholder="Watt">
-        </div>
-        <div class="field">
-          <label for="powerV">Voltage (Volt)</label>
-          <input id="powerV" type="number" min="0" step="any" placeholder="Voltage">
-        </div>
-        <div class="field">
-          <label for="powerI">Current (Ampere)</label>
-          <input id="powerI" type="number" min="0" step="any" placeholder="Ampere">
-        </div>
-      </div>
-      <button class="btn btn-primary" type="button" id="powerCalculate">Calculate</button>
-    </div>
+<span>Power conversion</span>
 
-    <!-- HP -->
-    <div id="form-hp" class="calc-form hidden">
-      <div class="field">
-        <label for="hpMode">Conversion</label>
-        <select id="hpMode">
-          <option value="kw-hp">Kilowatt (kW) to Horsepower (HP)</option>
-          <option value="hp-kw">Horsepower (HP) to Kilowatt (kW)</option>
-          <option value="w-hp">Watt (W) to Horsepower (HP)</option>
-          <option value="hp-w">Horsepower (HP) to Watt (W)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="hpValue">Value</label>
-        <input id="hpValue" type="number" min="0" step="any" placeholder="Enter value">
-      </div>
-      <button class="btn btn-primary" type="button" id="hpCalculate">Convert</button>
-    </div>
+</button>  <button onclick="openCalc('unit')">  <i class="fa-solid fa-house"></i>
 
-    <!-- UNITS -->
-    <div id="form-units" class="calc-form hidden">
-      <div class="grid">
-        <div class="field">
-          <label for="unitsWatt">Appliance Power (Watt)</label>
-          <input id="unitsWatt" type="number" min="0" step="any" placeholder="e.g. 100">
-        </div>
-        <div class="field">
-          <label for="unitsQuantity">Number of Appliances</label>
-          <input id="unitsQuantity" type="number" min="1" step="1" value="1">
-        </div>
-        <div class="field">
-          <label for="unitsHours">Hours per Day</label>
-          <input id="unitsHours" type="number" min="0" step="any" placeholder="e.g. 8">
-        </div>
-        <div class="field">
-          <label for="unitsDays">Days</label>
-          <input id="unitsDays" type="number" min="0" step="any" value="30">
-        </div>
-        <div class="field">
-          <label for="unitsRate">Rate per Unit (₹)</label>
-          <input id="unitsRate" type="number" min="0" step="any" value="8">
-        </div>
-      </div>
-      <button class="btn btn-primary" type="button" id="unitsCalculate">Calculate Units & Bill</button>
-      <p class="small">Bill estimate hai. Actual bill mein fixed charges, taxes aur slabs alag ho sakte hain.</p>
-    </div>
+<strong>Electricity Unit</strong>
 
-    <!-- VOLTAGE DROP -->
-    <div id="form-voltage" class="calc-form hidden">
-      <div class="grid">
-        <div class="field">
-          <label for="vdVoltage">Supply Voltage (V)</label>
-          <input id="vdVoltage" type="number" min="0" step="any" value="230">
-        </div>
-        <div class="field">
-          <label for="vdCurrent">Load Current (A)</label>
-          <input id="vdCurrent" type="number" min="0" step="any" placeholder="Current">
-        </div>
-        <div class="field">
-          <label for="vdLength">One-way Cable Length (metres)</label>
-          <input id="vdLength" type="number" min="0" step="any" placeholder="Distance">
-        </div>
-        <div class="field">
-          <label for="vdSize">Conductor Size (mm²)</label>
-          <select id="vdSize">
-            <option value="1">1 mm²</option>
-            <option value="1.5">1.5 mm²</option>
-            <option value="2.5" selected>2.5 mm²</option>
-            <option value="4">4 mm²</option>
-            <option value="6">6 mm²</option>
-            <option value="10">10 mm²</option>
-            <option value="16">16 mm²</option>
-            <option value="25">25 mm²</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="vdMaterial">Conductor</label>
-          <select id="vdMaterial">
-            <option value="0.0175">Copper</option>
-            <option value="0.0282">Aluminium</option>
-          </select>
-        </div>
-      </div>
-      <button class="btn btn-primary" type="button" id="vdCalculate">Estimate Voltage Drop</button>
-      <p class="small">Yeh simplified DC/two-wire resistance estimate hai. AC installation mein power factor, temperature, cable method aur local standards bhi matter karte hain. Cable size choose karne ka sole basis na banayein.</p>
-    </div>
+<span>Unit calculation</span>
 
-    <!-- RESISTANCE -->
-    <div id="form-resistance" class="calc-form hidden">
-      <div class="field">
-        <label for="resMode">Connection Type</label>
-        <select id="resMode">
-          <option value="series">Series — add resistances</option>
-          <option value="parallel">Parallel — reciprocal formula</option>
-        </select>
-      </div>
-      <div class="grid">
-        <div class="field">
-          <label for="resA">Resistance 1 (Ω)</label>
-          <input id="resA" type="number" min="0" step="any" placeholder="Resistance 1">
-        </div>
-        <div class="field">
-          <label for="resB">Resistance 2 (Ω)</label>
-          <input id="resB" type="number" min="0" step="any" placeholder="Resistance 2">
-        </div>
-        <div class="field">
-          <label for="resC">Resistance 3 (Ω, optional)</label>
-          <input id="resC" type="number" min="0" step="any" placeholder="Optional">
-        </div>
-      </div>
-      <button class="btn btn-primary" type="button" id="resCalculate">Calculate Resistance</button>
-    </div>
+</button>  <button onclick="openCalc('voltage')">  <i class="fa-solid fa-wave-square"></i>
 
-    <!-- LIGHTING -->
-    <div id="form-lighting" class="calc-form hidden">
-      <div class="grid">
-        <div class="field">
-          <label for="lightLength">Room Length (feet)</label>
-          <input id="lightLength" type="number" min="0" step="any" placeholder="Length">
-        </div>
-        <div class="field">
-          <label for="lightWidth">Room Width (feet)</label>
-          <input id="lightWidth" type="number" min="0" step="any" placeholder="Width">
-        </div>
-      </div>
-      <div class="field">
-        <label for="lightRoom">Room Type</label>
-        <select id="lightRoom">
-          <option value="100">Bedroom (100 lux estimate)</option>
-          <option value="150">Living Room (150 lux estimate)</option>
-          <option value="200">Kitchen (200 lux estimate)</option>
-          <option value="300">Study / Work Area (300 lux estimate)</option>
-          <option value="100">Corridor (100 lux estimate)</option>
-          <option value="150">Bathroom (150 lux estimate)</option>
-        </select>
-      </div>
-      <div class="grid">
-        <div class="field">
-          <label for="lightWatt">LED Bulb Wattage</label>
-          <select id="lightWatt">
-            <option value="5">5 W</option>
-            <option value="9" selected>9 W</option>
-            <option value="12">12 W</option>
-            <option value="15">15 W</option>
-            <option value="18">18 W</option>
-            <option value="20">20 W</option>
-            <option value="24">24 W</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="lightLumens">Approx. Lumens per Watt</label>
-          <input id="lightLumens" type="number" min="1" step="any" value="90">
-        </div>
-      </div>
-      <button class="btn btn-primary" type="button" id="lightCalculate">Calculate Lighting</button>
-      <p class="small">Yeh approximate planning estimate hai. Ceiling height, wall colour, natural light, fitting efficiency aur actual bulb lumen output se result badlega.</p>
-    </div>
+<strong>Voltage</strong>
 
-    <div id="calcError" class="error" role="alert"></div>
-    <div id="calcResult" class="result" aria-live="polite">
-      <h3>Calculation Result</h3>
-      <div id="resultContent"></div>
-      <div class="btn-row">
-        <button type="button" class="btn btn-secondary" id="copyResult">Copy Result</button>
-        <button type="button" class="btn btn-secondary" id="clearResult">Clear Result</button>
-      </div>
-    </div>
+<span>V = W ÷ A</span>
 
-    <div class="btn-row">
-      <button type="button" class="btn btn-secondary" id="resetForm">Reset Inputs</button>
-    </div>
-  </section>
-</main>
+</button>  <button onclick="openCalc('resistance')">  <i class="fa-solid fa-circle-nodes"></i>
 
-<footer>
-  © <span id="year"></span> Parbez Smart Works · Electrical • Ceiling • Plumbing
-</footer>
+<strong>Resistance</strong>
 
-<script>
-(function () {
-  "use strict";
+<span>R = V ÷ I</span>
 
-  const titles = {
-    basic: ["Normal Calculator", "Do numbers ka hisaab karein."],
-    ohm: ["Ohm's Law Calculator", "Voltage, current aur resistance ke beech relation calculate karein."],
-    power: ["Watt / Ampere Calculator", "Basic electrical power formulas use karein."],
-    hp: ["kW / HP Converter", "Power units convert karein."],
-    units: ["Electricity Units Calculator", "Appliance power aur usage se approximate units aur bill nikalein."],
-    voltage: ["Voltage Drop Estimator", "Cable resistance ke basis par simplified voltage drop estimate karein."],
-    resistance: ["Resistance Calculator", "Series ya parallel resistance calculate karein."],
-    lighting: ["Room Lighting Calculator", "Room area ke basis par approximate lights ki quantity nikalein."]
-  };
+</button>  </div>  <div id="calculatorBox"  
+class="calc-box">  <h3>Select a calculator</h3>  <p style="color:#64748b;font-size:13px;">  Choose any calculator above.
 
-  const menu = document.getElementById("calculatorMenu");
-  const title = document.getElementById("calcTitle");
-  const description = document.getElementById("calcDescription");
-  const errorBox = document.getElementById("calcError");
-  const resultBox = document.getElementById("calcResult");
-  const resultContent = document.getElementById("resultContent");
-  let activeCalc = "basic";
-  let lastResultText = "";
+</p>  </div>  <div class="about-card">  <h3>About Parbez Smart Works</h3>  <p>  Parbez Smart Works provides electrical,
+false ceiling and plumbing services for
+homes, shops and other projects.
+This app helps manage estimates, bills,
+electrical calculations and basic learning
+in one place.
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+</p>  <div class="contact">  <strong>Owner:</strong>
+Parbez Alom Badrul Alom
+<br>
 
-  function number(id) {
-    const element = document.getElementById(id);
-    if (!element) throw new Error("Input field nahi mila: " + id);
-    const value = element.value.trim();
-    if (value === "") throw new Error("Please sab zaroori fields bharein.");
-    const n = Number(value);
-    if (!Number.isFinite(n)) throw new Error("Valid number enter karein.");
-    return n;
-  }
+<strong>Mobile:</strong>
+9395305384 / 9833762577
+<br>
 
-  function positive(id, allowZero = false) {
-    const n = number(id);
-    if (allowZero ? n < 0 : n <= 0) {
-      throw new Error(allowZero ? "Value zero ya usse zyada honi chahiye." : "Value zero se zyada honi chahiye.");
-    }
-    return n;
-  }
+<strong>Location:</strong>
+Hojai, Assam
+<br>
 
-  function optionalNonNegative(id) {
-    const el = document.getElementById(id);
-    if (!el || el.value.trim() === "") return null;
-    const n = Number(el.value);
-    if (!Number.isFinite(n) || n < 0) throw new Error("Optional resistance valid aur zero ya usse zyada honi chahiye.");
-    return n;
-  }
+<strong>Instagram:</strong>
+@parbez_works
+<br>
 
-  function fmt(n, digits = 3) {
-    if (!Number.isFinite(n)) return "Not available";
-    return Number(n.toFixed(digits)).toLocaleString("en-IN", {
-      maximumFractionDigits: digits
-    });
-  }
+<strong>YouTube:</strong>
+@parbezworks
 
-  function showError(message) {
-    errorBox.textContent = message;
-    errorBox.classList.add("show");
-    resultBox.classList.remove("show");
-  }
-
-  function showResult(lines) {
-    errorBox.textContent = "";
-    errorBox.classList.remove("show");
-    resultContent.replaceChildren();
-    const textLines = [];
-
-    lines.forEach(function (line) {
-      const row = document.createElement("div"
+</div>  </div>  </main>  <script>  
+  
+  
+function openCalc(type){  
+  
+const box =  
+document.getElementById("calculatorBox");  
+  
+  
+if(type==="ohm"){  
+  
+box.innerHTML=`  
+  
+<h3>Ohm's Law — Current</h3>  
+  
+<div class="calc-field">  
+  
+<label>Voltage (V)</label>  
+  
+<input id="voltage"  
+type="number"  
+min="0"  
+placeholder="Example: 230">  
+  
+</div>  
+  
+<div class="calc-field">  
+  
+<label>Resistance (Ω)</label>  
+  
+<input id="resistance"  
+type="number"  
+min="0"  
+placeholder="Example: 10">  
+  
+</div>  
+  
+<button class="calc-btn"  
+onclick="calculateOhm()">  
+  
+Calculate Current  
+  
+</button>  
+  
+<div id="calcResult"></div>  
+  
+`;  
+  
+}  
+  
+  
+if(type==="power"){  
+  
+box.innerHTML=`  
+  
+<h3>Power Calculator</h3>  
+  
+<div class="calc-field">  
+  
+<label>Voltage (V)</label>  
+  
+<input id="powerVoltage"  
+type="number"  
+min="0"  
+placeholder="Example: 230">  
+  
+</div>  
+  
+<div class="calc-field">  
+  
+<label>Current (A)</label>  
+  
+<input id="powerCurrent"  
+type="number"  
+min="0"  
+placeholder="Example: 5">  
+  
+</div>  
+  
+<button class="calc-btn"  
+onclick="calculatePower()">  
+  
+Calculate Power  
+  
+</button>  
+  
+<div id="calcResult"></div>  
+  
+`;  
+  
+}  
+  
+  
+if(type==="hp"){  
+  
+box.innerHTML=`  
+  
+<h3>kW → HP</h3>  
+  
+<div class="calc-field">  
+  
+<label>Power (kW)</label>  
+  
+<input id="kw"  
+type="number"  
+min="0"  
+placeholder="Example: 1.5">  
+  
+</div>  
+  
+<button class="calc-btn"  
+onclick="calculateHP()">  
+  
+Convert  
+  
+</button>  
+  
+<div id="calcResult"></div>  
+  
+`;  
+  
+}  
+  
+  
+if(type==="unit"){  
+  
+box.innerHTML=`  
+  
+<h3>Electricity Unit Calculator</h3>  
+  
+<div class="calc-field">  
+  
+<label>Power (Watt)</label>  
+  
+<input id="unitPower"  
+type="number"  
+min="0"  
+placeholder="Example: 1000">  
+  
+</div>  
+  
+<div class="calc-field">  
+  
+<label>Usage Hours / Day</label>  
+  
+<input id="unitHours"  
+type="number"  
+min="0"  
+placeholder="Example: 8">  
+  
+</div>  
+  
+<div class="calc-field">  
+  
+<label>Number of Days</label>  
+  
+<input id="unitDays"  
+type="number"  
+min="1"  
+value="30">  
+  
+</div>  
+  
+<button class="calc-btn"  
+onclick="calculateUnits()">  
+  
+Calculate Units  
+  
+</button>  
+  
+<div id="calcResult"></div>  
+  
+`;  
+  
+}  
+  
+  
+if(type==="voltage"){  
+  
+box.innerHTML=`  
+  
+<h3>Voltage Calculator</h3>  
+  
+<div class="calc-field">  
+  
+<label>Power (W)</label>  
+  
+<input id="voltagePower"  
+type="number"  
+min="0"  
+placeholder="Example: 1000">  
+  
+</div>  
+  
+<div class="calc-field">  
+  
+<label>Current (A)</label>  
+  
+<input id="voltageCurrent"  
+type="number"  
+min="0"  
+placeholder="Example: 5">  
+  
+</div>  
+  
+<button class="calc-btn"  
+onclick="calculateVoltage()">  
+  
+Calculate Voltage  
+  
+</button>  
+  
+<div id="calcResult"></div>  
+  
+`;  
+  
+}  
+  
+  
+if(type==="resistance"){  
+  
+box.innerHTML=`  
+  
+<h3>Resistance Calculator</h3>  
+  
+<div class="calc-field">  
+  
+<label>Voltage (V)</label>  
+  
+<input id="resVoltage"  
+type="number"  
+min="0"  
+placeholder="Example: 230">  
+  
+</div>  
+  
+<div class="calc-field">  
+  
+<label>Current (A)</label>  
+  
+<input id="resCurrent"  
+type="number"  
+min="0"  
+placeholder="Example: 5">  
+  
+</div>  
+  
+<button class="calc-btn"  
+onclick="calculateResistance()">  
+  
+Calculate Resistance  
+  
+</button>  
+  
+<div id="calcResult"></div>  
+  
+`;  
+  
+}  
+  
+}  
+  
+  
+/* OHM */  
+  
+function calculateOhm(){  
+  
+const v =  
+Number(document.getElementById("voltage").value);  
+  
+const r =  
+Number(document.getElementById("resistance").value);  
+  
+  
+if(v<=0 || r<=0){  
+  
+alert("Enter valid voltage and resistance.");  
+  
+return;  
+  
+}  
+  
+  
+const current=v/r;  
+  
+  
+showResult(  
+"Current",  
+current.toFixed(2)+" A"  
+);  
+  
+}  
+  
+  
+/* POWER */  
+  
+function calculatePower(){  
+  
+const v =  
+Number(document.getElementById("powerVoltage").value);  
+  
+const a =  
+Number(document.getElementById("powerCurrent").value);  
+  
+  
+if(v<=0 || a<=0){  
+  
+alert("Enter valid voltage and current.");  
+  
+return;  
+  
+}  
+  
+  
+const watts=v*a;  
+  
+  
+showResult(  
+"Power",  
+watts.toFixed(2)+" W"  
+);  
+  
+}  
+  
+  
+/* HP */  
+  
+function calculateHP(){  
+  
+const kw =  
+Number(document.getElementById("kw").value);  
+  
+  
+if(kw<=0){  
+  
+alert("Enter valid kW value.");  
+  
+return;  
+  
+}  
+  
+  
+const hp=kw*1.34102;  
+  
+  
+showResult(  
+"Horse Power",  
+hp.toFixed(2)+" HP"  
+);  
+  
+}  
+  
+  
+/* UNITS */  
+  
+function calculateUnits(){  
+  
+const watt =  
+Number(document.getElementById("unitPower").value);  
+  
+const hours =  
+Number(document.getElementById("unitHours").value);  
+  
+const days =  
+Number(document.getElementById("unitDays").value);  
+  
+  
+if(watt<=0 || hours<=0 || days<=0){  
+  
+alert("Enter all valid values.");  
+  
+return;  
+  
+}  
+  
+  
+const units =  
+(watt*hours*days)/1000;  
+  
+  
+showResult(  
+"Estimated Electricity Consumption",  
+units.toFixed(2)+" Units"  
+);  
+  
+}  
+  
+  
+/* VOLTAGE */  
+  
+function calculateVoltage(){  
+  
+const power =  
+Number(document.getElementById("voltagePower").value);  
+  
+const current =  
+Number(document.getElementById("voltageCurrent").value);  
+  
+  
+if(power<=0 || current<=0){  
+  
+alert("Enter valid power and current.");  
+  
+return;  
+  
+}  
+  
+  
+const voltage=power/current;  
+  
+  
+showResult(  
+"Voltage",  
+voltage.toFixed(2)+" V"  
+);  
+  
+}  
+  
+  
+/* RESISTANCE */  
+  
+function calculateResistance(){  
+  
+const voltage =  
+Number(document.getElementById("resVoltage").value);  
+  
+const current =  
+Number(document.getElementById("resCurrent").value);  
+  
+  
+if(voltage<=0 || current<=0){  
+  
+alert("Enter valid voltage and current.");  
+  
+return;  
+  
+}  
+  
+  
+const resistance=voltage/current;  
+  
+  
+showResult(  
+"Resistance",  
+resistance.toFixed(2)+" Ω"  
+);  
+  
+}  
+  
+  
+/* RESULT */  
+  
+function showResult(label,value){  
+  
+document.getElementById("calcResult").innerHTML=`  
+  
+<div class="result">  
+  
+<span>${label}</span>  
+  
+<strong>${value}</strong>  
+  
+</div>  
+  
+`;  
+  
+}  
+  
+</script>  </body>  
+</html> 
