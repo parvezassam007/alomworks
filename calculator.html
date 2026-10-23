@@ -168,6 +168,8 @@ body{
   font-size:15px;
 }
 
+.calc-btn:active{transform:scale(.99)}
+
 .result{
   margin-top:16px;
   padding:15px;
@@ -351,10 +353,7 @@ body{
 
   <section class="about-card">
     <h3>About Parbez Smart Works</h3>
-    <p>
-      Electrical work, false ceiling, lighting installation and plumbing
-      services for homes, shops and other projects.
-    </p>
+    <p>Electrical work, false ceiling, lighting installation and plumbing services for homes, shops and other projects.</p>
     <div class="contact">
       <strong>Owner:</strong> Parbez Alom Badrul Alom<br>
       <strong>Mobile:</strong> 9395305384 / 9833762577<br>
@@ -372,21 +371,17 @@ body{
 const calculatorBox = document.getElementById("calculatorBox");
 
 function openCalc(type) {
-  document.querySelectorAll(".calc-menu button").forEach(button => {
-    button.classList.toggle("active", button.dataset.calc === type);
-  });
-
   const templates = {
 
     ohm: `
       <h3>Ohm's Law — Current</h3>
       <div class="calc-field">
         <label>Voltage (V)</label>
-        <input id="voltage" type="number" min="0.001" step="any" placeholder="230">
+        <input id="ohmV" type="number" min="0.001" step="any" placeholder="230">
       </div>
       <div class="calc-field">
         <label>Resistance (Ω)</label>
-        <input id="resistance" type="number" min="0.001" step="any" placeholder="10">
+        <input id="ohmR" type="number" min="0.001" step="any" placeholder="10">
       </div>
       <button class="calc-btn" onclick="calculateOhm()">Calculate Current</button>
       <div id="calcResult"></div>
@@ -396,15 +391,15 @@ function openCalc(type) {
       <h3>Power Calculator</h3>
       <div class="calc-field">
         <label>Voltage (V)</label>
-        <input id="powerVoltage" type="number" min="0.001" step="any" placeholder="230">
+        <input id="powerV" type="number" min="0.001" step="any" placeholder="230">
       </div>
       <div class="calc-field">
         <label>Current (A)</label>
-        <input id="powerCurrent" type="number" min="0.001" step="any" placeholder="5">
+        <input id="powerA" type="number" min="0.001" step="any" placeholder="5">
       </div>
       <button class="calc-btn" onclick="calculatePower()">Calculate Power</button>
       <div id="calcResult"></div>
-      <p class="small-help">For AC loads, real power also depends on power factor.</p>
+      <p class="small-help">AC equipment ki real power power factor par bhi depend karti hai.</p>
     `,
 
     hp: `
@@ -421,15 +416,15 @@ function openCalc(type) {
       <h3>Electricity Unit Calculator</h3>
       <div class="calc-field">
         <label>Power (Watts)</label>
-        <input id="unitPower" type="number" min="0.001" step="any" placeholder="1000">
+        <input id="unitW" type="number" min="0.001" step="any" placeholder="1000">
       </div>
       <div class="calc-field">
         <label>Usage Hours per Day</label>
-        <input id="unitHours" type="number" min="0" max="24" step="any" placeholder="8">
+        <input id="unitH" type="number" min="0" max="24" step="any" value="8">
       </div>
       <div class="calc-field">
         <label>Number of Days</label>
-        <input id="unitDays" type="number" min="1" max="366" step="1" value="30">
+        <input id="unitD" type="number" min="1" max="366" step="1" value="30">
       </div>
       <button class="calc-btn" onclick="calculateUnits()">Calculate Units</button>
       <div id="calcResult"></div>
@@ -439,11 +434,11 @@ function openCalc(type) {
       <h3>Voltage Calculator</h3>
       <div class="calc-field">
         <label>Power (W)</label>
-        <input id="voltagePower" type="number" min="0.001" step="any" placeholder="1000">
+        <input id="voltP" type="number" min="0.001" step="any" placeholder="1000">
       </div>
       <div class="calc-field">
         <label>Current (A)</label>
-        <input id="voltageCurrent" type="number" min="0.001" step="any" placeholder="5">
+        <input id="voltA" type="number" min="0.001" step="any" placeholder="5">
       </div>
       <button class="calc-btn" onclick="calculateVoltage()">Calculate Voltage</button>
       <div id="calcResult"></div>
@@ -453,11 +448,11 @@ function openCalc(type) {
       <h3>Resistance Calculator</h3>
       <div class="calc-field">
         <label>Voltage (V)</label>
-        <input id="resVoltage" type="number" min="0.001" step="any" placeholder="230">
+        <input id="resV" type="number" min="0.001" step="any" placeholder="230">
       </div>
       <div class="calc-field">
         <label>Current (A)</label>
-        <input id="resCurrent" type="number" min="0.001" step="any" placeholder="5">
+        <input id="resA" type="number" min="0.001" step="any" placeholder="5">
       </div>
       <button class="calc-btn" onclick="calculateResistance()">Calculate Resistance</button>
       <div id="calcResult"></div>
@@ -477,12 +472,12 @@ function openCalc(type) {
       <div class="calc-field">
         <label>Room Type</label>
         <select id="lightRoom">
-          <option value="bedroom">Bedroom</option>
-          <option value="hall">Living Room / Hall</option>
-          <option value="kitchen">Kitchen</option>
-          <option value="bathroom">Bathroom</option>
-          <option value="shop">Shop / Office</option>
-          <option value="ceiling">False Ceiling</option>
+          <option>Bedroom</option>
+          <option>Living Room / Hall</option>
+          <option>Kitchen</option>
+          <option>Bathroom</option>
+          <option>Shop / Office</option>
+          <option>False Ceiling</option>
         </select>
       </div>
 
@@ -559,16 +554,20 @@ function openCalc(type) {
 
   calculatorBox.innerHTML = templates[type] || "<h3>Calculator not found</h3>";
 
-  if (type === "lighting") {
-    updateLightingOptions();
-  }
+  document.querySelectorAll(".calc-menu button").forEach(button => {
+    button.classList.toggle("active", button.dataset.calc === type);
+  });
+
+  if (type === "lighting") updateLightingOptions();
+
+  calculatorBox.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
 function readPositive(id, label) {
   const el = document.getElementById(id);
   const value = Number(el.value);
 
-  if (el.value.trim() === "" || !Number.isFinite(value) || value <= 0) {
+  if (!el.value.trim() || !Number.isFinite(value) || value <= 0) {
     alert("Please enter a valid value for " + label + ".");
     el.focus();
     return null;
@@ -605,86 +604,89 @@ function showResult(label, value, note = "") {
 }
 
 function calculateOhm() {
-  const v = readPositive("voltage", "voltage");
+  const v = readPositive("ohmV","voltage");
   if (v === null) return;
 
-  const r = readPositive("resistance", "resistance");
+  const r = readPositive("ohmR","resistance");
   if (r === null) return;
 
-  showResult("Current", (v / r).toFixed(3) + " A");
+  showResult("Current",(v/r).toFixed(3)+" A","Formula: I = V ÷ R");
 }
 
 function calculatePower() {
-  const v = readPositive("powerVoltage", "voltage");
+  const v = readPositive("powerV","voltage");
   if (v === null) return;
 
-  const a = readPositive("powerCurrent", "current");
+  const a = readPositive("powerA","current");
   if (a === null) return;
 
-  showResult("Apparent Power", (v * a).toFixed(2) + " VA",
-    "For AC equipment, real power in watts depends on the power factor.");
+  showResult("Apparent Power",(v*a).toFixed(2)+" VA",
+    "DC mein P = V × I watts hota hai. AC real power power factor par depend karti hai.");
 }
 
 function calculateHP() {
-  const kw = readPositive("kw", "power");
+  const kw = readPositive("kw","power");
   if (kw === null) return;
 
-  showResult("Horsepower", (kw * 1.34102).toFixed(3) + " HP");
+  showResult("Horsepower",(kw*1.34102).toFixed(3)+" HP");
 }
 
 function calculateUnits() {
-  const watt = readPositive("unitPower", "power");
+  const watt = readPositive("unitW","power");
   if (watt === null) return;
 
-  const hEl = document.getElementById("unitHours");
-  const dEl = document.getElementById("unitDays");
+  const hEl = document.getElementById("unitH");
+  const dEl = document.getElementById("unitD");
   const h = Number(hEl.value);
   const d = Number(dEl.value);
 
-  if (hEl.value.trim() === "" || !Number.isFinite(h) || h < 0 || h > 24) {
+  if (hEl.value.trim()==="" || !Number.isFinite(h) || h<0 || h>24) {
     alert("Hours must be between 0 and 24.");
     hEl.focus();
     return;
   }
 
-  if (dEl.value.trim() === "" || !Number.isInteger(d) || d < 1 || d > 366) {
+  if (dEl.value.trim()==="" || !Number.isInteger(d) || d<1 || d>366) {
     alert("Days must be between 1 and 366.");
     dEl.focus();
     return;
   }
 
-  showResult("Electricity Consumption", ((watt * h * d) / 1000).toFixed(2) + " Units",
-    "1 electricity unit = 1 kWh. Bill amount depends on your tariff and other charges.");
+  showResult("Electricity Consumption",
+    ((watt*h*d)/1000).toFixed(2)+" Units",
+    "1 electricity unit = 1 kWh. Bill amount tariff par depend karta hai.");
 }
 
 function calculateVoltage() {
-  const p = readPositive("voltagePower", "power");
+  const p = readPositive("voltP","power");
   if (p === null) return;
 
-  const a = readPositive("voltageCurrent", "current");
+  const a = readPositive("voltA","current");
   if (a === null) return;
 
-  showResult("Voltage", (p / a).toFixed(2) + " V",
-    "Uses V = P / I for DC or a suitable unity-power-factor load.");
+  showResult("Voltage",(p/a).toFixed(2)+" V",
+    "Formula: V = P ÷ I, DC ya suitable unity-power-factor load ke liye.");
 }
 
 function calculateResistance() {
-  const v = readPositive("resVoltage", "voltage");
+  const v = readPositive("resV","voltage");
   if (v === null) return;
 
-  const a = readPositive("resCurrent", "current");
+  const a = readPositive("resA","current");
   if (a === null) return;
 
-  showResult("Resistance", (v / a).toFixed(3) + " Ω");
+  showResult("Resistance",(v/a).toFixed(3)+" Ω","Formula: R = V ÷ I");
 }
 
-/* LIGHTING OPTIONS */
+/* Lighting options */
 
 function updateLightingOptions() {
-  const type = document.getElementById("lightType").value;
+  const type = document.getElementById("lightType");
   const select = document.getElementById("lightWatt");
 
-  const options = type === "spot"
+  if (!type || !select) return;
+
+  const options = type.value === "spot"
     ? [[3,240],[5,400],[7,560],[9,720],[12,960],[15,1200]]
     : [[5,400],[7,560],[9,800],[12,1100],[15,1400],[18,1800],[20,2000],[24,2400]];
 
@@ -698,8 +700,7 @@ function updateLightingOptions() {
     select.appendChild(option);
   });
 
-  select.value = type === "spot" ? "7" : "9";
-
+  select.value = type.value === "spot" ? "7" : "9";
   updateLumensForWatt();
 }
 
@@ -713,25 +714,25 @@ function updateLumensForWatt() {
   if (option) lumens.value = option.dataset.lumens;
 }
 
-/* LIGHTING CALCULATOR */
+/* Lighting calculation and layout */
 
 function calculateLighting() {
-  const length = readPositive("lightLength", "room length");
+  const length = readPositive("lightLength","room length");
   if (length === null) return;
 
-  const width = readPositive("lightWidth", "room width");
+  const width = readPositive("lightWidth","room width");
   if (width === null) return;
 
-  const height = readPositive("lightHeight", "ceiling height");
+  const height = readPositive("lightHeight","ceiling height");
   if (height === null) return;
 
-  const watt = readPositive("lightWatt", "wattage");
+  const watt = readPositive("lightWatt","wattage");
   if (watt === null) return;
 
-  const lumens = readPositive("lightLumens", "lumens per light");
+  const lumens = readPositive("lightLumens","lumens per light");
   if (lumens === null) return;
 
-  if (length > 500 || width > 500 || height > 100 || lumens > 50000) {
+  if (length>500 || width>500 || height>100 || lumens>50000) {
     alert("Please check the room dimensions and light specifications.");
     return;
   }
@@ -741,21 +742,17 @@ function calculateLighting() {
   const hours = Number(hoursEl.value);
   const days = Number(daysEl.value);
 
-  if (hoursEl.value.trim() === "" || !Number.isFinite(hours) || hours < 0 || hours > 24) {
+  if (hoursEl.value.trim()==="" || !Number.isFinite(hours) || hours<0 || hours>24) {
     alert("Daily usage must be between 0 and 24 hours.");
     hoursEl.focus();
     return;
   }
 
-  if (daysEl.value.trim() === "" || !Number.isInteger(days) || days < 1 || days > 31) {
+  if (daysEl.value.trim()==="" || !Number.isInteger(days) || days<1 || days>31) {
     alert("Monthly usage must be between 1 and 31 days.");
     daysEl.focus();
     return;
   }
-
-  const type = document.getElementById("lightType").value;
-  const room = document.getElementById("lightRoom");
-  const roomName = room.options[room.selectedIndex].text;
 
   const lux = Number(document.getElementById("lightLux").value);
   const uf = Number(document.getElementById("lightUF").value);
@@ -765,12 +762,21 @@ function calculateLighting() {
   const areaM = areaFt * 0.09290304;
 
   const requiredLumens = areaM * lux / (uf * mf);
-  const count = Math.max(1, Math.ceil(requiredLumens / lumens));
-  const totalWatt = count * watt;
-  const estimatedLux = count * lumens * uf * mf / areaM;
-  const units = totalWatt * hours * days / 1000;
+  const count = Math.max(1,Math.ceil(requiredLumens/lumens));
+  const totalWatt = count*watt;
+  const estimatedLux = count*lumens*uf*mf/areaM;
+  const units = totalWatt*hours*days/1000;
 
-  /*
-    Approximate rectangular grid layout.
-    The spacing is a planning estimate, not a photometric guarantee.
-  *
+  const cols = Math.max(1,Math.ceil(Math.sqrt(count*length/width)));
+  const rows = Math.ceil(count/cols);
+
+  const result = document.getElementById("calcResult");
+  result.innerHTML = "";
+
+  const card = document.createElement("div");
+  card.className = "result";
+
+  const data = [
+    ["Room Type",document.getElementById("lightRoom").value],
+    ["Room Area",areaFt.toFixed(2)+" sq ft"],
+    ["Recommended Light
